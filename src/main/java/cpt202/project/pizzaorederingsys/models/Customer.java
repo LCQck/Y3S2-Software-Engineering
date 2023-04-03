@@ -7,14 +7,21 @@ import javax.persistence.*;
 @DiscriminatorValue(value = "customer")
 public class Customer extends User{
 
+    @Column(name = "name")
+    private String name;
 
     public Customer() {
         super();
     }
 
-    public Customer( String userName, String password) {
-        super(userName, password);
+    @Override
+    public String getUsername() {
+        return userName;
     }
+
+//    public Customer( String userName, String password) {
+//        super(userName, password);
+//    }
 
     public void setId(Long id) {
         this.id = id;
@@ -26,13 +33,13 @@ public class Customer extends User{
     }
 
 
-    @Override
-    public String getUserName() {
+
+    public String getCusUserName() {
         return userName;
     }
 
-    @Override
-    public void setUserName(String userName) {
+
+    public void setCusUserName(String userName) {
         this.userName = userName;
     }
 
@@ -45,4 +52,5 @@ public class Customer extends User{
     public void setPassword(String password) {
         this.password = password;
     }
+
 }

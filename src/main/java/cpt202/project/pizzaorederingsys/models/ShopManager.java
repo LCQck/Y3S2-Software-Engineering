@@ -12,13 +12,14 @@ public class ShopManager extends User{
     private String description;
 
     //Constructor
-    public ShopManager(String userName, String password) {
-        super(userName, password);
-    }
+//    public ShopManager(String userName, String password) {
+//        super(userName, password);
+//    }
 
     public ShopManager() {
         super();
     }
+
 
     @Override
     public Long getId() {
@@ -31,12 +32,12 @@ public class ShopManager extends User{
     }
 
     @Override
-    public String getUserName() {
+    public String getUsername() {
         return userName;
     }
 
     @Override
-    public void setUserName(String userName) {
+    public void setUsername(String userName) {
         this.userName = userName;
     }
 

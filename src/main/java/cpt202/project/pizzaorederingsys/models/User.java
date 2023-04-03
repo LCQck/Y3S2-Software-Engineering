@@ -1,13 +1,22 @@
 package cpt202.project.pizzaorederingsys.models;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
+import static java.util.List.*;
 
 @Entity
 @Table(name = "user")
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "user_type",discriminatorType = DiscriminatorType.STRING)
 @DiscriminatorValue(value = "undefined")
-public class User {
+public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -19,29 +28,68 @@ public class User {
     @Column(name = "password")
     protected String password;
 
-    public User(String userName, String password) {
+    @Column(name = "account_non_locked")
+    private boolean accountNonLocked;
+
+
+    public User(String userName, String password, boolean accountNonLocked) {
         this.userName = userName;
         this.password = password;
+        this.accountNonLocked = accountNonLocked;
     }
 
     public User() {}
 
 
-    public String getUserName() {
-        return userName;
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Collections.singleton(() -> "read");
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
 
     public String getPassword() {
         return password;
     }
-
     public void setPassword(String password) {
+
         this.password = password;
     }
+
+    @Override
+    public String getUsername() {
+        return userName;
+    }
+    public void setUsername(String username) {
+        this.userName = username;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return accountNonLocked;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
+    public void setAccountNonLocked(Boolean accountNonLocked) {
+        this.accountNonLocked = accountNonLocked;
+    }
+    public boolean getAccountNonLocked() {
+        return accountNonLocked;
+    }
+
 
 
     public void setId(Long id) {

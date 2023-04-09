@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>RegisterAccount</title>
+</head>
+<body>
+     <h1>Register your user account</h1>
+
+     <form th:action="@{/Pizza-Ordering-Sytem/RegisterAccount}" method="POST" th:object="${POS}}">
+         <div>
+             <label for="name">Username</label>
+             <input type="text" th:field="*{username}" id = "name" name="Username">
+         </div>
+         <div>
+             <button type = "submit">Save and Register</button>
+
+         </div>
+
+
+     </form>
+</body>
+</html>

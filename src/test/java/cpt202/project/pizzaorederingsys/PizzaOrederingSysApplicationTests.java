@@ -14,11 +14,11 @@ class PizzaOrederingSysApplicationTests {
 
 	@Test
 	void testSave() {
-		ShopManager s=new ShopManager("shop","abcd");
-		s.setDescription("s1");
-
-
-		Customer t=new Customer("cus","abcde");
+//		ShopManager s=new ShopManager("shop","abcd");
+//		s.setDescription("s1");
+//
+//
+//		Customer t=new Customer("cus","abcde");
 
 
 

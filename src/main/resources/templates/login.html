@@ -4,19 +4,25 @@
     <title>Spring Security Example</title>
 </head>
 <body>
-<div th:if="${param.error}">
-    <p th:text="${session.error}" th:unless="${session == null}">[...]</p>
-</div>
-<div th:if="${param.logout}">You have been logged out.</div>
-<form th:action="@{/pizzaOrderingSys/login}" method="post">
-    <div>
-        <label> User Name : <input type="text" name="username" /> </label>
+
+<form action="/pizzaOrderingSys/login" method="post">
+    <div class="container">
+        <h1>Login</h1>
+        <p>Please fill in this form to log in.</p>
+        <hr>
+
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div>
+            <button type="submit">Login</button>
+        </div>
     </div>
-    <div>
-        <label> Password: <input type="password" name="password" /> </label>
-    </div>
-    <div>
-        <input type="submit" value="Sign In" /> </div>
 </form>
 </body>
 </html>

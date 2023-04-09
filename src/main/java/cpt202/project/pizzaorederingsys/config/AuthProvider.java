@@ -19,9 +19,11 @@ public class AuthProvider implements AuthenticationProvider {
 
     @Autowired private SecurityUserDetailsService userDetailsService;
     @Autowired private UserRepo userRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
 
-//        @Autowired private AttemptsRepository attemptsRepository;
+//  @Autowired private AttemptsRepository attemptsRepository;
 
     @Override
     public Authentication authenticate(Authentication authentication)throws AuthenticationException {
@@ -32,12 +34,13 @@ public class AuthProvider implements AuthenticationProvider {
 
             UserDetails u = userDetailsService.loadUserByUsername(username);
             System.out.println(u.getPassword());
-            //System.out.println(passwordEncoder.encode(password));
-            if (passwordEncoder().matches(password, u.getPassword())) {
+            System.out.println(passwordEncoder.getClass());
+            if (passwordEncoder.matches(password, u.getPassword())) {
                 //如果密码匹配，则返回Authentication接口的实现以及必要的详细信息
+                System.out.println("authenticate successfully");
                 return new UsernamePasswordAuthenticationToken(username, password, u.getAuthorities());
             } else {	//密码不匹配，抛出异常
-                System.out.println("authenticate password " + password);
+                System.out.println("error_authenticate password " + password);
                 throw new BadCredentialsException("Something went wrong!");
             }
     }
@@ -48,10 +51,7 @@ public class AuthProvider implements AuthenticationProvider {
         return authentication.equals(UsernamePasswordAuthenticationToken.class);
     }
 
-    @Autowired
-    private PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+
 
 
 

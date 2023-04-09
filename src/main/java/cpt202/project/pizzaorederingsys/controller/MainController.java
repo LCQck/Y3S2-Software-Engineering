@@ -54,10 +54,11 @@ public class MainController {
         return "login";
     }
 
-    @PostMapping(value = "/login",
+    @PostMapping( value = "/login",
             consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE, produces = {
-            MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
-    public String processLogin(@RequestParam Map<String, String> body,
+            MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_VALUE }
+    )
+    public String processLogin(@RequestParam Map<String, String>body,
                                RedirectAttributes redirectAttributes, HttpSession session) {
         System.out.println("processLogin: " +body.get("username"));
         try {

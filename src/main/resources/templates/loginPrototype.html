@@ -53,16 +53,16 @@
       border:0;
       padding-left:8px;
     }
-    /*#login_content #vcode{*/
-    /*  display:block;!*设置为独立块（换行）*!*/
-    /*  width:30%;*/
-    /*  margin-left: 15%;*/
-    /*  height:35px;*/
-    /*  font-size:15pt;*/
-    /*  border-radius:50px;!*设置圆角样式*!*/
-    /*  border:0;*/
-    /*  padding-left:8px;*/
-    /*}*/
+    #login_content #vcode{
+      display:block;/*设置为独立块（换行）*/
+      width:30%;
+      margin-left: 15%;
+      height:35px;
+      font-size:15pt;
+      border-radius:50px;/*设置圆角样式*/
+      border:0;
+      padding-left:8px;
+    }
 
     #login_passwd{
       width:70%;
@@ -89,6 +89,19 @@
       font-family:"微软雅黑";
       background-color:#FC5628;
       color:#ffffff;
+      cursor:pointer;/*设置指针鼠标的样式*/
+      border-radius:20px;/*设置圆角样式*/
+      border:0;
+    }
+    .btn1{
+      width:40%;
+      margin-right:-20%;
+      height:40px;
+      border:0;
+      font-size:12pt;
+      font-family:"微软雅黑";
+      background-color:#F5DEB3;
+      color:#8B7355;
       cursor:pointer;/*设置指针鼠标的样式*/
       border-radius:20px;/*设置圆角样式*/
       border:0;
@@ -122,8 +135,8 @@
         <input type="password" placeholder="Password" name="password" class="text"/>
         <br>
         <div><img src="/IMG/vercode.png" class="icon_btn"></div>
-        <input type="text" class = "text" placeholder="Verification Code" name="vcode" id="vcode" />
-        <input type="button"  class="btn" style="margin-left: 16%; margin-top: 5%" name="verCodeBtn" id="verCodeBtn" value="Send me verification code"  onclick="settime(this);"/>
+        <input type="text" placeholder="Verification Code" name="vcode" id="vcode">
+        <input type="button"  class="btn1" style="margin-left: 47%; margin-top: -40%" name="verCodeBtn" id="verCodeBtn" value="Send me verification code"  onclick="settime(this);"/>
         <div id="login_passwd">
           <a href="#" class="login_title">Register</a>
           <a href="#" class="login_title">Forget password?</a>

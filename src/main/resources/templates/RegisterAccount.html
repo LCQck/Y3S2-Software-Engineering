@@ -4,14 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <title>RegisterAccount</title>
+    <style type="text/css">
+
+
+
+
+    </style>
 </head>
 <body>
-     <h1>Register your user account</h1>
-
-     <form th:action="@{/Pizza-Ordering-Sytem/RegisterAccount}" method="POST" th:object="${POS}}">
+<div id = background>
+    <div id = register_form>
+        <div class = "register_title">
+         Register your account :)
+        </div>
+      <form th:action="" method="POST" th:object="">
+         <div id = "register content">
+             <br>
          <div>
-             <label for="name">Username</label>
-             <input type="text" th:field="*{username}" id = "name" name="Username">
+             <label for="username">Username</label>
+             <input type="text" th:field="*{username}" id = "username" name="username">
+         </div>
+         <div>
+             <label for="password">Password</label>
+             <input type="text" th:field="*{username}" id = "password" name="password">
          </div>
          <div>
              <button type = "submit">Save and Register</button>
@@ -19,6 +34,9 @@
          </div>
 
 
-     </form>
+         </div>>
+      </form>
+    </div>
+</div>
 </body>
 </html>

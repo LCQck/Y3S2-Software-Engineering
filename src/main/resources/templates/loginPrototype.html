@@ -53,16 +53,16 @@
       border:0;
       padding-left:8px;
     }
-    #login_content #vcode{
-      display:block;/*设置为独立块（换行）*/
-      width:30%;
-      margin-left: 15%;
-      height:35px;
-      font-size:15pt;
-      border-radius:50px;/*设置圆角样式*/
-      border:0;
-      padding-left:8px;
-    }
+    /*#login_content #vcode{*/
+    /*  display:block;!*设置为独立块（换行）*!*/
+    /*  width:30%;*/
+    /*  margin-left: 15%;*/
+    /*  height:35px;*/
+    /*  font-size:15pt;*/
+    /*  border-radius:50px;!*设置圆角样式*!*/
+    /*  border:0;*/
+    /*  padding-left:8px;*/
+    /*}*/
 
     #login_passwd{
       width:70%;
@@ -122,7 +122,7 @@
         <input type="password" placeholder="Password" name="password" class="text"/>
         <br>
         <div><img src="/IMG/vercode.png" class="icon_btn"></div>
-        <input type="text" placeholder="Verification Code" name="vcode" id="vcode" />
+        <input type="text" class = "text" placeholder="Verification Code" name="vcode" id="vcode" />
         <input type="button"  class="btn" style="margin-left: 16%; margin-top: 5%" name="verCodeBtn" id="verCodeBtn" value="Send me verification code"  onclick="settime(this);"/>
         <div id="login_passwd">
           <a href="#" class="login_title">Register</a>

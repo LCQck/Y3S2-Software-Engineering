@@ -15,7 +15,7 @@
     }
     #login_form{
       width:35%;
-      height:410px;
+      height:440px;
       margin-top: 10%;
       margin-left:60% ;
       background-color: #FFEFDB
@@ -53,21 +53,22 @@
       border:0;
       padding-left:8px;
     }
-    #login_content #vcode{
-      display:block;/*设置为独立块（换行）*/
-      width:30%;
-      margin-left: 15%;
-      height:35px;
-      font-size:15pt;
-      border-radius:50px;/*设置圆角样式*/
-      border:0;
-      padding-left:8px;
-    }
+    /*#login_content #vcode{*/
+    /*  display:block;!*设置为独立块（换行）*!*/
+    /*  width:30%;*/
+    /*  margin-left: 15%;*/
+    /*  height:35px;*/
+    /*  font-size:15pt;*/
+    /*  border-radius:50px;!*设置圆角样式*!*/
+    /*  border:0;*/
+    /*  padding-left:8px;*/
+    /*}*/
 
     #login_passwd{
       width:70%;
       text-align:right;
-      margin:0 auto;
+      margin-left: 26%;
+      margin-top: 3%;
       padding:5px;
     }
     /*层级选择器*/
@@ -135,14 +136,14 @@
         <input type="password" placeholder="Password" name="password" class="text"/>
         <br>
         <div><img src="/IMG/vercode.png" class="icon_btn"></div>
-        <input type="text" placeholder="Verification Code" name="vcode" id="vcode">
+        <input type="text" placeholder="Verification Code" name="vcode" id="vcode"  class="text"/>
 <!--        <input type="button"  class="btn1" style="margin-left: 47%; margin-top: -40%" name="verCodeBtn" id="verCodeBtn" value="Send me verification code"  onclick="settime(this);"/>-->
-        <button type="button" style="margin-left: 47%; margin-top: -25%" class="btn1">Send verification code</button>
+        <button type="button" style="margin-left: 29%; margin-top: 2%" class="btn1">Send verification code</button>
         <div id="login_passwd">
-          <a href="#" style="margin-top: -30%" class="login_title">Register</a>
-          <a href="#" style="margin-top: -30%" class="login_title">Forget password?</a>
+          <a href="#" class="login_title">Register</a>
+          <a href="#" class="login_title">Forget password?</a>
         </div>
-        <input  type="submit"  style="margin-top: -25%" value="Login" class="btn" >
+        <input  type="submit"  value="Login" class="btn" >
         <br>
       </div>
     </form>

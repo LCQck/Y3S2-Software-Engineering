@@ -5,6 +5,34 @@
     <meta charset="UTF-8">
     <title>RegisterAccount</title>
     <style type="text/css">
+        body{
+            height: 680px;
+            /*border: solid antiquewhite;*/
+            margin: 0 auto;
+            background-image: url(../IMG/Pizza.jpg);
+            background-repeat:no-repeat;
+            background-size: cover;
+        }
+        #register_form{
+            width:35%;
+            height:440px;
+            margin-top: 10%;
+            margin-left: 35% ;
+            background-color: #FFEFDB
+
+        }
+        #register_form .register_title{
+            width: 100%;
+            height: 40px;
+            color:#FF8C00;
+            border-bottom:1px solid #ffffff;
+            font-size:20pt;
+            font-family:"Times New Roman";
+            line-height:45px;
+            text-align:center;
+        }
+
+
 
 
 
@@ -18,7 +46,7 @@
          Register your account :)
         </div>
       <form th:action="" method="POST" th:object="">
-         <div id = "register content">
+         <div id = "register_content">
              <br>
          <div>
              <label for="username">Username</label>
@@ -34,7 +62,7 @@
          </div>
 
 
-         </div>>
+         </div>
       </form>
     </div>
 </div>

@@ -1,6 +1,11 @@
 package cpt202.project.pizzaorederingsys.models;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "customer")
@@ -8,48 +13,50 @@ import javax.persistence.*;
 public class Customer extends User{
 
     @Column(name = "name")
-    private String name;
+    private String nickname;
 
     public Customer() {
         super();
+        GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_CUSTOMER");
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(authority);
+        this.setAuthorities(authorities);
     }
 
-    @Override
-    public String getUsername() {
-        return userName;
+    public Customer(String userName, String password,
+                    boolean accountNonlocked, String nickname) {
+        super(userName, password,accountNonlocked);
+        this.nickname = nickname;
     }
 
-//    public Customer( String userName, String password) {
-//        super(userName, password);
-//    }
+    public Customer(String userName, String password,
+                    boolean accountNonlocked, String nickname,
+                    List<GrantedAuthority> grantedAuthority) {
+        super(userName, password,accountNonlocked,grantedAuthority);
+        this.nickname = nickname;
+    }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-
     public Long getId() {
         return id;
     }
 
-
-
-    public String getCusUserName() {
+    public String getCustomerUsername() {
         return userName;
     }
 
-
-    public void setCusUserName(String userName) {
+    public void setCustomerUsername(String userName) {
         this.userName = userName;
     }
 
-    @Override
-    public String getPassword() {
+    public String getCustomerPassword() {
         return password;
     }
 
-    @Override
-    public void setPassword(String password) {
+    public void setCustomerPassword(String password) {
         this.password = password;
     }
 

@@ -1,6 +1,11 @@
 package cpt202.project.pizzaorederingsys.models;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -12,42 +17,49 @@ public class ShopManager extends User{
     private String description;
 
     //Constructor
-//    public ShopManager(String userName, String password) {
-//        super(userName, password);
-//    }
+    public ShopManager(String userName, String password, boolean accountNonlocked,
+                       String description,
+                       List<GrantedAuthority> authorityList) {
+        super(userName, password,accountNonlocked,authorityList);
+        this.description = description;
+
+    }
+    public ShopManager(String userName, String password, boolean accountNonlocked,
+                       String description) {
+        super(userName, password,accountNonlocked);
+        this.description = description;
+
+    }
 
     public ShopManager() {
         super();
+        GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_SHOP_MANAGER");
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(authority);
+        this.setAuthorities(authorities);
     }
 
-
-    @Override
-    public Long getId() {
+    public Long getShopMangId() {
         return id;
     }
 
-    @Override
-    public void setId(Long id) {
+    public void setShopMangId(Long id) {
         this.id = id;
     }
 
-    @Override
-    public String getUsername() {
+    public String getShopMangUsername() {
         return userName;
     }
 
-    @Override
-    public void setUsername(String userName) {
+    public void setShopMangUsername(String userName) {
         this.userName = userName;
     }
 
-    @Override
-    public String getPassword() {
+    public String getShopMangPassword() {
         return password;
     }
 
-    @Override
-    public void setPassword(String password) {
+    public void setShopMangPassword(String password) {
         this.password = password;
     }
 

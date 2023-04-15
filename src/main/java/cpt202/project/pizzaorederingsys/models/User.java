@@ -28,11 +28,23 @@ public class User implements UserDetails {
     @Column(name = "password")
     protected String password;
 
-    @Column(name = "account_non_locked")
+    @Convert(converter = GrantedAuthoritiesConverter.class)
+    private List<GrantedAuthority> authorities;
+
+    @Transient
     private boolean accountNonLocked;
 
 
-    public User(String userName, String password, boolean accountNonLocked) {
+    public User(String userName, String password,
+                boolean accountNonLocked,List<GrantedAuthority> authorities) {
+        this.userName = userName;
+        this.password = password;
+        this.accountNonLocked = accountNonLocked;
+        this.authorities = authorities;
+    }
+
+    public User(String userName, String password,
+                boolean accountNonLocked) {
         this.userName = userName;
         this.password = password;
         this.accountNonLocked = accountNonLocked;
@@ -43,9 +55,11 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(() -> "read");
+        return authorities;
     }
-
+    public void setAuthorities(List<GrantedAuthority> authorities){
+        this.authorities = authorities;
+    }
 
     public String getPassword() {
         return password;

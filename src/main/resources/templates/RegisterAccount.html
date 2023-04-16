@@ -231,19 +231,22 @@
         <div class = "register_title">
          Register your account :)
         </div>
-      <form th:action="" method="POST" th:object="">
+<!--        <form th:action="/pizzaOrderingSys/register" method="POST" >-->
+      <form th:action="@{/pizzaOrderingSys/register}" method="POST" >
          <div id = "register_content">
              <br>
          <div id = register_username>
              <label for="username" class = "label_username">Username</label>
              <br>
-             <input type="text" placeholder="Please input your phone number" th:field="*{username}" id = "username" name="username" style="margin-left: 10%" class="text">
+<!--             <input type="text" placeholder="Please input your phone number" th:field="*{username}" id = "username" name="username" style="margin-left: 10%" class="text">-->
+             <input type="text" placeholder="Please input your phone number" id = "username" name="username" style="margin-left: 10%" class="text">
          </div>
              <br>
          <div id = register_password>
              <label for="password" class ="label_password">Password</label>
              <br>
-             <input type="text" placeholder="Your secret password" th:field="*{password}" id = "password" name="password"  style="margin-left: 10%" class="text">
+<!--             <input type="text" placeholder="Your secret password" th:field="*{password}" id = "password" name="password"  style="margin-left: 10%" class="text">-->
+             <input type="text" placeholder="Your secret password"  id = "password" name="password"  style="margin-left: 10%" class="text">
          </div>
              <br>
              <div id = register_verification>

@@ -120,14 +120,14 @@
     <div class="login_title">
       Welcome,User! Please Login
     </div>
-    <form action="" >
+    <form th:action="@{/pizzaOrderingSys/login}" method="POST">
       <div id="login_content">
         <br>
         <div><img src="../IMG/user.png" class="icon_btn"></div>
-        <input type="text" placeholder="Account" name="username" class="text"/>
+        <input type="text" placeholder="Account" name="username" id= "username" class="text"/>
         <br>
         <div><img src="../IMG/password.png" class="icon_btn"></div>
-        <input type="password" placeholder="Password" name="password" class="text"/>
+        <input type="password" placeholder="Password" name="password" id = "password" class="text"/>
         <br>
         <div><img src="../IMG/vercode.png" class="icon_btn"></div>
         <input type="text" placeholder="Verification Code" name="vcode" id="vcode" />

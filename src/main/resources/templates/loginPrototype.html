@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>wisdombank_login</title>
+  <style type="text/css">
+    body{
+      height: 680px;
+      /*border: solid antiquewhite;*/
+      margin: 0 auto;
+      background-image: url(../IMG/Pizza.jpg);
+      background-repeat:no-repeat;
+      background-size: cover;
+    }
+    #login_form{
+      width:35%;
+      height:420px;
+      margin-top: 10%;
+      margin-left:60% ;
+      background-color: #FFEFDB;
+
+    }
+    #login_form .login_title{
+      width: 100%;
+      height: 40px;
+      color:#FF8C00;
+      border-bottom:1px solid #ffffff;
+      font-size:20pt;
+      font-family:"Times New Roman";
+      line-height:45px;
+      text-align:center;
+    }
+    #login_content{
+      width:100%;
+      height:355px;
+      background-color: rgba(0,0,0,0.1);
+
+    }
+    #login_content .icon_btn{
+      width: 10%;
+      height: 10%;
+      margin-bottom: -10%;
+      margin-left: 2%;
+    }
+    #login_content .text{
+      display:block;/*设置为独立块（换行）*/
+      width:70%;
+      margin:0 auto;
+      height:35px;
+      font-size:15pt;
+      border-radius:50px;/*设置圆角样式*/
+      border:0;
+      padding-left:8px;
+    }
+    #login_content #vcode{
+      display:inline;/*设置为独立块（换行）*/
+      width:30%;
+      margin-left: 15%;
+      height:35px;
+      font-size:15pt;
+      border-radius:50px;/*设置圆角样式*/
+      border:0;
+      padding-left:8px;
+    }
+
+    #login_passwd{
+      width:70%;
+      text-align:right;
+      margin-left: 26%;
+      margin-top: 2%;
+      padding:5px;
+    }
+    /*层级选择器*/
+    #login_passwd a{
+      color:#000000;
+      text-decoration:none;
+    }
+    /*伪类*/
+    #login_passwd a:hover{
+      color:#ff0000;
+      text-decoration:underline;
+    }
+    .btn{
+      width:70%;
+      margin-left:15%;
+      height:40px;
+      border:0;
+      font-size:14pt;
+      font-family:"微软雅黑";
+      background-color:#FC5628;
+      color:#ffffff;
+      cursor:pointer;/*设置指针鼠标的样式*/
+      border-radius:20px;/*设置圆角样式*/
+      border:0;
+    }
+    .btn1{
+      width:35%;
+      margin-left:4%;
+      margin-top:1%;
+      height:40px;
+      border:0;
+      font-size:12pt;
+      font-family:"微软雅黑";
+      background-color:#F5DEB3;
+      color:#8B7355;
+      cursor:pointer;/*设置指针鼠标的样式*/
+      border-radius:20px;/*设置圆角样式*/
+      border:0;
+    }
+
+    @media only screen and (min-width: 400px) {
+
+    }
+  </style>
+</head>
+<body>
+<div id="content">
+  <div id="login_form">
+    <div class="login_title">
+      Welcome,User! Please Login
+    </div>
+    <form action="/pizzaOrderingSys/login" method="post">
+      <div id="login_content">
+        <br>
+        <div><img src="../IMG/user.png" class="icon_btn"></div>
+        <input type="text" placeholder="Account" name="username" class="text"/>
+        <br>
+        <div><img src="../IMG/password.png" class="icon_btn"></div>
+        <input type="password" placeholder="Password" name="password" class="text"/>
+        <br>
+        <div><img src="../IMG/vercode.png" class="icon_btn"></div>
+        <input type="text" placeholder="Verification Code" name="vcode" id="vcode" />
+<!--<input type="button"  class="btn1" name="verCodeBtn" id="verCodeBtn" value="Send verification code"  onclick="settime(this);"/>-->
+        <button type="button" class="btn1">Send verification code</button>
+        <div id="login_passwd">
+          <a href="/pizzaOrderingSys/register" class="login_title">Register</a>
+          <a href="/pizzaOrderingSys/forgetPassword" class="login_title">Forget password?</a>
+        </div>
+
+        <input  type="submit"  value="Login" class="btn" >
+        <br>
+      </div>
+    </form>
+  </div>
+</div>
+</body>
+</html>

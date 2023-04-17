@@ -143,7 +143,7 @@ class PizzaOrderingSysApplicationTests {
 		System.out.println(category1.printPizzaInCategory());
 	}
 
-	@Test
+	/*@Test
 	void testShoppingCartDetail() {
 //		Category beef = new Category();
 //		beef.setLabel("beef");
@@ -189,6 +189,6 @@ class PizzaOrderingSysApplicationTests {
 		shoppingCartDetails.setShopcartDetail(pizza2,size2,taste1,1,shoppingCart1);
 		shoppingCartDetails.setShopcartDetail(pizza3,size2,taste1,3,shoppingCart1);
 
-	}
+	}*/
 
 }

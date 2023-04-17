@@ -38,10 +38,19 @@ public class MainController {
     @GetMapping("/index")
     public String index() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if(auth.getAuthorities().toString().equals("ROLE_SHOP_MANAGER")){
-            return "redirect:/pizzaOrderingSys/index";
+        System.out.println("Enter index");
+        System.out.println("auth: "+auth);
+        System.out.println("auth.getAuthorities(): "+auth.getAuthorities().toString());
+        if(auth.getAuthorities().toString()
+                .replaceAll("\\[","").replaceAll("\\]","")
+                .equals("ROLE_SHOP_MANAGER")){
+
+            return "index";
         }
-        else if(auth.getAuthorities().toString().equals("ROLE_CUSTOMER")){
+        else if(auth.getAuthorities().toString()
+                .replaceAll("\\[","").replaceAll("\\]","")
+                .equals("ROLE_CUSTOMER")){
+
             return "redirect:/pizzaOrderingSys/customer";
         }
         else {

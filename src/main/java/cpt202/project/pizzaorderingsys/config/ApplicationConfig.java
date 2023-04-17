@@ -26,6 +26,8 @@ public class ApplicationConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests().antMatchers("/pizzaOrderingSys/register**")
                 .permitAll()
+                .antMatchers("/pizzaOrderingSys/forgetPassword**")
+                .permitAll()
                 .antMatchers("/pizzaOrderingSys/shopmanager***").hasAuthority("ROLE_SHOP_MANAGER")
                 .antMatchers("/pizzaOrderingSys/customer***").hasAuthority("ROLE_CUSTOMER")
                 .anyRequest().authenticated()

@@ -14,6 +14,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -158,6 +159,53 @@ public class MainController {
         System.out.println("Method: getErrorMessage");
         System.out.println(error);
         return error;
+    }
+    @GetMapping("/forgetPassword")
+    public String forgetPassword() {
+        return "ForgetPassword";
+    }
+
+    @PostMapping( value = "/forgetPassword",
+            consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE, produces = {
+            MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_VALUE }
+    )
+    public void forgetPassword(@RequestParam Map<String, String> body,  HttpSession session){
+        System.out.println("forget password: " +body.get("username"));
+        System.out.println(body.get("username"));
+        boolean userExists = userDetailsManager.isUserExists(body.get("username"));
+        UserDetails oldUser = userDetailsManager.loadUserByUsername(body.get("username"));
+        String author = oldUser.getAuthorities().toString()
+                .replaceAll("\\[","").replaceAll("\\]","");
+        System.out.println(body.get("password"));
+        System.out.println(body.get("confirmpassword"));
+        if(userExists){
+            if (body.get("password").equals(body.get("confirmpassword"))){
+                userDetailsManager.deleteUser(body.get("username"));
+                if(author.equals("ROLE_SHOP_MANAGER")){
+                    ShopManager shopManager= new ShopManager();
+                    shopManager.setShopMangUsername(body.get("username"));
+                    shopManager.setShopMangPassword(passwordEncoder.encode(body.get("password")));
+                    shopManager.setAccountNonLocked(false);
+                    userDetailsManager.createShopManager(shopManager);
+                }
+                else if(author.equals("ROLE_CUSTOMER")){
+                    Customer customer = new Customer();
+                    customer.setCustomerUsername(body.get("username"));
+                    customer.setCustomerPassword(passwordEncoder.encode(body.get("password")));
+                    customer.setAccountNonLocked(false);
+                    userDetailsManager.createCustomer(customer);
+                }
+                else {
+                    User user = new User();
+                    user.setUsername(body.get("username"));
+                    user.setPassword(passwordEncoder.encode(body.get("password")));
+                    user.setAccountNonLocked(false);
+                    userDetailsManager.createUser(user);
+                }
+            }
+            else throw new IllegalArgumentException("New password should match confirm password");
+        }
+        else throw new IllegalArgumentException("Invalid username or username does not exist");
     }
 }
 

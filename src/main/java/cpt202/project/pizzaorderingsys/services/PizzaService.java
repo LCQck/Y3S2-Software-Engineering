@@ -30,6 +30,13 @@ public class PizzaService {
         return pizzaRepo.findAllByCategory(category);
     }
 
+    public Pizza loadPizzaByName(String name){
+        if (!pizzaRepo.findPizzaByName(name).isPresent()) {
+            throw new NullPointerException("There is no existing pizza");
+        }
+        return pizzaRepo.findPizzaByName(name).get();
+    }
+
     @Transactional
     public void deleteById(Integer id){
         System.out.println("Enter delete service------");

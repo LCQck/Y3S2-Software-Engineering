@@ -9,7 +9,7 @@
       height: 680px;
       /*border: solid antiquewhite;*/
       margin: 0 auto;
-      background-image: url(../IMG/Pizza.jpg);
+      background-image: url(http://rt9kvjh2p.hd-bkt.clouddn.com/pizzaorderingsys/register%26login/Pizza.jpg);
       background-repeat:no-repeat;
       background-size: cover;
     }
@@ -120,16 +120,16 @@
     <div class="login_title">
       Welcome,User! Please Login
     </div>
-    <form action="/pizzaOrderingSys/login" method="post">
+    <form th:action="@{/pizzaOrderingSys/login}" method="POST">
       <div id="login_content">
         <br>
-        <div><img src="../IMG/user.png" class="icon_btn"></div>
-        <input type="text" placeholder="Account" name="username" class="text"/>
+        <div><img src="http://rt9kvjh2p.hd-bkt.clouddn.com/pizzaorderingsys/register%26login/user.png" class="icon_btn"></div>
+        <input type="text" placeholder="Account" name="username" id= "username" class="text"/>
         <br>
-        <div><img src="../IMG/password.png" class="icon_btn"></div>
-        <input type="password" placeholder="Password" name="password" class="text"/>
+        <div><img src="http://rt9kvjh2p.hd-bkt.clouddn.com/pizzaorderingsys/register%26login/password.png" class="icon_btn"></div>
+        <input type="password" placeholder="Password" name="password" id = "password" class="text"/>
         <br>
-        <div><img src="../IMG/vercode.png" class="icon_btn"></div>
+        <div><img src="http://rt9kvjh2p.hd-bkt.clouddn.com/pizzaorderingsys/register%26login/vercode.png" class="icon_btn"></div>
         <input type="text" placeholder="Verification Code" name="vcode" id="vcode" />
 <!--<input type="button"  class="btn1" name="verCodeBtn" id="verCodeBtn" value="Send verification code"  onclick="settime(this);"/>-->
         <button type="button" class="btn1">Send verification code</button>

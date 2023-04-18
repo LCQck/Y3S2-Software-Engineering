@@ -20,4 +20,10 @@ public class UserService {
         return userRepo.findAll();
     }
 
+    public User loadUserByUserName(String username){
+        if (!userRepo.findUserByUserName(username).isPresent()) {
+            throw new NullPointerException("There is no existing user");
+        }
+        return userRepo.findUserByUserName(username).get();
+    }
 }

@@ -34,8 +34,6 @@ public class MainController {
     private AuthenticationManager authenticationManager;
     @Autowired
     private PasswordEncoder passwordEncoder;
-    @Autowired
-    private SecurityUserDetailsService securityUserDetailsService;
 
     @GetMapping("/index")
     public String index() {
@@ -175,7 +173,7 @@ public class MainController {
     public void forgetPassword(@RequestParam Map<String, String> body,  HttpSession session){
         System.out.println("forget password: " +body.get("username"));
         System.out.println(body.get("username"));
-        boolean userExists = securityUserDetailsService.isUserExists(body.get("username"));
+        boolean userExists = userDetailsManager.isUserExists(body.get("username"));
         UserDetails oldUser = userDetailsManager.loadUserByUsername(body.get("username"));
         String author = oldUser.getAuthorities().toString()
                 .replaceAll("\\[","").replaceAll("\\]","");

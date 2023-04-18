@@ -1,0 +1,220 @@
+
+#background{
+  height: 680px;
+  /*border: solid antiquewhite;*/
+  margin: 0 auto;
+  background-image: url('/IMG/pizzaRegister.jpg');
+  background-repeat:no-repeat;
+  background-size: cover;
+}
+
+#register_form{
+    width:35%;
+    height:440px;
+    margin-top: 10%;
+    margin-left: 35%;
+    background-color: #EEDFCC;
+    border-radius:20px;/*设置圆角样式*/
+    border:0;
+
+}
+#register_form .register_title{
+    width: 100%;
+    height: 40px;
+    color:#FF8C00;
+    border-bottom:1px solid #ffffff;
+    font-size:20pt;
+    font-family:"Times New Roman";
+    line-height:45px;
+    text-align:center;
+}
+#register_content .text{
+    display:inline;/*设置为内联块（不换行）*/
+    width:50%;
+    margin:0 auto;
+    height:30px;
+    font-size:15pt;
+    font-family:"Californian FB";
+    border-radius:50px;/*设置圆角样式*/
+    border:0;
+    padding-left:8px;
+}
+#register_username .label_username{
+    font-size:18pt;
+    font-family:"Times New Roman";
+    color:#FF8C00;
+    margin-left: 10%;
+
+}
+#register_password .label_password{
+    font-size:18pt;
+    font-family:"Times New Roman";
+    color:#FF8C00;
+    margin-left: 10%;
+
+}
+
+#register_verification .label_verification{
+    font-size:18pt;
+    font-family:"Times New Roman";
+    color:#FF8C00;
+    margin-left: 10%;
+
+}
+#register_verification .verification_btn{
+    width:30%;
+    font-size:18pt;
+    font-family:"Times New Roman";
+    color:#8B7355;
+    background-color:#F5DEB3;
+    cursor:pointer;/*设置指针鼠标的样式*/
+    border-radius:20px;/*设置圆角样式*/
+    border:0;
+
+}
+
+#register_identity .label_identity{
+    font-size:18pt;
+    font-family:"Times New Roman";
+    color:#FF8C00;
+    margin-left: 10%;
+
+}
+
+#register_identity .customer{
+    line-height: 20px;
+    display: inline-block;
+    margin-left: 5px;
+    margin-right:15px;
+    font-size:20pt;
+    font-family:"Californian FB";
+    color: #777;
+
+}
+#register_identity .identity_1{
+    width: 20px;
+    height: 20px;
+    appearance: none;
+    position: relative;
+
+}
+
+#register_identity .identity_1:before{
+    content: '';
+    width: 20px;
+    height: 20px;
+    border: 1px solid #7d7d7d;
+    display: inline-block;
+    border-radius: 50%;
+    vertical-align: 1px;
+    cursor:pointer;
+}
+#register_identity .identity_1:checked:before{
+    content: '';
+    width: 20px;
+    height: 20px;
+    border: 1px solid #c59c5a;
+    background:#c59c5a;
+    display: inline-block;
+    border-radius: 50%;
+    vertical-align: 1px;
+    cursor:pointer;
+}
+#register_identity .identity_1:checked:after{
+    content: '';
+    width: 10px;
+    height:5px;
+    border: 2px solid white;
+    border-top: transparent;
+    border-right: transparent;
+    text-align: center;
+    display: block;
+    position: absolute;
+    top: 6px;
+    left:5px;
+    vertical-align: 1px;
+    transform: rotate(-45deg);
+    cursor:pointer;
+}
+#register_identity .identity_1:checked+label {
+    color: #8B4500;
+
+}
+
+#register_identity .shop_manager{
+    line-height: 20px;
+    display: inline-block;
+    margin-left: 5px;
+    margin-right:15px;
+    font-size:20pt;
+    font-family:"Californian FB";
+    color: #777;
+
+}
+#register_identity .identity_2{
+    width: 20px;
+    height: 20px;
+    appearance: none;
+    position: relative;
+
+}
+
+#register_identity .identity_2:before{
+    content: '';
+    width: 20px;
+    height: 20px;
+    border: 1px solid #7d7d7d;
+    display: inline-block;
+    border-radius: 50%;
+    vertical-align: 1px;
+    cursor:pointer;
+}
+#register_identity .identity_2:checked:before{
+    content: '';
+    width: 20px;
+    height: 20px;
+    border: 1px solid #c59c5a;
+    background:#c59c5a;
+    display: inline-block;
+    border-radius: 50%;
+    vertical-align: 1px;
+    cursor:pointer;
+}
+#register_identity .identity_2:checked:after{
+    content: '';
+    width: 10px;
+    height:5px;
+    border: 2px solid white;
+    border-top: transparent;
+    border-right: transparent;
+    text-align: center;
+    display: block;
+    position: absolute;
+    top: 6px;
+    left:5px;
+    vertical-align: 1px;
+    transform: rotate(-45deg);
+    cursor:pointer;
+}
+#register_identity .identity_2:checked+label {
+    color: #8B4500;
+
+}
+
+.btn{
+    width:70%;
+    margin-top:6%;
+    margin-left:15%;
+    height:40px;
+    border:0;
+    font-size:16pt;
+    font-family:"Times New Roman";
+    background-color:#FC5628;
+    color:#ffffff;
+    cursor:pointer;/*设置指针鼠标的样式*/
+    border-radius:20px;/*设置圆角样式*/
+    border:0;
+}
+
+
+

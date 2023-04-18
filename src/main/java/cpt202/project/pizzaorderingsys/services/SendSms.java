@@ -25,8 +25,8 @@ public class SendSms {
 
 
         SendSmsRequest request = new SendSmsRequest();
-        request.setSignName("康恩华的个人披萨点单");
-        request.setTemplateCode("SMS_276220097");
+        request.setSignName("G24Tech");
+        request.setTemplateCode("SMS_276255265");
         request.setPhoneNumbers("15995893249");
         request.setTemplateParam("{\"code\":\"1234\"}");
 

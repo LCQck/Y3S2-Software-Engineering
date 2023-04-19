@@ -11,7 +11,7 @@
     </parent>
 
     <groupId>cpt202.project</groupId>
-    <artifactId>PizzaOrederingSys</artifactId>
+    <artifactId>PizzaOrderingSys</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>PizzaOrderingSys</name>
     <description>PizzaOrderingSys</description>

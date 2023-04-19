@@ -15,6 +15,9 @@ public class Customer extends User{
     @Column(name = "name")
     private String nickname;
 
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "customer")
+    private List<Address> addressList;
+
     public Customer() {
         super();
         GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_CUSTOMER");

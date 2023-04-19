@@ -13,6 +13,7 @@ public interface UserRepo extends JpaRepository<User, Long> {
     Optional<User> findUserByUserName(String username);
 
     boolean existsByUserName(String username);
+
     @Modifying
     @Query(value = "DELETE FROM user WHERE user.username = :username", nativeQuery=true)
     void deleteByUserName(@Param("username") String username);

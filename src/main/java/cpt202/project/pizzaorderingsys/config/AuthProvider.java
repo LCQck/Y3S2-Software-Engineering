@@ -1,7 +1,7 @@
 package cpt202.project.pizzaorderingsys.config;
 
-import cpt202.project.pizzaorderingsys.security.SecurityUserDetailsService;
 import cpt202.project.pizzaorderingsys.repositories.UserRepo;
+import cpt202.project.pizzaorderingsys.security.SecurityUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;

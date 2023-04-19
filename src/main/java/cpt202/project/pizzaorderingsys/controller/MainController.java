@@ -35,7 +35,6 @@ public class MainController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-
     @GetMapping("/index")
     public String index() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -64,7 +63,7 @@ public class MainController {
         return "CustomerMainPage";
     }
 
-//    @GetMapping("/login")
+    //    @GetMapping("/login")
 //    public String login(HttpServletRequest request, HttpSession session) {
 //        System.out.println("HttpServletRequest request: "+request);
 //        System.out.println("HttpSession session: "+ session);
@@ -78,7 +77,7 @@ public class MainController {
         return "loginPrototype";
     }
 
-//    @PostMapping( value = "/login",
+    //    @PostMapping( value = "/login",
 //            consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE, produces = {
 //            MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_VALUE }
 //    )
@@ -98,7 +97,7 @@ public class MainController {
             SecurityContextHolder.getContext().setAuthentication(authentication);
             session.setAttribute("username", username);
 
-               return "redirect:/pizzaOrderingSys/index";
+            return "redirect:/pizzaOrderingSys/index";
 
         } catch (AuthenticationException e) {
             redirectAttributes.addFlashAttribute("error", "Invalid username or password.");
@@ -108,9 +107,10 @@ public class MainController {
     }
 
 
+
     @GetMapping("/register")
     public String register() {
-        return "RegisterAccount";
+        return "registerAccount";
     }
 
     @PostMapping(
@@ -160,9 +160,10 @@ public class MainController {
         System.out.println(error);
         return error;
     }
+
     @GetMapping("/forgetPassword")
     public String forgetPassword() {
-        return "ForgetPassword";
+        return "forgetPassword";
     }
 
     @PostMapping( value = "/forgetPassword",
@@ -207,5 +208,9 @@ public class MainController {
         }
         else throw new IllegalArgumentException("Invalid username or username does not exist");
     }
+
+
+
+
 }
 

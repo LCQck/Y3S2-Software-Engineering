@@ -44,6 +44,7 @@ public class SecurityUserDetailsService implements UserDetailsService {
         customerRepository.save((Customer) customer);
         System.out.println("JPA_SaveUser");
     }
+
     public boolean isUserExists(String username) {return userRepository.existsByUserName(username);}
 
     @Transactional
@@ -51,4 +52,11 @@ public class SecurityUserDetailsService implements UserDetailsService {
         userRepository.deleteByUserName(username);
         System.out.println("JPA_DeleteUser");
     }
+
+
+
+
+
+
+
 }

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Manage Pizza</title>
+  <link href="#" th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.css}" rel="stylesheet">
+  <style >
+    body{
+      background-image: url("https://png.pngtree.com/back_origin_pic/03/77/70/7fac46f6c330e7a42b72903f12334ca6.jpg");
+      background-size: 120%;
+      background-repeat:no-repeat;
+    }
+    .title{
+      margin: 0 auto;
+      /*margin-left: 10%;*/
+      /*margin-top: 10%;*/
+      background-color: #FF8247;
+      color: #FDF5E6;
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: bold;
+    }
+    .addpizza{
+      margin: 0 auto;
+      /*margin-left: 10%;*/
+      /*margin-top: 10%;*/
+      width: 500px;
+      height: 250px;
+      background-color: #FDF5E6;
+      padding: 10px;
+      border-radius: 10px;
+      margin-top: 50px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    /*tbody tr:hover {*/
+    /*    background-color: #8B7355;*/
+    /*}*/
+    .btn{
+      background-color: #8B7355;
+      color: #fff;
+      border: 0;
+      border-radius: 5px;
+      padding: 5px 10px;
+      font-size: 15px;
+      font-weight: bold;
+    }
+    .form-group{
+      margin-top: 5%;
+      margin-left: 40%;
+    }
+    .formgroup{
+      color: #CD6839;
+      margin-top: 10px;
+      margin-left: 10%;
+    }
+    .addpizza .submit{
+      margin-top: 0%;
+      margin-left: 90%;
+      background-color: #CD6839;
+      color: #fff;
+      border-radius: 5px;
+      padding: 5px 10px;
+      font-size: 15px;
+      font-weight: bold;
+      /*width: 10%;*/
+      /*height: 10%;*/
+    }
+    .form-group .submit{
+      margin-top: 5%;
+      background-color: #CD6839;
+      color: #fff;
+      border-radius: 5px;
+      padding: 5px 10px;
+      font-size: 15px;
+      font-weight: bold;
+      /*width: 10%;*/
+      /*height: 10%;*/
+    }
+    .form-group .form-control{
+      width: 50%;
+      height: 50%;
+      border-radius: 5px;
+      border: 0;
+      margin-top: 10px;
+      padding: 5px 10px;
+      background-color: #F5DEB3;
+    }
+  </style>
+</head>
+
+<body>
+<div class="title">Pizza</div>
+
+<form action="/pizzaOrderingSys/shopmanager/pizza" th:action="@{/pizzaOrderingSys/shopmanager/pizza/add}"
+      method="POST" th:object="${pizza}" enctype="multipart/form-data">
+  <div class="addpizza">
+    <table>
+      <input type="hidden" name="_method" value="put" th:if="${pizza!=null}"/>
+      <input type="hidden" name="id" th:if="${pizza!=null}" th:value="${pizza.id}">
+
+      <div class="formgroup">
+        <label>ID</label>
+        <input name="id" type="text" class="form-control" placeholder="id"
+               th:value="${pizza!=null}?${pizza.id}">
+      </div>
+      <div class="formgroup">
+        <label>Name</label>
+        <input name="name" type="text" class="form-control" placeholder="name"
+               th:value="${pizza!=null}?${pizza.name}">
+      </div>
+      <div class="formgroup">
+        <label>Price</label>
+        <input name="price" type="text" class="form-control" placeholder="price"
+               th:value="${pizza!=null}?${pizza.price}">
+      </div>
+      <div class="formgroup">
+        <label>Discount</label>
+        <input name="discount" type="number" min='0' max='100' v-model='testNum' class="formcontrol" placeholder="discount"
+               th:value="${pizza!=null}?${pizza.discount}">
+      </div>
+
+      <div class="formgroup">
+        <label>State</label><br/>
+        <div class="form-check form-check-inline">
+          <!-- <input class="form-check-input" type="radio" name="state" value="0" th:checked="${pizza.state==0}"/>
+          <label class="form-check-label">StopSelling</label>
+          <input class="form-check-input" type="radio" name="state" value="1" th:checked="${pizza.state==1}"/>
+          <label class="form-check-label">Selling</label> -->
+          <input class="form-check-input" type="radio" name="state" value="1"
+                 th:checked="${pizza!=null}?${pizza.state==1}">
+          <label class="form-check-label">Selling</label>
+
+          <input class="form-check-input" type="radio" name="state" value="0"
+                 th:checked="${pizza!=null}?${pizza.state==0}">
+          <label class="form-check-label">StopSelling</label>
+        </div>
+      </div>
+
+      <div class="formgroup">
+        <label>Description</label>
+        <input name="description" type="text" class="form-control" placeholder="description"
+               th:value="${pizza!=null}?${pizza.description}">
+      </div>
+
+      <div class="formgroup">
+        <label>Image</label>
+        <input name="image" type="file" class="form-control" enctype="multipart/form-data"
+               th:value="${pizza!=null}?${pizza.image}"/>
+      </div>
+
+    </table>
+
+    <!-- <button type="submit" class="btn btn-primary" th:text="${pizza!=null}?'SaveAdd':'SaveEdit'">Add</button> -->
+    <button type="submit" class="submit" th:text="${pizza!=null}?'Save':'Save'">Add</button>
+  </div>
+
+  <div class="form-group">
+    <a role="button" class="submit" th:href="@{/pizzaOrderingSys/shopmanager/pizza/list}">Cancel</a>
+<!--    <a role="button" class="submit" th:href="@{/pizzaOrderingSys/shopmanager/pizza/list}">List</a>-->
+  </div>
+
+</form>
+
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DetailPage</title>
+    <link type="text/css" rel="stylesheet" href="css/style.css"/>
+    <script type="text/javascript" src="js/script.js"></script>
+</head>
+<body>
+    <style type="text/css">
+        body{
+                /* background-image: url("https://png.pngtree.com/back_origin_pic/03/77/70/7fac46f6c330e7a42b72903f12334ca6.jpg"); */
+                background-color: #e9d8c8;
+                background-size: 120%;
+                background-repeat:no-repeat;
+            }
+        body,p,h3{
+            margin:0px;
+        }
+        a{
+            text-decoration: none;/*去掉下划线*/
+        }
+        .product{
+            width:640px;
+            /* height:400px; */
+            background-color: rgb(211, 180, 124); 
+            margin:50px auto;
+            border:1px solid #ddd;
+            text-align: center;
+        }
+        .product a{
+            display:block;
+        }
+        .product p.describe{
+            font-size:16px ;
+            font-weight: 400;
+            color:#845f3f;
+        }
+        .product .product-text{
+            /* height:100px; */
+            background-color: #f8f8f8;
+            margin-top:20px;/*上外边距20px*/
+            padding:15px;/*上下左右内边距15px*/
+            
+        }
+        
+        .product .product-text .product-mark{
+            font-size: 0px;
+        }
+        .product .product-text .product-mark img{
+            margin:0px 2px;
+        }
+        .product .product-text h3{
+            font-size: 20px;
+            font-weight:400 ;
+            margin-top:10px;
+            color:#000;
+        }
+        
+        .product .product-text p{
+            font-size:20px ;
+            color:#a92112;
+            margin-top:5px;
+        }
+        .btn1{
+                margin-left: 42%;
+                background-color: #8B7355;
+                color: #fff;
+                border: 0;
+                border-radius: 5px;
+                padding: 5px 10px;
+                font-size: 15px;
+                font-weight: bold;
+            }
+        .btn2{
+                margin-left: 10%;
+                background-color: #8B7355;
+                color: #fff;
+                border: 0;
+                border-radius: 5px;
+                padding: 5px 10px;
+                font-size: 15px;
+                font-weight: bold;
+        }    
+    </style>
+    <h1>Pizza Details</h1>
+
+    <input type="hidden" name="id" th:value="${pizza.id}">
+
+        <div class="product">
+            <a href="#" th:href="@{/pizzaOrderingSys/shopmanager/pizza/list}" target="_blank">
+                <!-- <img th.src = "${pizza.image}" alt="" width="320"/> -->
+                <div>
+                    <img th:src = "${pizza.image}" width="200"/>
+                </div>
+
+                <p class="describe">Description: <span aria-placeholder="id" th:text="${pizza.description}"></span></p>
+
+                <div class="product-text">
+                    <div>
+                    <!-- <li>Category: <span aria-placeholder="id" th:text="${pizza.category}"></span></span><br/> -->
+                    <li>State: <span aria-placeholder="id" div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="state" value="1"
+                               th:checked="${pizza!=null}?${pizza.state==1}">
+                        <label class="form-check-label">Selling</label>
+
+                        <input class="form-check-input" type="radio" name="state" value="0"
+                               th:checked="${pizza!=null}?${pizza.state==0}">
+                        <label class="form-check-label">StopSelling</label>
+                    </div></span></span><br/>
+
+                    
+                    <li>Discount: <span aria-placeholder="id" th:text="${pizza.discount}"></span></span><br/>
+                </div>
+                
+                  <h3>Product Name: <span aria-placeholder="id" th:text="${pizza.name}"></span></h3>
+                  <p>Base Price: ￥<span aria-placeholder="id" th:text="${pizza.price}"></span></p>
+        </div>
+
+        <!-- <div>
+            <img th:src = "${pizza.image}" th:text="${pizza.image}">
+        </div> -->
+
+
+            <div>
+                <a role="button" class="btn1" th:href="@{/pizzaOrderingSys/shopmanager/pizza/list}">Cancel</a>
+<!--                <a role="button" class="btn2" th:href="@{/pizzaOrderingSys/shopmanager/pizza/list}">List</a>-->
+            </div>  
+
+
+
+
+            <!-- <input type="hidden" name="_method" value="put" th:if="${pizza!=null}"/>
+            <input type="hidden" name="id" th:if="${pizza!=null}" th:value="${pizza.id}">-->
+
+            <!-- <div class="formgroup">
+                <label>ID</label>
+                <input name="id" type="text" class="form-control" placeholder="id"
+                       th:value="${pizza!=null}?${pizza.id}">
+            </div>-->
+
+          </a>
+      </div>
+
+</body>
+</html>

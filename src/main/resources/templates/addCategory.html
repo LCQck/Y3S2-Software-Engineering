@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Manage Category</title>
+        <link href="#" th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.css}" rel="stylesheet">
+        <style >
+            body{
+                background-image: url("https://png.pngtree.com/back_origin_pic/03/77/70/7fac46f6c330e7a42b72903f12334ca6.jpg");
+                background-size: 120%;
+                background-repeat:no-repeat;
+            }
+            .title{
+                margin: 0 auto;
+                /*margin-left: 10%;*/
+                /*margin-top: 10%;*/
+                background-color: #FF8247;
+                color: #FDF5E6;
+                padding: 10px;
+                border-radius: 10px;
+                font-size: 15px;
+                font-weight: bold;
+            }
+            .addpizza{
+                margin: 0 auto;
+                /*margin-left: 10%;*/
+                /*margin-top: 10%;*/
+                width: 500px;
+                height: 250px;
+                background-color: #FDF5E6;
+                padding: 10px;
+                border-radius: 10px;
+                margin-top: 50px;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+            /*tbody tr:hover {*/
+            /*    background-color: #8B7355;*/
+            /*}*/
+            .btn{
+                background-color: #8B7355;
+                color: #fff;
+                border: 0;
+                border-radius: 5px;
+                padding: 5px 10px;
+                font-size: 15px;
+                font-weight: bold;
+            }
+            .form-group{
+            
+                margin-left: 40%;
+            }
+            .formgroup{
+                color: #CD6839;
+                margin-top: 35px;
+                margin-left: 20%;
+                font-size: 150%;
+            }
+
+            .form-group .submit{
+                margin-top: 5%;
+                background-color: #CD6839;
+                color: #fff;
+                border-radius: 5px;
+                padding: 5px 10px;
+                font-size: 15px;
+                font-weight: bold;
+                /*width: 10%;*/
+                /*height: 10%;*/
+            }
+            .form-group .form-control{
+                width: 50%;
+                height: 50%;
+                border-radius: 5px;
+                border: 0;
+                margin-top: 10px;
+                padding: 5px 10px;
+                background-color: #F5DEB3;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="title">Category</div>
+        
+        <form action="/pizzaOrderingSys/shopmanager/category" th:action="@{/pizzaOrderingSys/shopmanager/category/add}" method="POST" th:object="${category}">
+        <div class="addpizza">
+            <table>
+
+                <input type="hidden" name="_method" value="put" th:if="${category!=null}"/>
+                <input type="hidden" name="id" th:if="${category!=null}" th:value="${category.id}">
+
+                <div class="formgroup">
+                    <label>ID</label>
+                    <input name="id" type="text" class="formcontrol" placeholder="id"
+                           th:value="${category!=null}?${category.id}">
+                </div>
+                <div class="formgroup">
+                    <label>Category</label>
+                    
+                    <input name="label" type="text" class="formcontrol" placeholder="category"
+                           th:value="${category!=null}?${category.label}">  
+                </div>
+
+            </table>
+        </div>
+
+            <div class="form-group">
+                <button type="submit" class="submit" th:text="${category!=null}?'SaveAdd':'SaveEdit'">Add</button>
+                
+                <a role="button" class="submit" th:href="@{/pizzaOrderingSys/shopmanager/pizza/list}">Cancel</a>
+                <a role="button" class="submit" th:href="@{/pizzaOrderingSys/shopmanager/category/list}">List</a>
+            </div>
+        </form>
+
+    </body>
+</html>

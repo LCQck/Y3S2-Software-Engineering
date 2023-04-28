@@ -5,6 +5,7 @@ import cpt202.project.pizzaorderingsys.models.Customer;
 import cpt202.project.pizzaorderingsys.models.ShopManager;
 import cpt202.project.pizzaorderingsys.models.User;
 import cpt202.project.pizzaorderingsys.security.SecurityUserDetailsService;
+import cpt202.project.pizzaorderingsys.services.SendSms;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -22,18 +23,24 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.Map;
+import org.springframework.ui.Model;
 
 @Controller
 @RequestMapping(path = "/pizzaOrderingSys")
 public class MainController {
 
+    int verifyCode = 0;
     @Autowired
     private SecurityUserDetailsService userDetailsManager;
     @Autowired
     private AuthenticationManager authenticationManager;
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private SendSms sendSms;
 
     @GetMapping("/index")
     public String index() {
@@ -106,6 +113,28 @@ public class MainController {
         }
     }
 
+    @RequestMapping( value ="/sendVerCode", method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String, Object> processVerificationCode(@RequestBody Map<String, Object> body,
+                                                       HttpSession session){
+        System.out.println("processVerificationCode: " +body.get("UserPhoneNum").toString());
+        //boolean userPhoneNumExists = userDetailsManager.isUserExists(body.get("userPhoneNum").toString());
+        System.out.println("userPhoneNum " +body.get("UserPhoneNum").toString());
+        //System.out.println("userPhoneNumExists: " +userPhoneNumExists);
+         verifyCode = (int) ((Math.random() * 9 + 1) * 1000);
+        Map<String, Object> response = new HashMap<>();
+//        if (!userPhoneNumExists) {
+//            response.put("success", true);
+//            JsonObject json = JsonObject.fromObject(response);
+        if(sendSms.sendVerificationCode(body.get("UserPhoneNum").toString())){
+            response.put("success", true);
+            response.put("vercode", verifyCode);
+        }else {
+            response.put("success", false);
+        }
+        return response;
+    }
+
 
 
     @GetMapping("/register")
@@ -118,32 +147,42 @@ public class MainController {
             consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE, produces = {
             MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_VALUE }
     )
-    public void addUser(@RequestParam Map<String, String> body, HttpServletRequest request) {
+    public String addUser(@RequestParam("username") String username,
+                        @RequestParam("password") String password,
+                        @RequestParam("verification") String vercode,
+                        HttpServletRequest request) {
+        if(userDetailsManager.loadUserByUsername(username) != null){
+            return "redirect:/pizzaOrderingSys/register";
+        }
         String selectedOption = request.getParameter("radioOption");
         System.out.println(selectedOption);
-        if(selectedOption.equals("1")){
-            System.out.println("addcustomer");
-            Customer customer = new Customer();
-            customer.setCustomerUsername(body.get("username"));
-            customer.setCustomerPassword(passwordEncoder.encode(body.get("password")));
-            customer.setAccountNonLocked(false);
-            userDetailsManager.createCustomer(customer);
-        }
-        else if(selectedOption.equals("2")){
-            System.out.println("addshopmanager");
-            ShopManager shopManager= new ShopManager();
-            shopManager.setShopMangUsername(body.get("username"));
-            shopManager.setShopMangPassword(passwordEncoder.encode(body.get("password")));
-            shopManager.setAccountNonLocked(false);
-            userDetailsManager.createShopManager(shopManager);
+        if((vercode.equals(String.valueOf(verifyCode))) && !vercode.isEmpty() ) {
+            if (selectedOption.equals("1")) {
+                System.out.println("addcustomer");
+                Customer customer = new Customer();
+                customer.setCustomerUsername(username);
+                customer.setCustomerPassword(passwordEncoder.encode(password));
+                customer.setAccountNonLocked(false);
+                userDetailsManager.createCustomer(customer);
+            } else if (selectedOption.equals("2")) {
+                System.out.println("addshopmanager");
+                ShopManager shopManager = new ShopManager();
+                shopManager.setShopMangUsername(username);
+                shopManager.setShopMangPassword(passwordEncoder.encode(password));
+                shopManager.setAccountNonLocked(false);
+                userDetailsManager.createShopManager(shopManager);
+            } else {
+                System.out.println("adduser");
+                User user = new User();
+                user.setUsername(username);
+                user.setPassword(passwordEncoder.encode(password));
+                user.setAccountNonLocked(false);
+                userDetailsManager.createUser(user);
+            }
+            return "redirect:/pizzaOrderingSys/login";
         }
         else {
-            System.out.println("adduser");
-            User user = new User();
-            user.setUsername(body.get("username"));
-            user.setPassword(passwordEncoder.encode(body.get("password")));
-            user.setAccountNonLocked(false);
-            userDetailsManager.createUser(user);
+            return "redirect:/pizzaOrderingSys/register";
         }
     }
     private String getErrorMessage(HttpServletRequest request, String key) {
@@ -170,47 +209,55 @@ public class MainController {
             consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE, produces = {
             MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_VALUE }
     )
-    public void forgetPassword(@RequestParam Map<String, String> body,  HttpSession session){
-        System.out.println("forget password: " +body.get("username"));
+    public String forgetPassword(@RequestParam Map<String, String> body,  HttpSession session) {
+        System.out.println("forget password: " + body.get("username"));
         System.out.println(body.get("username"));
         boolean userExists = userDetailsManager.isUserExists(body.get("username"));
         UserDetails oldUser = userDetailsManager.loadUserByUsername(body.get("username"));
         String author = oldUser.getAuthorities().toString()
-                .replaceAll("\\[","").replaceAll("\\]","");
+                .replaceAll("\\[", "").replaceAll("\\]", "");
         System.out.println(body.get("password"));
         System.out.println(body.get("confirmpassword"));
-        if(userExists){
-            if (body.get("password").equals(body.get("confirmpassword"))){
-                userDetailsManager.deleteUser(body.get("username"));
-                if(author.equals("ROLE_SHOP_MANAGER")){
-                    ShopManager shopManager= new ShopManager();
-                    shopManager.setShopMangUsername(body.get("username"));
-                    shopManager.setShopMangPassword(passwordEncoder.encode(body.get("password")));
-                    shopManager.setAccountNonLocked(false);
-                    userDetailsManager.createShopManager(shopManager);
+        if (body.get("verification").equals(String.valueOf(verifyCode)) && !body.get("verification").isEmpty() ) {
+            if (userExists) {
+                if (body.get("password").equals(body.get("confirmpassword"))) {
+                    userDetailsManager.deleteUser(body.get("username"));
+                    if (author.equals("ROLE_SHOP_MANAGER")) {
+                        ShopManager shopManager = new ShopManager();
+                        shopManager.setShopMangUsername(body.get("username"));
+                        shopManager.setShopMangPassword(passwordEncoder.encode(body.get("password")));
+                        shopManager.setAccountNonLocked(false);
+                        userDetailsManager.createShopManager(shopManager);
+                    } else if (author.equals("ROLE_CUSTOMER")) {
+                        Customer customer = new Customer();
+                        customer.setCustomerUsername(body.get("username"));
+                        customer.setCustomerPassword(passwordEncoder.encode(body.get("password")));
+                        customer.setAccountNonLocked(false);
+                        userDetailsManager.createCustomer(customer);
+                    } else {
+                        User user = new User();
+                        user.setUsername(body.get("username"));
+                        user.setPassword(passwordEncoder.encode(body.get("password")));
+                        user.setAccountNonLocked(false);
+                        userDetailsManager.createUser(user);
+                    }
+                    return "redirect:/pizzaOrderingSys/login";
+                } else{
+                    return "redirect:/pizzaOrderingSys/forgetPassword";
                 }
-                else if(author.equals("ROLE_CUSTOMER")){
-                    Customer customer = new Customer();
-                    customer.setCustomerUsername(body.get("username"));
-                    customer.setCustomerPassword(passwordEncoder.encode(body.get("password")));
-                    customer.setAccountNonLocked(false);
-                    userDetailsManager.createCustomer(customer);
-                }
-                else {
-                    User user = new User();
-                    user.setUsername(body.get("username"));
-                    user.setPassword(passwordEncoder.encode(body.get("password")));
-                    user.setAccountNonLocked(false);
-                    userDetailsManager.createUser(user);
-                }
+            } else {
+                return "redirect:/pizzaOrderingSys/forgetPassword";
             }
-            else throw new IllegalArgumentException("New password should match confirm password");
         }
-        else throw new IllegalArgumentException("Invalid username or username does not exist");
+        else return "redirect:/pizzaOrderingSys/forgetPassword";
     }
 
-
-
+//    4.27 modification
+    @GetMapping("/pizzaOrderingSys/shopmanager/pizza")
+    public String pizzaHome(Model model) {
+//        model.addAttribute("username", "Lily");
+        return "pizzaHome";
+    }
 
 }
 

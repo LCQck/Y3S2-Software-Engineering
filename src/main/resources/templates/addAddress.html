@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Manage Address</title>
+        <link href="#" th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.css}" rel="stylesheet">
+        <!-- <style type="text/css">
+        </style> -->
+    </head>
+
+
+    <body>
+        <h1>Address</h1>
+        
+        <form action="/pizzaOrderingSys/customer/address" th:action="@{/pizzaOrderingSys/customer/address/add}" method="POST" th:object="${address}">
+            <table>
+
+                <input type="hidden" name="_method" value="put" th:if="${address!=null}"/>
+                <input type="hidden" name="id" th:if="${address!=null}" th:value="${address.address_id}">
+
+                <div class="form-group">
+                    <label>Customer</label>
+                    <input name="customer" type="text" class="form-control" placeholder="customer_name"
+                           th:value="${address!=null}?${address.customer}">
+                </div>
+                <div class="form-group">
+                    <label>Address</label>
+                    <input name="address" type="text" class="form-control" placeholder="address"
+                           th:value="${address!=null}?${address.detailAddress}">
+                </div>
+                <div class="form-group">
+                    <label>ContactName</label>
+                    <input name="contactName" type="text" class="form-control" placeholder="contactName"
+                           th:value="${address!=null}?${address.contactName}">
+                </div>
+                <div class="form-group">
+                    <label>ContactPhone</label>
+                    <input name="contactPhone" type="text" class="form-control" placeholder="contactPhone"
+                           th:value="${address!=null}?${address.contactPhone}">
+                </div>
+
+            </table>
+
+            <div>
+                <button type="submit" class="btn" th:text="${address!=null}?'SaveAdd':'SaveEdit'">Add</button>
+                
+                <a role="button" th:href="@{/pizzaOrderingSys/customer/pizza}">Cancel</a>
+                <a role="button" th:href="@{/pizzaOrderingSys/customer/address/list}">List</a>
+            </div>
+            
+        </form>
+
+    </body>
+</html>

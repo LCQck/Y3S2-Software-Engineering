@@ -7,7 +7,7 @@ import java.util.List;
 @Entity
 public class Category {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "label_id")
     private Long id;
     @Column(name = "label",unique = true)
@@ -54,8 +54,8 @@ public class Category {
     }
 
 //    @Id
-//    public Long getId() {
-//        return id;
-//    }
+    public Long getId() {
+        return this.id;
+    }
 
 }

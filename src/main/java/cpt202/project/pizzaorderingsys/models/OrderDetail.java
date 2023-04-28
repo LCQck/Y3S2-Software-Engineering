@@ -1,5 +1,7 @@
 package cpt202.project.pizzaorderingsys.models;
 
+import com.alibaba.fastjson2.annotation.JSONField;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,7 +13,7 @@ public class OrderDetail {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_detail_id")
     private Long orderDetailId;
-
+    @JSONField(serialize = false)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id")
     private Order order;

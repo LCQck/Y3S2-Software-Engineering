@@ -1,5 +1,6 @@
 package cpt202.project.pizzaorderingsys.models;
 
+import com.alibaba.fastjson2.annotation.JSONField;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -21,12 +22,13 @@ public class User implements UserDetails {
     @Column(name = "username")
     protected String userName;
 
+    @JSONField(serialize = false)
     @Column(name = "password")
     protected String password;
 
     @Convert(converter = GrantedAuthoritiesConverter.class)
     private List<GrantedAuthority> authorities;
-
+    @JSONField(serialize = false)
     @Transient
     private boolean accountNonLocked;
 

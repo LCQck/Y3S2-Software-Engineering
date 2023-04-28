@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <link href="#" th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.css}" rel="stylesheet">
+        <title>Pizza List</title>
+        <style type="text/css">
+            body{
+                /* background-image: url("https://png.pngtree.com/back_origin_pic/03/77/70/7fac46f6c330e7a42b72903f12334ca6.jpg"); */
+                background-size: 120%;
+                background-repeat:no-repeat;
+            }
+            body{
+                /* background-image: url("https://png.pngtree.com/back_origin_pic/03/77/70/7fac46f6c330e7a42b72903f12334ca6.jpg"); */
+                background-color: #e9d8c8;
+                background-size: 120%;
+                background-repeat:no-repeat;
+            }
+
+            .pizza{
+                margin: 0 auto;
+                /*margin-left: 10%;*/
+                /*margin-top: 10%;*/
+                width: 1000px;
+                height: 500px;
+                background-color: #fff;
+                padding: 10px;
+                border-radius: 10px;
+
+                margin-top: 10px;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            th, td {
+                padding: 10px;
+                text-align: center;
+                font-family:"Californian FB";
+                font-size: 20px;
+                font-weight: bold;
+                color:#2b2620;
+                border-bottom: 1px solid #ddd;
+                background-color: #e9d8c8;
+            }
+            th {
+                background-color: #f1af64;
+                font-weight: normal;
+            }
+            /*tbody tr:hover {*/
+            /*    background-color: #8B7355;*/
+            /*}*/
+            .btn{
+                background-color: #8B7355;
+                color: #fff;
+                border: 0;
+                border-radius: 5px;
+                padding: 5px 10px;
+                font-size: 15px;
+                font-weight: bold;
+            }
+
+            .form-group .submit{
+                background-color: #8B7355;
+                color: #fff;
+                border: 0;
+                border-radius: 5px;
+                padding: 5px 10px;
+                font-size: 15px;
+                font-weight: bold;
+                /*width: 10%;*/
+                /*height: 10%;*/
+            }
+            .form-group .form-control{
+                /* margin: 0 auto; */
+                width: 50%;
+                height: 50%;
+                border-radius: 5px;
+                border: 0;
+                margin-top: 1px;
+                margin-left: 22%;
+                padding: 5px 10px;
+                background-color: #F5DEB3;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Search Result</h1>
+        
+        <div class="pizza">
+        <table border="2px" width="30%" height="50px" >
+            <thread>
+                <tr>
+                    <th>ID</th><th>Name</th><th>Price</th><th>Discount</th><th>State</th><th>Operation</th>
+                </tr>
+            </thread>
+            <tbody>
+
+                <tr th:each="pizza : ${pizza}">
+                    <td th:text="${pizza.id}"></td>
+                    <td th:text="${pizza.name}"></td>
+                    <td th:text="${pizza.price}"></td>
+                    <td th:text="${pizza.discount}"></td>
+                    <td th:text="${pizza.state} == 1 ? 'Selling' : 'StopSelling' "></td>
+                    <td>
+                        <a class="btn btn-sm btn-primary" href="#" th:href="@{/pizza/edit/} + ${pizza.id}">Edit</a>
+                        <a class="btn btn-sm btn-primary" href="#" th:href="@{/pizza/delete/} + ${pizza.id}">Delete</a>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        </div>
+
+        <div>
+            <a class="btn" href="#" th:href="@{/pizzaOrderingSys/shopmanager/pizza/add}">Add</a>
+            <a role="button" class="btn" th:href="@{/pizzaOrderingSys/shopmanager/pizza/list}">Home</a>
+        </div>
+
+    </body>
+</html>

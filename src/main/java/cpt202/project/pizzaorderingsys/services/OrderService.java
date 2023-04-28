@@ -12,9 +12,14 @@ package cpt202.project.pizzaorderingsys.services;
 // 9. Get an order by order status
 
 import cpt202.project.pizzaorderingsys.models.Order;
+import cpt202.project.pizzaorderingsys.models.OrderStatus;
 import cpt202.project.pizzaorderingsys.repositories.OrderRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OrderService {
@@ -34,12 +39,12 @@ public class OrderService {
         orderRepo.deleteById(orderId);
     }
 
-    public Iterable<Order> getAllOrders() {
+    public List<Order> getAllOrders() {
         return orderRepo.findAll();
     }
 
-    public Iterable<Order> getOrderByOrderId(Long orderId) {
-        return orderRepo.findByOrderId(orderId);
+    public Optional<Order> getOrderByOrderId(Long orderId) {
+        return orderRepo.findById(orderId);
     }
 
     public Iterable<Order> getOrderByCustomerName(String customerName) {
@@ -76,6 +81,10 @@ public class OrderService {
 
     public Iterable<Order> getOrderByOrderRemark(String orderRemark) {
         return orderRepo.findByOrderRemark(orderRemark);
+    }
+    @Transactional
+    public void updateOrderStatus(Long orderId, OrderStatus orderStatus) {
+        orderRepo.updateOrderStatus(orderId, orderStatus);
     }
 
 //    public Iterable<Order> getOrderByOrderDetailId(Long orderDetailId) {

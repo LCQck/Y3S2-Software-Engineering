@@ -1,6 +1,7 @@
 package cpt202.project.pizzaorderingsys.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -27,7 +28,7 @@ public class Order {
     @Column(name = "order_status")
     private OrderStatus orderStatus;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
@@ -56,10 +57,20 @@ public class Order {
     @Column(name = "customer_address")
     private String customerAddress;
 
+    @Column(name = "customer_comment")
+    private String customerComment;
+
+    @Column(name = "comment")
+    private String comment;
+
     public Order() {
     }
 
-    public Order(Long orderId, OrderStatus orderStatus, Customer customer, Date orderTime, Date updateTime, PayMethod payMethod, double totalPrice, String orderRemark, String customerName, String customerPhone, String customerAddress) {
+    public Order(double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public Order(Long orderId, OrderStatus orderStatus, Customer customer, Date orderTime, Date updateTime, PayMethod payMethod, double totalPrice, String orderRemark, String customerName, String customerPhone, String customerAddress, String customerComment, String comment) {
         this.orderId = orderId;
         this.orderStatus = orderStatus;
         this.customer = customer;
@@ -71,6 +82,8 @@ public class Order {
         this.customerName = customerName;
         this.customerPhone = customerPhone;
         this.customerAddress = customerAddress;
+        this.customerComment = customerComment;
+        this.comment = comment;
     }
 
     public Long getId() {
@@ -169,13 +182,41 @@ public class Order {
         this.customerAddress = customerAddress;
     }
 
+    public String getCustomerComment() {
+        return customerComment;
+    }
+
+    public void setCustomerComment(String customerComment) {
+        this.customerComment = customerComment;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public void addOrderDetail(OrderDetail newOrderDetail){
+        if(this.orderDetail == null){
+            this.orderDetail = new ArrayList<>();
+        }
+        this.orderDetail.add(newOrderDetail);
+
+    }
+
+    public List<OrderDetail> getOrderDetail() {
+        return orderDetail;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
                 "Id=" + Id +
                 ", orderId=" + orderId +
                 ", orderStatus=" + orderStatus +
-                ", customer=" + customer +
+                ", customer=" + customer.getCustomerUsername()+
                 ", orderTime=" + orderTime +
                 ", updateTime=" + updateTime +
                 ", payMethod=" + payMethod +

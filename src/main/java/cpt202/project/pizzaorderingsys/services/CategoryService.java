@@ -5,7 +5,10 @@ import cpt202.project.pizzaorderingsys.repositories.CategoryRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class CategoryService {
@@ -29,5 +32,21 @@ public class CategoryService {
             throw new NullPointerException("There is no existing label");
         }
         return categoryRepo.findCategoryByLabel(label).get();
+    }
+
+//    4.27 Modification
+    private static Map<Integer, Category> categories = null;
+    static{
+        categories = new HashMap<Integer, Category>();
+        // categories.put(1001, new Category(, " "));
+    }
+
+    public Category get(Integer id){
+        return categories.get(id);
+    }
+
+    @Transactional
+    public void deleteById(Integer id){
+        categoryRepo.deleteById(id);
     }
 }

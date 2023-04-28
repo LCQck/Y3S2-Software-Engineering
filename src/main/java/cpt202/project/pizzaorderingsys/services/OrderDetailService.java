@@ -32,7 +32,7 @@ public class OrderDetailService {
         return orderDetailRepo.findAll();
     }
 
-    public List<OrderDetail> getOrderDetailByOrderId(Order orderId) {
+    public List<OrderDetail> getOrderDetailByOrder(Order orderId) {
         return orderDetailRepo.findAllByOrder(orderId);
     }
 

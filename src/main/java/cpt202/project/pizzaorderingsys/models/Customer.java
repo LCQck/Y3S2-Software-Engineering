@@ -15,7 +15,7 @@ public class Customer extends User{
     @Column(name = "name")
     private String nickname;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "customer")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
     private List<Address> addressList;
 
     public Customer() {
@@ -61,6 +61,12 @@ public class Customer extends User{
 
     public void setCustomerPassword(String password) {
         this.password = password;
+    }
+
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", customerUsername='" + userName + '\'';
     }
 
 }

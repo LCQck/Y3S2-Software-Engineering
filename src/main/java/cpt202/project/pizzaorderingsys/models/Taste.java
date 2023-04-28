@@ -9,7 +9,7 @@ import javax.persistence.criteria.CriteriaBuilder.In;
 @Entity
 public class Taste {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String toppingName;
     private int toppingPrice;

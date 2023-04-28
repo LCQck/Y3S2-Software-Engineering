@@ -8,9 +8,11 @@ import com.aliyuncs.profile.DefaultProfile;
 import com.google.gson.Gson;
 import java.util.*;
 import com.aliyuncs.dysmsapi.model.v20170525.*;
+import org.springframework.stereotype.Service;
 
+@Service
 public class SendSms {
-    public static void main(String[] args) {
+    public static boolean sendVerificationCode(String phone) {
 
         DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "LTAI5t9CTozLXesv2otPKUF1", "HLKVBcm7UjzWwvXDGzjEmSaRHhytO4");
         /** use STS Token
@@ -27,11 +29,15 @@ public class SendSms {
         SendSmsRequest request = new SendSmsRequest();
         request.setSignName("G24Tech");
         request.setTemplateCode("SMS_276255265");
-        request.setPhoneNumbers("15995893249");
-        request.setTemplateParam("{\"code\":\"1234\"}");
-
+        request.setPhoneNumbers(phone);
+        request.setTemplateParam("{\"code\":\"6587\"}");
+        String result = "";
+        String resultStr = "";
         try {
             SendSmsResponse response = client.getAcsResponse(request);
+            result = response.getCode();
+            resultStr = response.getMessage();
+            System.out.println(resultStr);
             System.out.println(new Gson().toJson(response));
         } catch (ServerException e) {
             e.printStackTrace();
@@ -40,6 +46,12 @@ public class SendSms {
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
         }
+        if (result.equals("OK")) {
+            return true;
+        } else if(result.equals("isv.SMS_TEST_NUMBER_LIMIT") || result.equals("isv.MOBILE_NUMBER_ILLEGAL")){
+            return true;
+        }
+        else return false;
 
     }
 

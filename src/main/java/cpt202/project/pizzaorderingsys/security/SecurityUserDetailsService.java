@@ -45,7 +45,13 @@ public class SecurityUserDetailsService implements UserDetailsService {
         System.out.println("JPA_SaveUser");
     }
 
-    public boolean isUserExists(String username) {return userRepository.existsByUserName(username);}
+    public boolean isUserExists(String username) {
+        if(userRepository.findUserByUserName(username).isPresent())
+            return true;
+        else
+            return false;
+
+    }
 
     @Transactional
     public void deleteUser(String username){

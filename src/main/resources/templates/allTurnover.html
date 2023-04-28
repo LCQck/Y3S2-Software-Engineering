@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>TurnOver List</title>
+  <style>
+        body{
+            height: 680px;
+            /*border: solid antiquewhite;*/
+            margin: 0 auto;
+            background-color: #FFEFDB;
+            background-repeat:no-repeat;
+            background-size: cover;
+        }
+        .turnOverStatisticsPage {
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            color: #FC5628;
+        }
+        #topRow{
+          display: flex;
+          justify-content: space-between;
+        }
+        #topRow .startDate{
+          display: inline;
+          text-align: start;
+          margin-left: 40px;
+          font-size: 20px;
+          font-weight: bold;
+          color: #FC5628;
+        }
+        #topRow .endDate{
+          display: inline;
+          text-align: start;
+          margin-left: 40px;
+          font-size: 20px;
+          font-weight: bold;
+          color: #FC5628;
+        }
+
+        #topRow #confirm .confirmBtn{
+          display: inline;
+          text-align: end;
+          margin-right: 40px;
+          font-size: 20px;
+          font-weight: bold;
+          color: #FC5628;
+          background-color:#FFA500;
+          border:0;
+          cursor:pointer;/*设置指针鼠标的样式*/
+          border-radius:10px;/*设置圆角样式*/
+        }
+
+        #topRow .exitButton {
+          display: inline;
+          text-align: end;
+          margin-right: 40px;
+          font-size: 20px;
+          font-weight: bold;
+          color: #FC5628;
+          cursor:pointer;/*设置指针鼠标的样式*/
+        }
+        .statisticsTable-container {
+            height: 110%;
+            overflow-y: scroll;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+            font-family:"Californian FB";
+            font-size: 20px;
+            font-weight: bold;
+            color:#8B7355;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #F5DEB3;
+            font-weight: normal;
+        }
+        tbody tr:hover {
+            background-color: #FFA500;
+        }
+        #totalPrice p{
+          text-align: start;
+          margin-left: 3%;
+          font-size: 26px;
+          font-weight: bold;
+          font-family:"Times New Roman";
+          color: #FC5628;
+        }
+    </style>
+</head>
+
+<body>
+<div class="turnoverStatisticsPage">
+  TurnOver Statistics page
+</div>
+<br>
+<div id="topRow">
+  <form th:action="@{/turnover/list}" method="post">
+    <div class="startDate">
+      <span class ="startText">Choose Start Date</span>
+      <input type="date" class="StartDate" placeholder="Please choose date">
+    </div>
+    <div class="endDate">
+      <span class ="endText">Choose End Date</span>
+      <input type="date" class="EndDate" placeholder="Please choose date">
+    </div>
+    <div id = "confirm">
+      <button type="submit" class = "confirmBtn">Confirm</button>
+    </div>
+  </form>
+
+  <div class = exitButton><a th:href="@{/}">Exit</a></div>
+</div>
+
+<br>
+<div class="statisticsTable-container">
+  <table>
+    <thead>
+    <tr>
+      <th>OrderTime</th> <th>OrderId</th> <th>Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each = "order : ${turnoverList}" >
+      <td th:text = "${order.orderTime}"> </td> <td th:text = "${order.Id}"> </td><td th:text = "${order.totalPrice}"> </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<!--<div id="totalPrice">-->
+<!--  <p th:text = "The total price is ${totalPrice}">The total price is</p>-->
+<!--</div>-->
+</body>
+</html>

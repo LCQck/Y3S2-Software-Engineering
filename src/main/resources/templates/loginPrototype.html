@@ -15,8 +15,8 @@
     }
     #login_form{
       width:35%;
-      height:420px;
-      margin-top: 10%;
+      height:335px;
+      margin-top: 12%;
       margin-left:60% ;
       background-color: #FFEFDB;
 
@@ -33,7 +33,7 @@
     }
     #login_content{
       width:100%;
-      height:355px;
+      height:236px;
       background-color: rgba(0,0,0,0.1);
 
     }
@@ -129,10 +129,10 @@
         <div><img src="http://rt9kvjh2p.hd-bkt.clouddn.com/pizzaorderingsys/register%26login/password.png" class="icon_btn"></div>
         <input type="password" placeholder="Password" name="password" id = "password" class="text"/>
         <br>
-        <div><img src="http://rt9kvjh2p.hd-bkt.clouddn.com/pizzaorderingsys/register%26login/vercode.png" class="icon_btn"></div>
-        <input type="text" placeholder="Verification Code" name="vcode" id="vcode" />
+<!--        <div><img src="http://rt9kvjh2p.hd-bkt.clouddn.com/pizzaorderingsys/register%26login/vercode.png" class="icon_btn"></div>-->
+<!--        <input type="text" placeholder="Verification Code" name="vcode" id="vcode" />-->
 <!--<input type="button"  class="btn1" name="verCodeBtn" id="verCodeBtn" value="Send verification code"  onclick="settime(this);"/>-->
-        <button type="button" class="btn1">Send verification code</button>
+<!--        <input type="button"  class="btn1" name="verCodeBtn" id="verCodeBtn" value="Send verification code" th:onclick="setTime(this);">-->
         <div id="login_passwd">
           <a href="/pizzaOrderingSys/register" class="login_title">Register</a>
           <a href="/pizzaOrderingSys/forgetPassword" class="login_title">Forget password?</a>
@@ -145,4 +145,127 @@
   </div>
 </div>
 </body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+  var countdown=60;
+  function setTime(obj) {
+    if (countdown == 0) {
+      obj.removeAttribute("disabled");
+      obj.value="Send verification code";
+      countdown = 60;
+      return false;
+    } else {
+      obj.setAttribute("disabled", true);
+      obj.value="Resend after " + countdown + " seconds";
+      countdown--;
+    }
+    setTimeout(function() {
+      setTime(obj)
+    },1000)
+    // var userinfo =
+    // {
+    //   "UserPhoneNum": document.getElementById("username").value
+    // }
+    //
+    // $.ajax({
+    //   url: "/pizzaOrderingSys/login/sendVerCode",
+    //   data: userinfo,
+    //   type: "post",
+    //   success: function(data) {
+    //     if(JSON.parse(data).state === 404 || JSON.parse(data).state === 202 || JSON.parse(data).state === 500) {
+    //       alert("Failed to send verification code")
+    //     } else {
+    //       alert("Verification code sent successfully, please wait patiently for 60 seconds")
+    //     }
+    //   },
+    //   error: function() {
+    //     alert("Failed to send verification code");
+    //   }
+    // });
+  }
+
+  $(function(){
+    //获取验证码
+    $("#verCodeBtn").click(function(){
+      console.log(document.getElementById("username").value)
+      var userinfo =
+              {
+                "UserPhoneNum": $("input[name='username']").val().trim()
+              }
+      console.log('userinfo: ' + JSON.stringify(userinfo))
+
+
+      $.ajax({
+        url: "/pizzaOrderingSys/sendVerCode",
+        data: JSON.stringify(userinfo),
+        type: "post",
+        // dataType: 'json',
+        contentType: 'application/json',
+        success: function(result) {
+          if(result.success) {
+            alert("Verification code sent successfully, please wait patiently for 60 seconds")
+          } else {
+            alert("Failed to send verification code")
+          }
+        },
+        error: function(xhr, status, error) {
+          alert("Failed to trigger the sending of verification. Error message: " + error);
+          console.error(xhr, status, error);
+        }
+      });
+
+    });
+  })
+  // $(function () {
+  //   $('#username').keyup(function(){
+  //     if($(this).val().trim()!=''){
+  //       $('#verCodeBtn').prop('disabled', false)
+  //     }
+  //   });
+  //   $('#verCodeBtn').click(function () {
+  //     var mobile = $('#username').val().trim();
+  //     if(mobile==''){
+  //       alert('Please enter your phone number');
+  //       return false;
+  //     }
+  //     if(!mobile.match(/^1[34578]\d{9}$/)){
+  //       alert('Please enter the correct phone number');
+  //       return false;
+  //     }
+  //     var num = 60;
+  //     $('#verCodeBtn').val(num+'seconds');
+  //     var t = setInterval(function(){
+  //       $(this).prop('disabled', true);
+  //       num--;
+  //       $('#verCodeBtn').val(num+'seconds');
+  //       if(num==0){
+  //         clearInterval(t);
+  //         $('#verCodeBtn').val('Send verification code');
+  //         $(this).prop('disabled', false);
+  //       }
+  //     },1000);
+  //
+  //     $.ajax({
+  //       url: '/pizzaOrderingSys/login/sendVerCode',
+  //       type: 'post',
+  //       dataType: 'json',
+  //       data: {'mobile': mobile},
+  //       // headers: {'X-CSRFToken': '{{ csrf_token }}'},
+  //         success: function (data) {
+  //             if(data.state === 404 || data.state === 202 || data.state === 500) {
+  //                 alert("Failed to send verification code")
+  //             } else {
+  //                 alert("Verification code sent successfully, please wait patiently for 60 seconds")
+  //             }
+  //             },
+  //         error: function () {
+  //             alert("Failed to send verification code");
+  //         }
+  //     })
+  //
+  //   })
+  //
+  // })
+
+</script>
 </html>

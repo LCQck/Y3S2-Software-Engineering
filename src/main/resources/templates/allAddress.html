@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <link href="#" th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.css}" rel="stylesheet">
+        <title>Address List</title>
+        <style type="text/css">
+        </style>
+    </head>
+
+    <body>
+        <h1>Address List</h1>
+        
+        <table border="2px" width="30%" height="50px" >
+            <thread>
+                <tr>
+                    <th>Address_id</th><th>Customer</th><th>ContactName</th><th>ContactPhone</th>
+                </tr>
+            </thread>
+            <tbody>
+
+                <tr th:each="address : ${addressList}">
+                    <td th:text="${address.address_id}"></td>
+                    <td th:text="${address.customer}"></td>
+                    <td th:text="${address.detailAddress}"></td>
+                    <td th:text="${address.contactName}"></td>
+                    <td th:text="${address.contactPhone}"></td>
+                    
+                    <td>
+                        <a class="btn btn-sm btn-primary" href="#" th:href="@{/pizzaOrderingSys/customer/address/edit/} + ${address.address_id}">Edit</a>
+                        <a class="btn btn-sm btn-primary" href="#" th:href="@{/pizzaOrderingSys/customer/address/delete/} + ${address.address_id}">Delete</a>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <div>
+            <a class="btn btn-sm btn-success" href="#" th:href="@{/pizzaOrderingSys/customer/address/add}">Add</a>
+        </div>
+
+
+    </body>
+</html>

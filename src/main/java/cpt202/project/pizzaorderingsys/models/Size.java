@@ -10,15 +10,15 @@ import javax.persistence.Id;
 @Entity
 public class Size {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Integer inch;
+    private String inch;
     private int price;
 
     public Size(){
     }
 
-    public Size(Integer id, Integer inch, int price){
+    public Size(Integer id, String inch, int price){
         this.id = id;
         this.inch = inch;
         this.price = price;
@@ -32,11 +32,11 @@ public class Size {
         this.id = id;
     }
 
-    public int getInch() {
+    public String getInch() {
         return inch;
     }
 
-    public void setInch(Integer inch) {
+    public void setInch(String inch) {
         this.inch = inch;
     }
 

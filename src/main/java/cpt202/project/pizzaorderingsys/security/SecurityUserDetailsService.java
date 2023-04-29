@@ -46,15 +46,31 @@ public class SecurityUserDetailsService implements UserDetailsService {
     }
 
     public boolean isUserExists(String username) {
-        if(userRepository.findUserByUserName(username).isPresent())
+        if(userRepository.findUserByUserName(username).isPresent()) {
+            System.out.println("JPA_UserExists");
             return true;
-        else
+        }
+        else{
+            System.out.println("JPA_UserNotExists");
             return false;
+        }
+
 
     }
 
     @Transactional
     public void deleteUser(String username){
+        User user = userRepository.findUserByUserName(username).get();
+        if (user.getAuthorities().toString()
+                .replaceAll("\\[","").replaceAll("\\]","")
+                .equals("ROLE_SHOP_MANAGER")){
+            shopRepository.deleteById(user.getId());
+        }
+        else if(user.getAuthorities().toString()
+                .replaceAll("\\[","").replaceAll("\\]","")
+                .equals("ROLE_CUSTOMER")){
+            customerRepository.deleteById(user.getId());
+        }
         userRepository.deleteByUserName(username);
         System.out.println("JPA_DeleteUser");
     }

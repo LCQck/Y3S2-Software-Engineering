@@ -24,7 +24,9 @@ public class ApplicationConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
-                .authorizeRequests().antMatchers("/pizzaOrderingSys/register**","/pizzaOrderingSys/sendVerCode")
+                .authorizeRequests().antMatchers("/pizzaOrderingSys/sendVerCode")
+                .permitAll()
+                .antMatchers("/pizzaOrderingSys/register**")
                 .permitAll()
                 .antMatchers("/pizzaOrderingSys/forgetPassword**")
                 .permitAll()

@@ -6,6 +6,7 @@ import cpt202.project.pizzaorderingsys.models.ShopManager;
 import cpt202.project.pizzaorderingsys.models.User;
 import cpt202.project.pizzaorderingsys.security.SecurityUserDetailsService;
 import cpt202.project.pizzaorderingsys.services.SendSms;
+import cpt202.project.pizzaorderingsys.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -35,6 +36,8 @@ public class MainController {
     @Autowired
     private SecurityUserDetailsService userDetailsManager;
     @Autowired
+    private UserService userService;
+    @Autowired
     private AuthenticationManager authenticationManager;
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -52,7 +55,7 @@ public class MainController {
                 .replaceAll("\\[","").replaceAll("\\]","")
                 .equals("ROLE_SHOP_MANAGER")){
 
-            return "index";
+            return "redirect:/pizzaOrderingSys/shopmanager/mainpage";
         }
         else if(auth.getAuthorities().toString()
                 .replaceAll("\\[","").replaceAll("\\]","")
@@ -122,6 +125,7 @@ public class MainController {
         System.out.println("userPhoneNum " +body.get("UserPhoneNum").toString());
         //System.out.println("userPhoneNumExists: " +userPhoneNumExists);
          verifyCode = (int) ((Math.random() * 9 + 1) * 1000);
+        System.out.println("verifyCode: " +verifyCode);
         Map<String, Object> response = new HashMap<>();
 //        if (!userPhoneNumExists) {
 //            response.put("success", true);
@@ -151,12 +155,16 @@ public class MainController {
                         @RequestParam("password") String password,
                         @RequestParam("verification") String vercode,
                         HttpServletRequest request) {
-        if(userDetailsManager.loadUserByUsername(username) != null){
+        System.out.println("addUser: " +username);
+        if(userDetailsManager.isUserExists(username)){
+            System.out.println("User already exists");
             return "redirect:/pizzaOrderingSys/register";
         }
         String selectedOption = request.getParameter("radioOption");
         System.out.println(selectedOption);
         if((vercode.equals(String.valueOf(verifyCode))) && !vercode.isEmpty() ) {
+            System.out.println("Need verifyCode: "+verifyCode);
+            System.out.println("Input verifyCode:"+vercode);
             if (selectedOption.equals("1")) {
                 System.out.println("addcustomer");
                 Customer customer = new Customer();
@@ -182,6 +190,8 @@ public class MainController {
             return "redirect:/pizzaOrderingSys/login";
         }
         else {
+            System.out.println("Need verifyCode: "+verifyCode);
+            System.out.println("Input verifyCode:"+vercode);
             return "redirect:/pizzaOrderingSys/register";
         }
     }
@@ -219,6 +229,8 @@ public class MainController {
         System.out.println(body.get("password"));
         System.out.println(body.get("confirmpassword"));
         if (body.get("verification").equals(String.valueOf(verifyCode)) && !body.get("verification").isEmpty() ) {
+            System.out.println("Need verifyCode: "+verifyCode);
+            System.out.println("Input verifyCode:"+body.get("verification"));
             if (userExists) {
                 if (body.get("password").equals(body.get("confirmpassword"))) {
                     userDetailsManager.deleteUser(body.get("username"));
@@ -243,13 +255,19 @@ public class MainController {
                     }
                     return "redirect:/pizzaOrderingSys/login";
                 } else{
+                    System.out.println("Password not match");
                     return "redirect:/pizzaOrderingSys/forgetPassword";
                 }
             } else {
+                System.out.println("User not exists");
                 return "redirect:/pizzaOrderingSys/forgetPassword";
             }
         }
-        else return "redirect:/pizzaOrderingSys/forgetPassword";
+        else{
+            System.out.println("Need verifyCode: "+verifyCode);
+            System.out.println("Input verifyCode:"+body.get("verification"));
+            return "redirect:/pizzaOrderingSys/forgetPassword";
+        }
     }
 
 //    4.27 modification

@@ -41,6 +41,8 @@ class PizzaOrderingSysApplicationTests {
 //	private ShopmangRepo shopmangRepo;
 	@Autowired
 	private CustomerRepo customerRepo;
+	@Autowired
+	private ShopmangRepo shopmangRepo;
 
 	@Autowired
 	private UserService userService;
@@ -107,7 +109,10 @@ class PizzaOrderingSysApplicationTests {
 //        c1.setAuthorities(authorities);
 //        securityUserDetailsService.createCustomer(c1);
 //    }
-
+	@Test
+	void deleteUser(){
+		userService.deleteByUserName("testname2");
+	}
 	@Test
 	void orderJsonTest(){
 		try {

@@ -13,13 +13,13 @@ import java.util.Optional;
 
 public interface OrderRepo extends JpaRepository<Order, Long> {
 
-    Iterable<Order> findByCustomerName(String customerName);
+    Optional<List<Order>> findByCustomerName(String customerName);
 
     Iterable<Order> findByCustomerPhone(String customerPhone);
 
     Iterable<Order> findByCustomerAddress(String customerAddress);
 
-    Iterable<Order> findByOrderStatus(String orderStatus);
+    Optional<List<Order>> findAllByOrderStatus(OrderStatus orderStatus);
 
     Iterable<Order> findByPayMethod(String payMethod);
 
@@ -54,7 +54,15 @@ public interface OrderRepo extends JpaRepository<Order, Long> {
     void deleteById(@Param("id") int id);
 
     @Modifying
-    @Query("update Order o set o.comment = ?1 where o.orderId = ?2")
-    void updateOrderComment(String  comment, Long orderId);
+    @Query("update Order o set o.comment = ?1 where o.Id = ?2")
+    void updateOrderComment(String comment, Long Id);
+
+    @Modifying
+    @Query("update Order o set o.customerComment = ?1 where o.Id = ?2")
+    void updateCustomerOrderComment(String customerComment, Long Id);
+
+    @Modifying
+    @Query("update Order o set o.orderStatus = ?1 where o.Id = ?2")
+    void cancelOrder(OrderStatus orderStatus, Long Id);
 
 }

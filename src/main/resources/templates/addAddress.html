@@ -4,48 +4,133 @@
         <meta charset="UTF-8">
         <title>Manage Address</title>
         <link href="#" th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.css}" rel="stylesheet">
-        <!-- <style type="text/css">
-        </style> -->
+        <style type="text/css">
+        body{
+            height: 680px;
+            /*border: solid antiquewhite;*/
+            margin: 0 auto;
+            background-image: url(http://rt9kvjh2p.hd-bkt.clouddn.com/pizzaorderingsys/register%26login/pizzaRegister.jpg);
+            background-repeat:no-repeat;
+            background-size: cover;
+        }
+        .add_address_title{
+            color:#FF8C00;
+            margin-top: 50px;
+            font-size:30pt;
+            font-family:"Times New Roman";
+            line-height:45px;
+            text-align:center;
+        }
+        .add_content{
+            width:35%;
+            height:280px;
+            margin-top: 1%;
+            margin-left: 33%;
+            background-color: #EEDFCC;
+            border-radius:20px;/*设置圆角样式*/
+            border:0;
+        }
+        .add_content .text{
+            display:inline;/*设置为内联块（不换行）*/
+            width:50%;
+            margin-top: 5%;
+            margin-left: 4%;
+            height:30px;
+            font-size:15pt;
+            font-family:"Californian FB";
+            border-radius:50px;/*设置圆角样式*/
+            border:0;
+            padding-left:8px;
+        }
+        .label_Customer{
+            font-size:18pt;
+            font-family:"Times New Roman";
+            color:#FF8C00;
+            margin-left: 12%;
+        }
+        .label_Address{
+            font-size:18pt;
+            font-family:"Times New Roman";
+            color:#FF8C00;
+            margin-left: 15%;
+        }
+        .label_ContactName{
+            font-size:18pt;
+            font-family:"Times New Roman";
+            color:#FF8C00;
+            margin-left: 5%;
+        }
+        .label_ContactPhone{
+            font-size:18pt;
+            font-family:"Times New Roman";
+            color:#FF8C00;
+            margin-left: 5%;
+        }
+        .add_content .addAddressBtn{
+            display:inline;/*设置为内联块（不换行）*/
+            width:24%;
+            height:30px;
+            font-size:15pt;
+            font-family:"Californian FB";
+            border-radius:10px;/*设置圆角样式*/
+            border:0;
+            padding-left:10px;
+            margin-top: 5%;
+            margin-left: 36%;
+            background-color: #FF8C00;
+            color: white;
+            cursor: pointer;
+        }
+        .back_to_address_page{
+            display: block;
+            text-align: center;
+            margin-top: 1%;
+            font-size: 20px;
+            font-weight: bold;
+            color: #FC5628;
+            cursor:pointer;/*设置指针鼠标的样式*/
+        }
+        </style>
     </head>
-
-
     <body>
-        <h1>Address</h1>
-        
-        <form action="/pizzaOrderingSys/customer/address" th:action="@{/pizzaOrderingSys/customer/address/add}" method="POST" th:object="${address}">
+        <div class = add_address_title>Add new Address</div>
+        <br>
+        <form action="/pizzaOrderingSys/customer/addressBook" th:action="@{/pizzaOrderingSys/customer/addressBook/add}" method="POST" th:object="${address}">
+
+            <div class="add_content">
             <table>
 
                 <input type="hidden" name="_method" value="put" th:if="${address!=null}"/>
                 <input type="hidden" name="id" th:if="${address!=null}" th:value="${address.address_id}">
+<!--                <div id = "customer">-->
+<!--                    <label class="label_Customer">Customer</label>-->
+<!--                    <input name="customer" type="text" class="text" placeholder="customer_name"-->
+<!--                           th:value="${address!=null}?${address.customer}">-->
+<!--                </div>-->
 
-                <div class="form-group">
-                    <label>Customer</label>
-                    <input name="customer" type="text" class="form-control" placeholder="customer_name"
-                           th:value="${address!=null}?${address.customer}">
-                </div>
-                <div class="form-group">
-                    <label>Address</label>
-                    <input name="address" type="text" class="form-control" placeholder="address"
+                <div id = "address">
+                    <label class="label_Address">Address</label>
+                    <input name="address" type="text" class="text" placeholder="address"
                            th:value="${address!=null}?${address.detailAddress}">
                 </div>
-                <div class="form-group">
-                    <label>ContactName</label>
-                    <input name="contactName" type="text" class="form-control" placeholder="contactName"
+
+                <div id = "contactName">
+                    <label class="label_ContactName">ContactName</label>
+                    <input name="contactName" type="text" class="text" placeholder="contactName"
                            th:value="${address!=null}?${address.contactName}">
                 </div>
-                <div class="form-group">
-                    <label>ContactPhone</label>
-                    <input name="contactPhone" type="text" class="form-control" placeholder="contactPhone"
+
+                <div id = "contactPhone">
+                    <label class="label_ContactPhone">ContactPhone</label>
+                    <input name="contactPhone" type="text" class="text" placeholder="contactPhone"
                            th:value="${address!=null}?${address.contactPhone}">
                 </div>
 
+                <button type="submit" class="addAddressBtn" th:text="${address!=null}?'SaveAdd':'SaveEdit'">Add</button>
             </table>
-
+            </div>
             <div>
-                <button type="submit" class="btn" th:text="${address!=null}?'SaveAdd':'SaveEdit'">Add</button>
-                
-                <a role="button" th:href="@{/pizzaOrderingSys/customer/pizza}">Cancel</a>
-                <a role="button" th:href="@{/pizzaOrderingSys/customer/address/list}">List</a>
+                <a role="button" class="back_to_address_page"  th:href="@{/pizzaOrderingSys/customer/addressBook/list}">Exit</a>
             </div>
             
         </form>

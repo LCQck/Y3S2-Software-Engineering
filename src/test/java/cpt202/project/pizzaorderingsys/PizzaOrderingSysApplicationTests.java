@@ -111,7 +111,7 @@ class PizzaOrderingSysApplicationTests {
 //    }
 	@Test
 	void deleteUser(){
-		userService.deleteByUserName("testname2");
+		userService.deleteByUserName("testname1");
 	}
 	@Test
 	void orderJsonTest(){

@@ -16,8 +16,8 @@
                 margin: 0 auto;
                 /*margin-left: 10%;*/
                 /*margin-top: 10%;*/
-                width: 1000px;
-                height: 500px;
+                width: 1300px;
+                height: 600px;
                 background-color: #fff;
                 padding: 10px;
                 border-radius: 10px;
@@ -97,7 +97,7 @@
         <table border="2px" width="40%" height="50px">
             <thread>
                 <tr>
-                    <th>ID</th><th>Name</th><th>Price</th><th>Discount(%)</th><th>State</th><th>Description</th><th>Operation</th>
+                    <th>ID</th><th>Name</th><th>Price</th><th>Discount(%)</th><th>State</th><th>Description</th><th>Category</th><th>Operation</th>
                 </tr>
             </thread>
             <tbody>
@@ -109,8 +109,8 @@
                     <td th:text="${pizza.discount}"></td>
                     <td th:text="${pizza.state} == 1 ? 'Selling' : 'StopSelling' "></td>
                     <td th:text="${pizza.description}"></td>
-                    <!-- <td th:text="${pizza.image}"></td> -->
-                    <!-- <td th:text="${pizza.discount}"></td> -->
+                    <td th:text="${pizza.categoryName}"></td>
+
                     <td>
                         <a class="btn" href="#" th:href="@{/pizzaOrderingSys/shopmanager/pizza/detailpage/} + ${pizza.id}">Detail Page</a>
                         <a class="btn" href="#" th:href="@{/pizzaOrderingSys/shopmanager/pizza/edit/} + ${pizza.id}">Edit</a>

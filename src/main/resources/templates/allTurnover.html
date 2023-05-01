@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-  <title>TurnOver List</title>
+  <title>Turnover List</title>
   <style>
         body{
             height: 680px;
@@ -12,7 +12,7 @@
             background-repeat:no-repeat;
             background-size: cover;
         }
-        .turnOverStatisticsPage {
+        .turnoverStatisticsPage {
             text-align: center;
             font-size: 30px;
             font-weight: bold;
@@ -102,21 +102,21 @@
 </div>
 <br>
 <div id="topRow">
-  <form th:action="@{/turnover/list}" method="post">
+  <form th:action="@{/pizzaOrderingSys/shopmanager/turnover/list}" method="post">
     <div class="startDate">
       <span class ="startText">Choose Start Date</span>
-      <input type="date" class="StartDate" placeholder="Please choose date">
+      <input type="date" class="StartDate" name="startDate" placeholder="Please choose date">
     </div>
     <div class="endDate">
       <span class ="endText">Choose End Date</span>
-      <input type="date" class="EndDate" placeholder="Please choose date">
+      <input type="date" class="EndDate" name="endDate" placeholder="Please choose date">
     </div>
-    <div id = "confirm">
+
       <button type="submit" class = "confirmBtn">Confirm</button>
-    </div>
+
   </form>
 
-  <div class = exitButton><a th:href="@{/}">Exit</a></div>
+  <div class = exitButton><a th:href="@{/pizzaOrderingSys/shopmanager/mainpage}">Exit</a></div>
 </div>
 
 <br>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!-- <html lang="en" xmlns:th="http://www.thymeleaf.org"> -->
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Delete Address</title>
+        <style>
+            body{
+                height: 680px;
+                /*border: solid antiquewhite;*/
+                margin: 0 auto;
+                background-image: url(http://rt9kvjh2p.hd-bkt.clouddn.com/pizzaorderingsys/register%26login/pizzaRegister.jpg);
+                background-repeat:no-repeat;
+                background-size: cover;
+            }
+            .delete_address_title{
+                color:#FF8C00;
+                margin-top: 30px;
+                font-size:30pt;
+                font-family:"Times New Roman";
+                line-height:45px;
+                text-align:center;
+            }
+           .delete_content{
+                width:35%;
+                height:180px;
+                margin-top: 1%;
+                margin-left: 32%;
+                background-color: #EEDFCC;
+                border-radius:20px;/*设置圆角样式*/
+                border:0;
+            }
+            .delete_content .delete_request_id{
+                display:inline;/*设置为内联块（不换行）*/
+                width:50%;
+                margin-top: 6%;
+                margin-left: 25%;
+                height:30px;
+                font-size:15pt;
+                font-family:"Californian FB";
+                border-radius:50px;/*设置圆角样式*/
+                border:0;
+                padding-left:8px;
+            }
+            .delete_content .confirmBtn{
+                display:inline;/*设置为内联块（不换行）*/
+                width:34%;
+                height:30px;
+                font-size:15pt;
+                font-family:"Californian FB";
+                border-radius:10px;/*设置圆角样式*/
+                border:0;
+                padding-left:10px;
+                margin-top: 5%;
+                margin-left: 34%;
+                background-color: #FF8C00;
+                color: white;
+                cursor: pointer;
+            }
+            .back_to_address_page{
+                display: block;
+                text-align: center;
+                margin-top: 1%;
+                margin-left: 0%;
+                font-size: 20px;
+                font-weight: bold;
+                color: #FC5628;
+                cursor:pointer;/*设置指针鼠标的样式*/
+            }
+        </style>
+    </head>
+    <body>
+        <div class = delete_address_title>Delete Address</div>
+
+        <form action="/pizzaOrderingSys/customer/addressBook" th:action="@{/pizzaOrderingSys/customer/addressBook/delete}" method="POST">
+
+            <div class="delete_content">
+            <input type="text" name="id" class="delete_request_id" placeholder="please enter address id">
+            <input type="submit" class="confirmBtn" value="Confirm and Delete">
+            </div>
+            <div>
+                <a role="button" class="back_to_address_page" th:href="@{/pizzaOrderingSys/customer/addressBook/list}">Back to Address Book</a>
+            </div>
+        </form>
+
+    </body>
+</html>

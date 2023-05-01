@@ -23,7 +23,9 @@ public class OrderDetailService {
     public void addOrderDetail(OrderDetail orderDetail) {
         orderDetailRepo.save(orderDetail);
     }
-
+    public OrderDetail newOrderDetail(OrderDetail orderDetail) {
+        return orderDetailRepo.save(orderDetail);
+    }
     public void deleteOrderDetail(Long orderDetailId) {
         orderDetailRepo.deleteById(orderDetailId);
     }

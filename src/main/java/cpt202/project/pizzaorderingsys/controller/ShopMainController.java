@@ -2,6 +2,7 @@ package cpt202.project.pizzaorderingsys.controller;
 
 import com.alibaba.fastjson2.JSON;
 import cpt202.project.pizzaorderingsys.models.Order;
+import cpt202.project.pizzaorderingsys.models.OrderStatus;
 import cpt202.project.pizzaorderingsys.services.OrderDetailService;
 import cpt202.project.pizzaorderingsys.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +38,15 @@ public class ShopMainController {
         model.addAttribute("orderList", orderList);
         return "ShopManagerMainPage";
     }
+    @GetMapping("/undeliveredorders")
+    public String listUndeliveredOrders(Model model){
+        System.out.println("Enter listUndeliveredOrders");
+        List<Order> orderList = orderService.getOrderByOrderStatus(OrderStatus.PENDING);
+        model.addAttribute("orderList", orderList);
+        return "UndeliveredOrderPage";
+    }
 
-    @PostMapping("/listoreders")
+    @PostMapping("/listorders")
     public void listOrdersPost(HttpServletResponse response, Model model){
         System.out.println("Enter listOrdersPost");
         try {

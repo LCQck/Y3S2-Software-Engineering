@@ -2,7 +2,7 @@
 <html>
 <html xmlns:th="http://www.thymleaf.org">
 <head>
-    <title>Takeaway Merchant Page</title>
+    <title>Order Main Page</title>
 
     <style>
         /* Apply some basic styles to the page */
@@ -11,19 +11,47 @@
             padding: 0;
             font-family: Arial, sans-serif;
         }
+
         .container {
             display: flex;
             flex-direction: row;
             width: 100%;
             height: 100vh;
         }
+
         .left-panel {
-            flex: 4.7;  /*因为flex布局是规范了一个弹性框范围，所以需要左和右一起调整，原比例是左5右1，最好维持这个整数和*/
+            flex: 5;
             background-color: #F5F5F5;
             padding: 20px;
         }
+
+        .table-container {
+            height: 90%;
+            overflow-y: scroll;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: normal;
+        }
+
+        tbody tr:hover {
+            background-color: #f2f2f2;
+        }
+
         .right-panel {
-            flex: 1.3;    /*不要忘记连同这边一起调整！！！*/
+            flex: 1;
             background-color: #EDEDED;
             display: flex;
             flex-direction: column;
@@ -32,46 +60,15 @@
             padding: 20px;
         }
 
-        .table-container {
-            height: 90%;
-            overflow-y: scroll;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 10px;
-            text-align: center;
-            border-bottom: 1px solid #ddd;
-        }
-        th {
-            background-color: #f2f2f2;
-            font-weight: normal;
-            text-align: center;
-        }
-        tbody tr:hover {
-            background-color: #f2f2f2;
-        }
-
-        .button-container_for_right {
+        .button-container {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
         }
 
-        .button-container_for_top {
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-start;
-            align-content:center;
-        }
-
-        /*下面的两个就是修改button样式的，用.开头是因为下面是设成了class，hover就是相当于一个伪类*/
-        /*就是你鼠标放上去会有个遮蔽物一样的变颜色*/
-        .button_for_right {
-            display: block; /*这个就会让每一块都是独立显示不能并排，他会默认自带一个换行*/
+        .button {
+            display: block;
             margin: 10px 0;
             padding: 10px;
             font-size: 16px;
@@ -81,58 +78,11 @@
             border-radius: 10px;
             cursor: pointer;
             transition: background-color 0.2s ease;
-            width:200%;     /*按钮宽度调这个参数*/
-            height:150px;     /*按钮高度调这个参数*/
-        }
-        .button_for_right:hover {
-            background-color: #007bff;
-            color: #fff;
         }
 
-        .button_for_top1 {
-            display: inline;
-            margin: 6px 0;
-            margin-top: 1px;
-            margin-left: 10px;
-            padding: 10px;
-            font-size: 16px;
-            color: #333;
-            background-color: #fff;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-            width:30%;     /*按钮宽度调这个参数*/
-        }
-        .button_for_top2 {
-            display: inline;
-            margin: 6px 0;
-            margin-top: 1px;
-            margin-left: 30px;
-            padding: 10px;
-            font-size: 16px;
-            color: #333;
-            background-color: #fff;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-            width:30%;     /*按钮宽度调这个参数*/
-        }
-        .button_for_top1:hover {
+        .button:hover {
             background-color: #007bff;
             color: #fff;
-        }
-        .button_for_top2:hover {
-            background-color: #007bff;
-            color: #fff;
-        }
-
-        .modal-backdrop{
-            width: 100%;
-        }
-        .modal-content{
-            width: 100%;
         }
     </style>
 </head>
@@ -140,14 +90,6 @@
 
 <div class="container">
     <div class="left-panel">
-
-        <div class="button-container_for_top">
-            <button id="all-orders" class="button_for_top1">All Orders</button>
-            <input type=button id="undeliveredOrders" name="undeliveredOrders" class="button_for_top2"
-                   value="undelivered-orders" onclick="jumpToUndeliveredOrders()">
-        </div>
-
-
         <div class="table-container">
             <table id = "orderList">
                 <thead>
@@ -156,9 +98,9 @@
                     <th>Order Time</th>
                     <th>Total Price</th>
                     <th>Address</th>
-                    <th>Status</th>
                     <th>View Detail</th>
-                    <th>Change Status</th>
+                    <th>Status</th>
+                    <th>Commands</th>
                 </tr>
                 </thead>
                 <tbody id="order-list">
@@ -168,9 +110,9 @@
                     <td th:text="${order.orderTime}">Onions</td>
                     <td th:text="${order.totalPrice}">Onions</td>
                     <td th:text="${order.customerAddress}">Onions</td>
-                    <td th:text="${order.orderStatus}" >Onions</td>
+
                     <td>
-                        <a class="order-details-link" th:data-order-id="${order.Id}" href="#" title="查看详情">Detail</a>
+                        <a class="order-details-link" th:data-order-id="${order.Id}" href="#" title="View Details">Detail</a>
                     </td>
                     <td>
                         <div class="dropdown">
@@ -178,39 +120,22 @@
                                 [[${order.orderStatus}]]
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton-[[${i.index}]]">
-                                <a class="dropdown-item" href="#" th:onclick="updateOrderStatus([[${order.Id}]],'PENDING')">Pending</a>
-                                <a class="dropdown-item" href="#" th:onclick="updateOrderStatus([[${order.Id}]],'ACCEPTED')">Accepted</a>
-                                <a class="dropdown-item" href="#" th:onclick="updateOrderStatus([[${order.Id}]],'DELIVERING')">Delivering</a>
-                                <a class="dropdown-item" href="#" th:onclick="updateOrderStatus([[${order.Id}]],'COMPLETED')">Completed</a>
                                 <a class="dropdown-item" href="#" th:onclick="updateOrderStatus([[${order.Id}]],'CANCELLED')">Cancelled</a>
                             </div>
                         </div>
                     </td>
+                    <td>
+                        <a class="button:hover" href="#" th:href="@{/pizzaOrderingSys/customer/evalution/add}">Edit Comment</a>
+                        <a class="button:hover" href="#" th:href="@{/pizzaOrderingSys/customer/evalution/list}">View Comment</a>
+                    </td>
+
                 </tr>
-                <div id = "detail-info">
+                <tr id = "detail-info">
 
-                </div>
-
+                </tr>
 
                 </tbody>
             </table>
-        </div>
-
-
-    </div>
-    <div class="right-panel">
-        <div class="button-container_for_right">
-            <input type=button id="pizzaManager" name="pizzaManager" class="button_for_right"
-                   value="Pizza Manager" onclick="jumpToPizza()">
-            <br>
-            <input type=button id="masterFile" name="masterFile" class="button_for_right"
-                   value="Master File" onclick="jumpToMasterFile()">
-            <br>
-            <input type=button id="Statistics" name="Statistics" class="button_for_right"
-                   value="Statistics" onclick="jumpToStatistics()">
-            <br>
-            <input type=button id="Evaluation" name="Evaluation" class="button_for_right"
-                   value="Evaluation" onclick="jumpToComment()">
         </div>
     </div>
 </div>
@@ -233,28 +158,6 @@
     //         }
     //     });
     // };
-    function jumpToUndeliveredOrders() {
-        window.location.href = "/pizzaOrderingSys/shopmanager/undeliveredorders";
-        //window.location.assign("/pizzaOrderingSys/shopmanager/pizzaManager");
-    }
-
-    function jumpToPizza() {
-        window.location.href = "/pizzaOrderingSys/shopmanager/pizza/list";
-        //window.location.assign("/pizzaOrderingSys/shopmanager/pizzaManager");
-    }
-    function jumpToMasterFile() {
-        window.location.href = "/pizzaOrderingSys/shopmanager/user/list";
-        //window.location.assign("/pizzaOrderingSys/shopmanager/pizzaManager");
-    }
-    function jumpToStatistics() {
-        window.location.href = "/pizzaOrderingSys/shopmanager/turnover/list";
-        //window.location.assign("/pizzaOrderingSys/shopmanager/pizzaManager");
-    }
-    function jumpToComment() {
-        window.location.href = "/pizzaOrderingSys/shopmanager/evaluation/list";
-        //window.location.assign("/pizzaOrderingSys/shopmanager/pizzaManager");
-    }
-
     function showData(data) {
         var str = "";//定义用于拼接的字符串
         for (var i = 0; i < data.length; i++) {
@@ -279,7 +182,7 @@
                 + "</td><td>"
                 + data[i].customerAddress
                 + "</td><td>"
-                + stuatus
+                + status
                 + "</td></tr>"
                 ;
             //追加到table中
@@ -355,7 +258,7 @@
                 // Build HTML for popup containing order details
                 console.log("data: " + data)
                 var html = "<div class='order-details-popup'>";
-                html += "<h3>Order #" + orderId + "</h3>";
+                html += "<h3>Order #" + data.orderId + "</h3>";
                 html += showPizzalist(data)
                 // html += "<p>Customer Name: " + data.customerName + "</p>";
                 // html += "<p>Order Time: " + data.orderTime + "</p>";
@@ -371,47 +274,22 @@
     }
 
     function showPizzalist(detailist){
-        var str = "";//定义用于拼接的字符串
+
         for (var i = 0; i < detailist.length; i++){
-            // str = str
-            //     +"<td columnspan = '4'>"
-            //     + detailist[i].pizzaName
-            //     // + "</span><p>Pizza Size: "
-            //     + "       "
-            //     + detailist[i].pizzaSize
-            //     // + "</p><p>Pizza Topping: "
-            //     + "       "
-            //     + detailist[i].pizzaTopping
-            //     // + "</p><p>Quantity: "
-            //     + "       "
-            //     + detailist[i].quantity
-            //     // + "</p><p>Single Price"
-            //     + "       "
-            //     + detailist[i].pizzaPrice
-            //     + "<td>"
-            // ;
-            str = str
-                + "<p><span >Pizza Name: "
-                    +"<span style='font-weight: bold; font: 16px'>"
-                    + detailist[i].pizzaName
-                    + "</span> "
-                + " </span><span style='margin-left: 5%'>      Size: "
-                    +"<span style='font-weight: bold; font: 16px'>"
-                    +detailist[i].pizzaSize
-                    +"</span> "
-                + "</span><span style='margin-left: 5%'>      Topping:  "
-                    +"<span style='font-weight: bold; font: 16px'>"
-                    + detailist[i].pizzaTopping
-                    +"</span> "
-                + "</span><span style='margin-left: 5%'>       Quantity: "
-                    +"<span style='font-weight: bold; font: 16px'>"
-                    + detailist[i].quantity
-                    +"</span> "
+            str = "<p><span>Pizza Name: "
+                + detailist[i].pizzaName
+                // + "</span><p>Pizza Size: "
+                + "       "
+                + detailist[i].pizzaSize
+                // + "</p><p>Pizza Topping: "
+                + "       "
+                + detailist[i].pizzaTopping
+                // + "</p><p>Quantity: "
+                + "       "
+                + detailist[i].quantity
                 // + "</p><p>Single Price"
-                + " </span><span style='margin-left: 5%'>       Price:  "
-                    +"<span style='font-weight: bold; font: 16px'>"
-                    + detailist[i].pizzaPrice
-                    +"</span> "
+                + "       "
+                + detailist[i].pizzaPrice
                 + "</span></p>"
             ;
         }
@@ -421,8 +299,9 @@
     function showModal(html) {
         // Create modal backdrop and content elements
         console.log("html: " + html)
-        var backdrop = $("<div style='width:650px; margin: 0 auto;' class='modal-backdrop'></div>");
-        var content = $("<div style='width:650px ; margin: 0 auto;' class='modal-content'></div>");
+        var backdrop = $("<div style='width=2000px; margin: 0 auto' class='modal-backdrop'></div>");
+        var content = $("<div style='width=2000" +
+            "px; margin: 0 auto' class='modal-content'></div>");
         // Add HTML content to content element
         content.html(html);
         // Add close button to content element

@@ -1,4 +1,6 @@
 package cpt202.project.pizzaorderingsys.models;
+import com.alibaba.fastjson2.annotation.JSONField;
+
 import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -13,15 +15,20 @@ public class ShoppingCartDetails{
     private Long id;
 
     private String pizzaName;
-    @OneToOne
+
+
+
+    @ManyToOne
     private Size size;
-    @OneToOne
+
+    @ManyToOne
     private Taste taste;
 
     private Integer count;
 
     private Double price;
 
+    @JSONField(serialize = false)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "shopping_cart_id")
     private ShoppingCart shoppingCart;
@@ -42,6 +49,13 @@ public class ShoppingCartDetails{
         this.price = price;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public ShoppingCart getShoppingCart() {return this.shoppingCart;}
 

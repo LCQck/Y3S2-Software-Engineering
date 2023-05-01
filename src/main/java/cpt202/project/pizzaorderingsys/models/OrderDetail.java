@@ -34,12 +34,12 @@ public class OrderDetail {
     private int quantity;
 
     @Column(name = "pizza_price")
-    private String pizzaPrice;
+    private Double pizzaPrice;
 
     public OrderDetail() {
     }
 
-    public OrderDetail(Order order, String pizzaImage, String pizzaName, String pizzaSize, String pizzaTopping, String pizzaPrice, int quantity) {
+    public OrderDetail(Order order, String pizzaImage, String pizzaName, String pizzaSize, String pizzaTopping, Double pizzaPrice, int quantity) {
         this.order = order;
         this.pizzaImage = pizzaImage;
         this.pizzaName = pizzaName;
@@ -97,11 +97,11 @@ public class OrderDetail {
         this.pizzaTopping = pizzaTopping;
     }
 
-    public String getPizzaPrice() {
+    public Double getPizzaPrice() {
         return pizzaPrice;
     }
 
-    public void setPizzaPrice(String pizzaPrice) {
+    public void setPizzaPrice(Double pizzaPrice) {
         this.pizzaPrice = pizzaPrice;
     }
 

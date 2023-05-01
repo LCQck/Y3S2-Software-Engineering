@@ -47,7 +47,7 @@ public class SizeController{
     @PostMapping("/add")
     public String confiromNewSize(@ModelAttribute("size") Size size){
         sizeService.newSize(size);
-        return "allPizza";
+        return "redirect:/pizzaOrderingSys/shopmanager/size/list";
     }
 
     @GetMapping("/edit/{id}")
@@ -61,7 +61,7 @@ public class SizeController{
     public String updateSize(Size size){
         System.out.println(size);
         sizeService.saveSize(size);
-        return "allPizza";
+        return "redirect:/pizzaOrderingSys/shopmanager/size/list";
     }
     
     // @GetMapping("/delete/{id}")

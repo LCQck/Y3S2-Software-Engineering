@@ -1,6 +1,8 @@
 package cpt202.project.pizzaorderingsys.controller;
 
+import cpt202.project.pizzaorderingsys.models.Category;
 import cpt202.project.pizzaorderingsys.models.Pizza;
+import cpt202.project.pizzaorderingsys.services.CategoryService;
 import cpt202.project.pizzaorderingsys.services.ImageService;
 import cpt202.project.pizzaorderingsys.services.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 @Controller
@@ -18,6 +21,8 @@ public class PizzaController {
 
     @Autowired
     private PizzaService pizzaService;
+    @Autowired
+    private CategoryService categoryService;
 
     @Autowired
     private ImageService imageService;
@@ -41,6 +46,7 @@ public class PizzaController {
                                    @RequestParam int price,
                                    @RequestParam int discount,
                                    @RequestParam int state,
+                                   @RequestParam String category,
                                    @RequestParam String description,
                                    // @RequestParam Category category,
                                    @RequestParam("image") MultipartFile image) {
@@ -51,18 +57,28 @@ public class PizzaController {
         // String key = path.substring(a);
         // String url = imageService.imageUpload(path, key);
         // pizza.setImage(url);
+
+        Category categoryOb = categoryService.loadCategoryBylabel(category);
         Pizza pizza = new Pizza();
         pizza.setId(id);
         pizza.setName(name);
         pizza.setPrice(price);
         pizza.setDiscount(discount);
         pizza.setState(state);
+        pizza.setCategory(categoryOb);
         pizza.setDescription(description);
         // pizza.setCategoryName(category);
-        String str = imageService.imageUpload(image);
-         pizza.setImage(str);
+        try{
+            String str = imageService.imageUpload(image);
+            pizza.setImage(str);
+        } catch (UnsupportedEncodingException e) {
+            System.out.println("UnsupportedEncodingException");
+            e.printStackTrace();
+        }
+//        String str = imageService.imageUpload(image);
+
         pizzaService.newPizza(pizza);
-        return "allPizza";
+        return "redirect:/pizzaOrderingSys/shopmanager/pizza/list";
     }
 
     @GetMapping("/edit/{id}")
@@ -76,14 +92,14 @@ public class PizzaController {
     public String updatePizza(Pizza pizza) {
         System.out.println(pizza);
         pizzaService.savePizza(pizza);
-        return "allPizza";
+        return "redirect:/pizzaOrderingSys/shopmanager/pizza/list";
     }
 
     @RequestMapping("/delete/{id}")
     public String DeletePizza(@PathVariable("id") Integer id) {
         System.out.println("enter delete");
         pizzaService.deleteById(id);
-        return "allPizza";
+        return "redirect:/pizzaOrderingSys/shopmanager/pizza/list";
     }
 
     @RequestMapping(value = "find")

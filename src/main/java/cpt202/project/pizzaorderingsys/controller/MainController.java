@@ -3,9 +3,12 @@ package cpt202.project.pizzaorderingsys.controller;
 
 import cpt202.project.pizzaorderingsys.models.Customer;
 import cpt202.project.pizzaorderingsys.models.ShopManager;
+import cpt202.project.pizzaorderingsys.models.ShoppingCart;
 import cpt202.project.pizzaorderingsys.models.User;
 import cpt202.project.pizzaorderingsys.security.SecurityUserDetailsService;
+import cpt202.project.pizzaorderingsys.services.CustomerService;
 import cpt202.project.pizzaorderingsys.services.SendSms;
+import cpt202.project.pizzaorderingsys.services.ShopCartService;
 import cpt202.project.pizzaorderingsys.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -36,7 +39,10 @@ public class MainController {
     @Autowired
     private SecurityUserDetailsService userDetailsManager;
     @Autowired
-    private UserService userService;
+    private CustomerService customerService;
+
+    @Autowired
+    private ShopCartService shopCartService;
     @Autowired
     private AuthenticationManager authenticationManager;
     @Autowired
@@ -61,7 +67,7 @@ public class MainController {
                 .replaceAll("\\[","").replaceAll("\\]","")
                 .equals("ROLE_CUSTOMER")){
 
-            return "redirect:/pizzaOrderingSys/customer";
+            return "redirect:/pizzaOrderingSys/customer/Menu";
         }
         else {
             return "redirect:/pizzaOrderingSys/login";
@@ -172,6 +178,14 @@ public class MainController {
                 customer.setCustomerPassword(passwordEncoder.encode(password));
                 customer.setAccountNonLocked(false);
                 userDetailsManager.createCustomer(customer);
+                Customer customer1 = customerService.loadCustomerByUserName(customer.getCustomerUsername());
+                Long customerId = customer1.getId();
+                ShoppingCart shoppingCart = new ShoppingCart();
+                shoppingCart.setId(customerId);
+                shoppingCart.setCustomerId(customer);
+                shoppingCart.setTotalPrice(0.0);
+                shoppingCart.setEmptyShoppingCartDetailsList();
+                shopCartService.newShopCart(shoppingCart);
             } else if (selectedOption.equals("2")) {
                 System.out.println("addshopmanager");
                 ShopManager shopManager = new ShopManager();
@@ -246,6 +260,14 @@ public class MainController {
                         customer.setCustomerPassword(passwordEncoder.encode(body.get("password")));
                         customer.setAccountNonLocked(false);
                         userDetailsManager.createCustomer(customer);
+                        Customer customer1 = customerService.loadCustomerByUserName(customer.getCustomerUsername());
+                        Long customerId = customer1.getId();
+                        ShoppingCart shoppingCart = new ShoppingCart();
+                        shoppingCart.setId(customerId);
+                        shoppingCart.setCustomerId(customer);
+                        shoppingCart.setTotalPrice(0.0);
+                        shoppingCart.setEmptyShoppingCartDetailsList();
+                        shopCartService.newShopCart(shoppingCart);
                     } else {
                         User user = new User();
                         user.setUsername(body.get("username"));

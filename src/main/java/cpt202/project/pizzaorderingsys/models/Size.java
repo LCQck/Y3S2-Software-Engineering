@@ -2,12 +2,15 @@ package cpt202.project.pizzaorderingsys.models;
 
 
 
+import com.alibaba.fastjson2.annotation.JSONType;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
+@JSONType(ignores = {"id","price"})
 public class Size {
     @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)

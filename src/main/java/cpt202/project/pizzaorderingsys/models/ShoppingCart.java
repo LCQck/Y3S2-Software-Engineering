@@ -11,7 +11,6 @@ import java.util.List;
 @Table(name = "shopping_cart")
 public class ShoppingCart {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "shopping_cart_id")
     private Long id;
     @OneToOne
@@ -34,6 +33,7 @@ public class ShoppingCart {
         this.totalPrice = totalPrice;
     }
 
+
     @Override
     public String toString() {
         return "ShoppingCart{" +
@@ -48,6 +48,10 @@ public class ShoppingCart {
     }
 
     public void setShoppingCartDetailsList(List<ShoppingCartDetails> shoppingCartDetailsList) {
+        this.shoppingCartDetailsList = shoppingCartDetailsList;
+    }
+
+    public void setEmptyShoppingCartDetailsList(){
         this.shoppingCartDetailsList = new ArrayList<>();
     }
 
@@ -77,5 +81,6 @@ public class ShoppingCart {
     public void setTotalPrice(Double totalPrice) {
         this.totalPrice = totalPrice;
     }
+
 }
 //one to many

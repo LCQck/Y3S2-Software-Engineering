@@ -54,6 +54,11 @@ public class SizeService {
  
         return sizes.get(id);
     }
+
+    public Size getByInch(String name){
+        return sizeRepo.findSizeByInch(name)
+                .orElse(null);
+    }
 }
 
 

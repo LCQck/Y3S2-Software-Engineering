@@ -22,6 +22,11 @@ public class EvaluationService {
         return orderRepo.save(order);
     }
 
+    public List<Order> getOrderByCustomerName(String customerName){
+        return orderRepo.findByCustomerName(customerName)
+                .orElse(null);
+    }
+
     @Transactional
     public void deleteById (Long id){
         orderRepo.deleteById(id);
@@ -30,5 +35,10 @@ public class EvaluationService {
     @Transactional
     public void updateOrder(Order order) {
         orderRepo.updateOrderComment(order.getComment(),order.getId());
+    }
+
+    @Transactional
+    public void updateCustomerOrder(Order order) {
+        orderRepo.updateCustomerOrderComment(order.getCustomerComment(), order.getId());
     }
 }

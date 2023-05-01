@@ -30,7 +30,9 @@ public class OrderService {
     public void addOrder(Order order) {
         orderRepo.save(order);
     }
-
+    public Order newOrder(Order order) {
+         return orderRepo.save(order);
+    }
     public void updateOrder(Order order) {
         orderRepo.save(order);
     }
@@ -47,8 +49,12 @@ public class OrderService {
         return orderRepo.findById(orderId);
     }
 
-    public Iterable<Order> getOrderByCustomerName(String customerName) {
-        return orderRepo.findByCustomerName(customerName);
+    public Optional<Order> getOrderById(Long orderId) {
+        return orderRepo.findById(orderId);
+    }
+    public List<Order> getOrderByCustomerName(String customerName) {
+        return orderRepo.findByCustomerName(customerName)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid customer name: " + customerName));
     }
 
     public Iterable<Order> getOrderByCustomerPhone(String customerPhone) {
@@ -59,8 +65,9 @@ public class OrderService {
         return orderRepo.findByCustomerAddress(customerAddress);
     }
 
-    public Iterable<Order> getOrderByOrderStatus(String orderStatus) {
-        return orderRepo.findByOrderStatus(orderStatus);
+    public List<Order> getOrderByOrderStatus(OrderStatus orderStatus) {
+        return orderRepo.findAllByOrderStatus(orderStatus)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid order status: " + orderStatus));
     }
 
     public Iterable<Order> getOrderByPayMethod(String payMethod) {

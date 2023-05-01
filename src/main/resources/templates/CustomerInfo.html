@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Info page</title>
+    <style>
+        body{
+            height: 680px;
+            /*border: solid antiquewhite;*/
+            margin: 0 auto;
+            background-color: #FFEFDB;
+            background-repeat:no-repeat;
+            background-size: cover;
+        }
+        h1{
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            color: #FC5628;
+        }
+        .AddressBook{
+            width: 300px;
+            height: 150px;
+            display: block;
+            margin:5% auto;
+            font-family: "Californian FB";
+            font-size: 30px;
+            font-weight: bold;
+            color: #FC5628;
+            background-color: #fff;
+            border-radius: 10px;
+            border: none;
+            cursor:pointer;/*设置指针鼠标的样式*/
+        }
+        .signOutBtn{
+            width: 200px;
+            height: 100px;
+            display: block;
+            margin: 1% auto;
+            font-family: "Californian FB";
+            font-size: 24px;
+            font-weight: bold;
+            color: #FC5628;
+            background-color: #fff;
+            border-radius: 10px;
+            border: none;
+            cursor:pointer;/*设置指针鼠标的样式*/
+        }
+    </style>
+</head>
+<body>
+<h1 th:inline="text">Hello, Customer [[${#httpServletRequest.remoteUser}]] :)</h1>
+<form th:action="@{/logout}" method="post">
+    <input type=button id="AddressBook" name="AddressBook" class="AddressBook" value="View your address" onclick="jumpToAddressBook()">
+    <input type="submit" class="signOutBtn"value="Sign Out"/>
+</form>
+<script>
+    function jumpToAddressBook() {
+        window.location.href = "/pizzaOrderingSys/customer/addressBook/list";
+    }
+</script>
+</body>
+</html>

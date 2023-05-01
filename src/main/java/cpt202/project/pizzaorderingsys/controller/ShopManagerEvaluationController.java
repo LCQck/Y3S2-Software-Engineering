@@ -1,6 +1,5 @@
 package cpt202.project.pizzaorderingsys.controller;
 
-
 import cpt202.project.pizzaorderingsys.models.Order;
 import cpt202.project.pizzaorderingsys.services.EvaluationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/evaluation")
-public class EvaluationController {
+@RequestMapping("/pizzaOrderingSys/shopmanager/evaluation")
+public class ShopManagerEvaluationController {
 
     @Autowired
     private EvaluationService evaluationService;
@@ -22,17 +21,18 @@ public class EvaluationController {
     }
 
     @GetMapping("/add")
-    public String addEvaluation(Integer id, Model model){
+    public String addEvaluation(Long id, Model model){
         model.addAttribute("Evaluation", new Order());
         model.addAttribute("id",id);
-        return "addEvaluation";
+        return "replyFeedback";
     }
 
     @PostMapping("/add")
     public String confirmNewEvaluation(@ModelAttribute("Evaluation") Order order){
 
         evaluationService.updateOrder(order);
-        return "redirect:/evaluation/list";
+        return "redirect:/shopmanager/evaluation/list";
+
     }
 
     /*  @PostMapping("/delete")
@@ -45,6 +45,6 @@ public class EvaluationController {
     @RequestMapping("/delete")
     public String delete(@RequestParam Long id) {
         evaluationService.deleteById(id);
-        return "redirect:/evaluation/list";
+        return "redirect:/shopmanager/evaluation/list";
     }
 }

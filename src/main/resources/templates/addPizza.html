@@ -141,6 +141,18 @@
       </div>
 
       <div class="formgroup">
+        <label>Category</label>
+        <!-- <input type="text" placeholder="Choose Category" name="category" >         -->
+        <select name="category" id="category">
+          <option value="Pizza">Pizza</option>
+          <option value="Steak">Steak</option>
+          <option value="Dessert">Dessert</option>
+          <option value="Drinks">Drinks</option>
+          <option value="Soups">Soups</option>
+        </select>
+      </div>
+
+      <div class="formgroup">
         <label>Description</label>
         <input name="description" type="text" class="form-control" placeholder="description"
                th:value="${pizza!=null}?${pizza.description}">

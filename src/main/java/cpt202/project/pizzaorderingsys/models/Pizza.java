@@ -1,5 +1,7 @@
 package cpt202.project.pizzaorderingsys.models;
 
+import com.alibaba.fastjson2.annotation.JSONField;
+
 import javax.persistence.*;
 
 @Entity
@@ -21,7 +23,7 @@ public class Pizza {
 
     private String image;
 
-
+    @JSONField(serialize = false)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "label_id")
     private Category category;
@@ -96,7 +98,7 @@ public class Pizza {
     }
 
     public String getCategoryName() {
-        return category.getLabel();
+        return this.category.getLabel();
     }
 
     public void setCategory(Category category) {

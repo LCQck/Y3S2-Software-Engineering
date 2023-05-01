@@ -4,6 +4,7 @@ import cpt202.project.pizzaorderingsys.models.Customer;
 import cpt202.project.pizzaorderingsys.models.ShopManager;
 import cpt202.project.pizzaorderingsys.models.User;
 import cpt202.project.pizzaorderingsys.repositories.CustomerRepo;
+import cpt202.project.pizzaorderingsys.repositories.ShopCartRepo;
 import cpt202.project.pizzaorderingsys.repositories.ShopmangRepo;
 import cpt202.project.pizzaorderingsys.repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,9 @@ public class SecurityUserDetailsService implements UserDetailsService {
     private ShopmangRepo shopRepository;
     @Autowired
     private CustomerRepo customerRepository;
+
+    @Autowired
+    private ShopCartRepo shopCartRepo;
 
 
     @Override
@@ -70,6 +74,7 @@ public class SecurityUserDetailsService implements UserDetailsService {
                 .replaceAll("\\[","").replaceAll("\\]","")
                 .equals("ROLE_CUSTOMER")){
             customerRepository.deleteById(user.getId());
+            shopCartRepo.deleteById(user.getId());
         }
         userRepository.deleteByUserName(username);
         System.out.println("JPA_DeleteUser");

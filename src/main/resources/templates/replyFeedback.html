@@ -65,7 +65,7 @@
         #cancel .cancelBtn{
             display: inline;
             text-align: start;
-            margin-left: 36%;
+            margin-left: 68%;
             font-size: 20px;
             font-weight: bold;
             color: #FFA500;
@@ -91,11 +91,11 @@
     Reply Feedback Page
 </div>
 <br>
-<form th:action ="@{/pizzaOrderingSys/shopmanager/evaluation/add}" method="POST" th:object ="${Evaluation}">
+<form th:action ="@{pizzaOrderingSys/shopmanager/evaluation/add}" method="POST" th:object ="${Evaluation}">
     <div>
 
         <input type="hidden" name="id" th:value="${id}">
-        <div id = "cancel"><a th:href="@{/pizzaOrderingSys/shopmanager/evaluation/list}" class = "cancelBtn">Cancel</a></div>
+        <div id = "cancel"><a th:href="@{pizzaOrderingSys/shopmanager/evaluation/list}" class = "cancelBtn">Cancel</a></div>
 
         <textarea th:field="*{comment}" id="comment" name="comment" class="commentText" placeholder="Please leave your comment"></textarea>
 

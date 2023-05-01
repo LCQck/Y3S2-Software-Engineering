@@ -53,4 +53,9 @@ public class TasteService {
  
         return tastes.get(id);
     }
+
+    public Taste getByName(String name){
+        return tasteRepo.findTasteByToppingName(name)
+                .orElse(null);
+    }
 }

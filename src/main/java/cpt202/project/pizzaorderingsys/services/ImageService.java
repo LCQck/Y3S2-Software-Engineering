@@ -1,6 +1,7 @@
 package cpt202.project.pizzaorderingsys.services;
 
 import com.google.gson.Gson;
+import com.sun.deploy.net.URLEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,11 +17,12 @@ import com.qiniu.util.Auth;
 import com.qiniu.util.Json;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 
 @Service
 public class ImageService {
 
-    public static String imageUpload(MultipartFile path) {
+    public static String imageUpload(MultipartFile path) throws UnsupportedEncodingException {
         System.out.println("enter upload image method");
         System.out.println(path);
         System.out.println(path.getOriginalFilename());
@@ -61,6 +63,6 @@ public class ImageService {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return "http://rt9kvjh2p.hd-bkt.clouddn.com/" + key;
+        return "http://rt9kvjh2p.hd-bkt.clouddn.com/" + URLEncoder.encode(key, "utf-8").replace("+", "%20");
     }
 }

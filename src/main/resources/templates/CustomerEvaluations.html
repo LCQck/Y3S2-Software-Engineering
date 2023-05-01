@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Evaluation List</title>
+    <title>Customer Self Evaluation List</title>
     <style>
         body{
             height: 680px;
@@ -11,7 +11,7 @@
             background-repeat:no-repeat;
             background-size: cover;
         }
-        .customerFeedbackPage{
+        .customerCommentPage{
             text-align: center;
             font-size: 30px;
             font-weight: bold;
@@ -96,8 +96,8 @@
     </style>
 </head>
 <body>
-<div class="customerFeedbackPage">
-    Customer Feedback Page
+<div class="customerCommentPage">
+    Customer Comment Page
 </div>
 <br>
 <!--<div id="topRow">-->
@@ -114,7 +114,7 @@
 <!--    </div>-->
 <!--<div class = exitButton><a th:href="@{/}">Exit</a></div>-->
 <!--</div>-->
-<div class = exitButton><a th:href="@{/pizzaOrderingSys/shopmanager/mainpage}">Exit</a></div>
+<div class = exitButton><a th:href="@{/pizzaOrderingSys/customer/orderhistory}">Exit</a></div>
 <br>
 <div class="feedbackTable-container">
     <table>
@@ -126,7 +126,7 @@
         <tbody>
         <tr th:each = "order : ${evaluationList}" >
             <td th:text = "${order.orderTime}"> </td> <td th:text = "${order.Id}"> </td><td th:text = "${order.customerComment}"> </td><td th:text= "${order.comment}"> </td>
-            <td><a th:href="@{/pizzaOrderingSys/shopmanager/evaluation/add(id=${order.id})}">Reply</a></td>
+            <td><a th:href="@{/pizzaOrderingSys/customer/evaluation/add(id=${order.id})}">Edit Comment</a></td>
             <td><a th:href="'javascript:deleteEvaluation('+${order.id}+')'" >Delete</a></td>
 
         </tr>

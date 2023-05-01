@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Order Confirmation</title>
+
+<!--  <link rel="stylesheet" href="../css/confirmationPage.css">-->
+  <style>
+    body {
+      background-image: url(/IMG/confPage.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .container {
+      max-width: 620px;
+      margin: 5% auto;
+      padding: 1px 35px 15px;
+      border-radius:20px;/*设置圆角样式*/
+      border:0;
+      background-color: rgba(255,225,255,0.5);
+    }
+
+    .confirmation_title{
+        width: 100%;
+        height: 40px;
+        color:#000000;
+        border-bottom:1px solid #ffffff;
+        font-size:24pt;
+        font-family:"Californian FB";
+        font-weight: bold;
+        line-height:45px;
+        text-align:center;
+    }
+
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      color: #3A5FCD;
+      font-family:"Californian FB";
+      font-weight: bold;
+      font-size: 16pt;
+    }
+
+    input[type="text"],
+    textarea {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    select {
+      display: block;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .add_order_address{
+      background-color: #0000FF;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-bottom: 4%;
+    }
+
+    .add_order_address:hover {
+      background-color: #5D478B;
+    }
+
+
+
+
+    button[type="submit"] {
+      background-color: #0000FF;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #5D478B;
+    }
+
+
+
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="confirmation_title">
+  Order Confirmation
+  </div>
+  <form th:action="@{/pizzaOrderingSys/customer/confirmationform}" method="POST" >
+    <div>
+      <label for="addressList"> type in your delivery address </label>
+      <select id="addressList" name="addressList">
+
+      </select>
+    </div>
+
+    <div>
+      <label for="remark"> leave some remark </label>
+      <input type ="text"  id="remark" name="remark">
+    </div>
+
+    <div>
+      <table id="show_total_price">
+        <tr>
+          <th >Total Price</th>
+        </tr>
+        <td style="front: 50px" th:text="${totalPrice}" >Onions</td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <select   id="payMethod" name="payMethod" >
+        <option  value="WECHAT">WECHAT</option>
+        <option value="ALIPAY">ALIPAY</option>
+        <option value="PAYPAL">PAYPAL</option>
+        <option value="UNIONPAY">UNIONPAY</option>
+
+      </select>
+    </div>
+
+
+    <button type="submit">Place Order</button>
+
+  </form>
+</div>
+
+</body>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.1.min.js"></script>
+<script>
+
+  //后端拿地址后显示在下拉框更新
+  window.onload=function updateCustomerAddress(){
+    var data = {};
+    $.ajax({
+
+      url: "/pizzaOrderingSys/customer/addressBook/getCustomerAddress",
+      type: "post",
+      data: JSON.stringify(data),
+      contentType: 'application/json',
+      dataType: "json",// 设置你收到服务器数据的格式，根据服务器返回类型填：json、text
+      //contentType : 'application/json;charset=utf-8',//设置你发送给服务器的格式: application/json;charset=utf-8
+      success: function(data){
+        console.log(data)
+        showAddress(data);
+        //传回数据库后显示在购物车
+        //取成数据后调框显示
+
+      },
+      error:function(XMLHttpRequest, textStatus, error){
+        // 状态码
+        console.log(XMLHttpRequest.status);
+        // 状态
+        console.log(XMLHttpRequest.readyState);
+        // 错误信息
+        console.log(textStatus);
+        console.log(error);
+
+      }
+    })
+    // var address = document.getElementById("address").value;
+    // return address;
+  }
+
+  function showAddress(data){
+    var str = "";
+    for(var i =0; i < data.length; i++){
+      //<option value="Wechat">Wechat</option>
+      str = str
+              + "<option value=" + data[i].address_id+ ">"
+              +"Address detail:  "
+              + data[i].detailAddress
+              +"      Contact Name:  "
+              + data[i].contactPhone
+              +"      Contact Phone:  "
+              + data[i].contactName
+              + "</option>"
+      ;
+    }
+    $("#addressList").html(str);
+  }
+  //新增地址
+  function turnToAddressPage(){
+    window.location.href = "/pizzaOrderingSys/customer/address/add";
+  }
+  //传备注入库
+  //从后端接收总价后显示
+  function showTotalPrice(){
+    var totalPrice = document.getElementById("show_total_price").value;
+    return totalPrice;
+  }
+  //前端获取支付方式传回数据库
+  //确认订单传入数据库
+  function placeOrder(){
+
+  }
+
+</script>
+</html>
+

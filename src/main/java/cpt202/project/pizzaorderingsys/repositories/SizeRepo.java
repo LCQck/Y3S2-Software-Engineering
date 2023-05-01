@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public interface SizeRepo extends JpaRepository<Size, Long> {
 
-//    Optional<Size> findSizeByInch(int size);
+    Optional<Size> findSizeByInch(String size);
 
 
 //    4.26 modification

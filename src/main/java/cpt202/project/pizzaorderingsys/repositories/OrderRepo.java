@@ -1,5 +1,6 @@
 package cpt202.project.pizzaorderingsys.repositories;
 
+import cpt202.project.pizzaorderingsys.models.Customer;
 import cpt202.project.pizzaorderingsys.models.Order;
 import cpt202.project.pizzaorderingsys.models.OrderStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,6 +15,8 @@ import java.util.Optional;
 public interface OrderRepo extends JpaRepository<Order, Long> {
 
     Optional<List<Order>> findByCustomerName(String customerName);
+
+    Optional<List<Order>> findAllByCustomer(Customer customer);
 
     Iterable<Order> findByCustomerPhone(String customerPhone);
 

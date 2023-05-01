@@ -50,14 +50,17 @@
 </head>
 <body>
 <h1 th:inline="text">Hello, Customer [[${#httpServletRequest.remoteUser}]] :)</h1>
-<form th:action="@{/logout}" method="post">
-    <input type=button id="AddressBook" name="AddressBook" class="AddressBook" value="View your address" onclick="jumpToAddressBook()">
-    <input type="submit" class="signOutBtn"value="Sign Out"/>
-</form>
+
+<input type=button id="AddressBook" name="AddressBook" class="AddressBook" value="View your address" onclick="jumpToAddressBook()">
+<input type="button" class="signOutBtn" value="Back to Menu" onclick="jumpToMenu()">
+
+</body>
 <script>
     function jumpToAddressBook() {
         window.location.href = "/pizzaOrderingSys/customer/addressBook/list";
     }
+    function jumpToMenu() {
+        window.location.href = "/pizzaOrderingSys/customer/Menu";
+    }
 </script>
-</body>
 </html>

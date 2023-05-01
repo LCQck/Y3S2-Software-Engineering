@@ -13,6 +13,7 @@ package cpt202.project.pizzaorderingsys.services;
 
 import cpt202.project.pizzaorderingsys.models.Order;
 import cpt202.project.pizzaorderingsys.models.OrderStatus;
+import cpt202.project.pizzaorderingsys.repositories.CustomerRepo;
 import cpt202.project.pizzaorderingsys.repositories.OrderRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,8 @@ public class OrderService {
 
     @Autowired
     private OrderRepo orderRepo;
+    @Autowired
+    private CustomerRepo customerRepo;
 
     public void addOrder(Order order) {
         orderRepo.save(order);
@@ -53,7 +56,7 @@ public class OrderService {
         return orderRepo.findById(orderId);
     }
     public List<Order> getOrderByCustomerName(String customerName) {
-        return orderRepo.findByCustomerName(customerName)
+        return orderRepo.findAllByCustomer(customerRepo.findCustomerByUserName(customerName).get())
                 .orElseThrow(() -> new IllegalArgumentException("Invalid customer name: " + customerName));
     }
 

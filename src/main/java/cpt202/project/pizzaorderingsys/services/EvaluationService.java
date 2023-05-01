@@ -1,6 +1,7 @@
 package cpt202.project.pizzaorderingsys.services;
 
 import cpt202.project.pizzaorderingsys.models.Order;
+import cpt202.project.pizzaorderingsys.repositories.CustomerRepo;
 import cpt202.project.pizzaorderingsys.repositories.OrderRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,8 @@ public class EvaluationService {
 
     @Autowired
     private OrderRepo orderRepo;
+    @Autowired
+    private CustomerRepo customerRepo;
 
     public List<Order> getOrderList(){
         return orderRepo.findAll();
@@ -23,7 +26,7 @@ public class EvaluationService {
     }
 
     public List<Order> getOrderByCustomerName(String customerName){
-        return orderRepo.findByCustomerName(customerName)
+        return orderRepo.findAllByCustomer(customerRepo.findCustomerByUserName(customerName).get())
                 .orElse(null);
     }
 

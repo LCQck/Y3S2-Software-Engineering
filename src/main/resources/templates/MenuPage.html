@@ -1,650 +1,658 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <!--    <meta name="_csrf" content="${_csrf.token}"/>-->
-  <!--    <meta name="_csrf_header" content="${_csrf.headerName}"/>-->
-  <title>Menu Page</title>
-  <style>
-    /* Apply some basic styles to the page */
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
-    .container {
-      display: flex;
-      flex-direction: row;
-      width: 100%;
-      height: 100vh;
-    }
-    .right-panel {
-      flex: 5.0;  /*因为flex布局是规范了一个弹性框范围，所以需要左和右一起调整，原比例是左5右1，最好维持这个整数和*/
-      background-color: #F5F5F5;
-      padding: 20px;
-    }
-    .left-panel {
-      flex: 1.0;    /*不要忘记连同这边一起调整！！！*/
-      background-color: #EDEDED;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
+    <meta charset="UTF-8">
+<!--    <meta name="_csrf" content="${_csrf.token}"/>-->
+<!--    <meta name="_csrf_header" content="${_csrf.headerName}"/>-->
+    <title>Menu Page</title>
+    <style>
+        /* Apply some basic styles to the page */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: 100vh;
+        }
+        .right-panel {
+            flex: 5.0;  /*因为flex布局是规范了一个弹性框范围，所以需要左和右一起调整，原比例是左5右1，最好维持这个整数和*/
+            background-color: #F5F5F5;
+            padding: 20px;
+        }
+        .left-panel {
+            flex: 1.0;    /*不要忘记连同这边一起调整！！！*/
+            background-color: #e9d8c8;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
 
-    .table-container {
-      flex-wrap: wrap;
-      height: 90%;
-      overflow-y: scroll;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    th, td {
-      padding: 10px;
-      text-align: left;
-      border-bottom: 1px solid #ddd;
-    }
-    th {
-      background-color: #f2f2f2;
-      font-weight: normal;
-    }
-    tbody tr:hover {
-      background-color: #f2f2f2;
-    }
+        .table-container {
+            flex-wrap: wrap;
+            height: 90%;
+            overflow-y: scroll;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: normal;
+        }
+        tbody tr:hover {
+            background-color: #f2f2f2;
+        }
 
-    .button-container_for_right {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
+        .table_container_for_right {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
 
-    .button-container_for_top {
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-start; /*此处调整对齐方式*/
-      align-content:center;
-    }
-    .sign_out{
-      position: absolute;
-      top: 30px;
-      height: 80px;
-      width: 150px;
-    }
-    .button_for_sign_out {
-      display: inline;
-      margin-top: 1px;
-      margin-left: 52px;
-      padding: 10px;
-      font-size: 16px;
-      color: #333;
-      background-color: #fff;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: background-color 0.2s ease;
-      width: 150px;
-    }
-    .button_for_sign_out:hover {
-      background-color: #007bff;
-      color: #fff;
-    }
+        .table_container_for_right a {
+            text-decoration: none;
+        }
 
-    /*下面的两个就是修改button样式的，用.开头是因为下面是设成了class，hover就是相当于一个伪类*/
-    /*就是你鼠标放上去会有个遮蔽物一样的变颜色*/
-    .button_for_right {
-      display: block; /*这个就会让每一块都是独立显示不能并排，他会默认自带一个换行*/
-      margin: 0px 0;
-      padding: 0px;
-      font-size: 16px;
-      color: #333;
-      background-color: #fff;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: background-color 0.2s ease;
-      width:300%;     /*按钮宽度调这个参数*/
-      height:100px;     /*按钮高度调这个参数*/
-    }
-    .button_for_right:hover {
-      background-color: #007bff;
-      color: #fff;
-    }
+        .button-container_for_top {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start; /*此处调整对齐方式*/
+            align-content:center;
+        }
+        .sign_out{
+            position: absolute;
+            top: 30px;
+            height: 80px;
+            width: 300px;
+        }
+        .button_for_sign_out {
+            display: inline;
+            margin-top: 1px;
+            margin-left: 72px;
+            padding: 10px;
+            font-size: 16px;
+            color: #333;
+            background-color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            width: 150px;
+        }
+        .button_for_sign_out:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
 
-    .button_for_top1 {
-      display: inline;
-      margin-top: 1px;
-      margin-left: 1100px;
-      padding: 10px;
-      font-size: 16px;
-      color: #333;
-      background-color: #fff;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: background-color 0.2s ease;
-      width:10%;     /*按钮宽度调这个参数*/
-    }
-    .button_for_top2 {
-      display: inline;
-      margin-top: 1px;
-      margin-left: 10px;
-      padding: 10px;
-      font-size: 16px;
-      color: #333;
-      background-color: #fff;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: background-color 0.2s ease;
-      width:10%;     /*按钮宽度调这个参数*/
+        /*下面的两个就是修改button样式的，用.开头是因为下面是设成了class，hover就是相当于一个伪类*/
+        /*就是你鼠标放上去会有个遮蔽物一样的变颜色*/
+        .button_for_right {
+            display: block; /*这个就会让每一块都是独立显示不能并排，他会默认自带一个换行*/
+            margin: 0px 0;
+            padding: 0px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #8B7355;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            width:200px;     /*按钮宽度调这个参数*/
+            height:100px;     /*按钮高度调这个参数*/
+            font-weight: bold;
+            /*text-decoration: none;*/
+        }
+        .button_for_right:hover {
+            background-color: #e9d8c8;
+            color: #fff;
+            /*text-decoration: underline;*/
+            text-decoration: none;
+        }
 
-    }
-    .button_for_button {
-      display: inline;
-      margin-top: 1px;
-      margin-left: 1100px;
-      padding: 10px;
-      font-size: 16px;
-      color: #333;
-      background-color: #fff;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: background-color 0.2s ease;
-      width:10%;     /*按钮宽度调这个参数*/
-      height:150%;
-    }
-    .button_for_top1:hover {
-      background-color: #007bff;
-      color: #fff;
-    }
-    .button_for_top2:hover {
-      background-color: #007bff;
-      color: #fff;
-    }
-    .button_for_button:hover {
-      background-color: #007bff;
-      color: #fff;
-    }
-    #photo {
-      border: solid 1px #0066CC;
-      width: 200px;
-      text-align: center;
-      z-index: 2;
-      position: absolute;
-      display: none;
-      top: 50px;
-      left: 50px;
-      background-color: #ffffff;
-    }
-    #Cart{
-      display: none;
-      position: absolute;
-      top: 70px;
-      right: 0px;
-      background-color: #ffffff;
-      width: 500px;
-      height: 85%;
-      text-align: center;
-      border: solid 1px #0066CC;
-      z-index:999;
-    }
+        .button_for_top1 {
+            display: inline;
+            margin-top: 1px;
+            margin-left: 1100px;
+            padding: 10px;
+            font-size: 16px;
+            color: #333;
+            background-color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            width:10%;     /*按钮宽度调这个参数*/
+        }
+        .button_for_top2 {
+            display: inline;
+            margin-top: 1px;
+            margin-left: 10px;
+            padding: 10px;
+            font-size: 16px;
+            color: #333;
+            background-color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            width:10%;     /*按钮宽度调这个参数*/
 
-    /*菜单*/
-    .item_container{
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-start;
-      height: 60%;
-      /*改掉*/
-      width: 100%;
-      overflow-y: scroll;
-    }
+        }
+        .button_for_button {
+            display: inline;
+            margin-top: 1px;
+            margin-left: 1100px;
+            padding: 10px;
+            font-size: 16px;
+            color: #333;
+            background-color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            width:10%;     /*按钮宽度调这个参数*/
+            height:150%;
+        }
+        .button_for_top1:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+        .button_for_top2:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+        .button_for_button:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+        #photo {
+            border: solid 1px #0066CC;
+            width: 200px;
+            text-align: center;
+            z-index: 2;
+            position: absolute;
+            display: none;
+            top: 50px;
+            left: 50px;
+            background-color: #ffffff;
+        }
+        #Cart{
+            display: none;
+            position: absolute;
+            top: 70px;
+            right: 0px;
+            background-color: #ffffff;
+            width: 500px;
+            height: 85%;
+            text-align: center;
+            border: solid 1px #0066CC;
+            z-index:999;
+        }
 
-    .item{
-      display: flex;
-      flex-direction: column;
-      text-align: center;
-      align-items: center;
-      border: 5px solid #F5DEB3FF;
-      margin: 10px;
-      width: 200px;
-      height: 300px;
-      border-radius: 10%;
-    }
-    .item:hover{
-      border: 5px solid #f5f5f5;
-      background-color: #f5deb3;
-      cursor:pointer;
-    }
-    .item_img{
-      margin: 10px;
-      opacity: 100%;
-      height: 180px;
-      width: 180px;
-    }
-    .item_name{
-      position: relative;
-      font-size: 25px;
-      width: 195px;
-      height: 1px;
-      text-align: center;
-    }
-    .item_price{
-      position: relative;
-      font-size: 20px;
-      width: 195px;
-      height: 20px;
-      text-align: center;
-    }
+        /*菜单*/
+        .item_container{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            height: 60%;
+            /*改掉*/
+            width: 100%;
+            overflow-y: scroll;
+        }
 
-    /*弹框*/
-    .item_detail{
-      display: none;
-      position: fixed;
-      left: 0;
-      top: 0;
-      background: url(http://rt9kvjh2p.hd-bkt.clouddn.com/pizzaorderingsys/register%26login/Pizza.jpg);
-      background-size: cover;
-      width: 100%;
-      height: 100%;
-      opacity: 1.0;
-    }
-    .tan_kuang{
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      background: rgb(255, 255, 255);
-      width: 50%;
-      height: 80%;
-      border-radius: 5px;
-      margin: 5% auto;
-      opacity: 100%;
-    }
-    #header{
-      height: 50px;
-      front-size: 90px;
-    }
-    #header-right{
-      position: absolute;
-      width: 25px;
-      height: 25px;
-      border-radius: 5px;
-      background: red;
-      color: #fff;
-      right: 5px;
-      top: 5px;
-      text-align: center;
-      font-size: 20px;
-    }
-    .item_detail_sbq{
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      width: 100%;
-      height: 50px;
-      position: relative;
-      top: 50px;
-    }
-    .item_detail_img{
-      position: relative;
-      width: 280px;
-      height: 280px;
-      margin: 150px 100px 100px;
-    }
-    .item_detail_name{
-      font-size: 30px;
-      width: 200px;
-      height: 100px;
-      margin: auto;
-      top : 25px;
-    }
-    .item_detail_description{
+        .item{
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            align-items: center;
+            border: 5px solid #F5DEB3FF;
+            margin: 10px;
+            width: 200px;
+            height: 300px;
+            border-radius: 10%;
+        }
+        .item:hover{
+            border: 5px solid #f5f5f5;
+            background-color: #F5DEB3FF;
+            cursor:pointer;
+        }
+        .item_img{
+            margin: 10px;
+            opacity: 100%;
+            height: 180px;
+            width: 180px;
+        }
+        .item_name{
+            position: relative;
+            font-size: 25px;
+            width: 195px;
+            height: 1px;
+            text-align: center;
+        }
+        .item_price{
+            position: relative;
+            font-size: 20px;
+            width: 195px;
+            height: 20px;
+            text-align: center;
+        }
 
-      font-size: 20px;
-      width: 100%;
-      height: 30px;
-      margin: auto;
-    }
-    .item_detail_xbq{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-      height: 500px;
-      position: relative;
-      top: 200px;
-    }
-    .item_detail_amountheprice{
-      display: flex;
-      flex-direction: row;
-      top: 50px;
-      align-items:center;
-      margin-left: 50px;
-      font-size: 20px;
-      width: 80%;
-      height: 100px;
-      margin-bottom: 20px;
-      /*justify-content:center;*/
-      /*align-items: center;*/
-    }
-    .item_detail_amount{
-      display: flex;
-      flex-direction: row;
-      font-size: 30px;
-      width: 200px;
-      height: 50px;
-      /*justify-content:center;*/
-      align-items:center;
-      margin: 10px;
-    }
-    .item_detail_price{
-      display: flex;
-      font-size: 30px;
-      width: 150px;
-      height:50px;
-      justify-content:center;
-      align-items:center;
-      margin: 20px;
-    }
-    .item_detail_size {
-      display: flex;
-      flex-direction: column;
-      font-size: 20px;
-      width: 80%;
-      height: 100px;
-      margin-left: 50px;
-      margin-bottom: 20px;
-      /*justify-content:center;*/
-      /*align-items: center;*/
-    }
-    .item_detail_size_buttons {
-      display: flex;
-      flex-direction: row;
-      font-size: 20px;
-      width: 100%;
-      height: 30px;
-      margin: 10px;
-    }
-    .item_detail_size_button {
-      height: 30px;
-      width:150px;
-      font-size: 20px;
-      margin: 5px;
-    }
-    .item_detail_size_button_checked {
-      background-color: #007bff;
-      color: #fff;
-      height: 30px;
-      width:150px;
-      font-size: 20px;
-      margin: 5px;
-    }
-    .item_detail_size_button:hover {
-      background-color: #007bff;
-      color: #fff;
-      cursor:pointer;
-    }
-    .item_detail_topping{
-      display: flex;
-      flex-direction: column;
-      /*font-size: 20px;*/
-      width: 80%;
-      height: 100px;
-      margin-left: 50px;
-    }
-    .item_detail_topping_buttons{
-      display: flex;
-      flex-direction: row;
-      font-size: 20px;
-      width: 100%;
-      height: 30px;
-      margin: 10px;
-    }
-    .item_detail_topping_button {
-      height: 30px;
-      width:150px;
-      font-size: 20px;
-      margin: 5px;
-    }
-    .item_detail_topping_button_checked {
-      background-color: #007bff;
-      color: #fff;
-      height: 30px;
-      width:150px;
-      font-size: 20px;
-      margin: 5px;
-    }
-    .item_detail_topping_button:hover{
-      background-color: #007bff;
-      color: #fff;
-    }
-    .item_detail_addToCart{
-      position: relative;
-      font-size: 200px;
-      width: 200px;
-      height:80px;
-      margin: 10px;
-      top: -150px;
-      right: -300px;
-    }
+        /*弹框*/
+        .item_detail{
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            background: url(http://rt9kvjh2p.hd-bkt.clouddn.com/pizzaorderingsys/register%26login/Pizza.jpg);
+            background-size: cover;
+            width: 100%;
+            height: 100%;
+            opacity: 1.0;
+        }
+        .tan_kuang{
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            background: rgb(255, 255, 255);
+            width: 50%;
+            height: 80%;
+            border-radius: 5px;
+            margin: 5% auto;
+            opacity: 100%;
+        }
+        #header{
+            height: 50px;
+            front-size: 90px;
+        }
+        #header-right{
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            border-radius: 5px;
+            background: red;
+            color: #fff;
+            right: 5px;
+            top: 5px;
+            text-align: center;
+            font-size: 20px;
+        }
+        .item_detail_sbq{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 100%;
+            height: 50px;
+            position: relative;
+            top: 50px;
+        }
+        .item_detail_img{
+            position: relative;
+            width: 280px;
+            height: 280px;
+            margin: 150px 100px 100px;
+        }
+        .item_detail_name{
+            font-size: 30px;
+            width: 200px;
+            height: 100px;
+            margin: auto;
+            top : 25px;
+        }
+        .item_detail_description{
+
+            font-size: 20px;
+            width: 100%;
+            height: 30px;
+            margin: auto;
+        }
+        .item_detail_xbq{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            height: 500px;
+            position: relative;
+            top: 200px;
+        }
+        .item_detail_amountheprice{
+            display: flex;
+            flex-direction: row;
+            top: 50px;
+            align-items:center;
+            margin-left: 50px;
+            font-size: 20px;
+            width: 80%;
+            height: 100px;
+            margin-bottom: 20px;
+            /*justify-content:center;*/
+            /*align-items: center;*/
+        }
+        .item_detail_amount{
+            display: flex;
+            flex-direction: row;
+            font-size: 30px;
+            width: 200px;
+            height: 50px;
+            /*justify-content:center;*/
+            align-items:center;
+            margin: 10px;
+        }
+        .item_detail_price{
+            display: flex;
+            font-size: 30px;
+            width: 150px;
+            height:50px;
+            justify-content:center;
+            align-items:center;
+            margin: 20px;
+        }
+        .item_detail_size {
+            display: flex;
+            flex-direction: column;
+            font-size: 20px;
+            width: 80%;
+            height: 100px;
+            margin-left: 50px;
+            margin-bottom: 20px;
+            /*justify-content:center;*/
+            /*align-items: center;*/
+        }
+        .item_detail_size_buttons {
+            display: flex;
+            flex-direction: row;
+            font-size: 20px;
+            width: 100%;
+            height: 30px;
+            margin: 10px;
+        }
+        .item_detail_size_button {
+            height: 30px;
+            width:150px;
+            font-size: 20px;
+            margin: 5px;
+        }
+        .item_detail_size_button_checked {
+            background-color: #007bff;
+            color: #fff;
+            height: 30px;
+            width:150px;
+            font-size: 20px;
+            margin: 5px;
+        }
+        .item_detail_size_button:hover {
+            background-color: #007bff;
+            color: #fff;
+            cursor:pointer;
+        }
+        .item_detail_topping{
+            display: flex;
+            flex-direction: column;
+            /*font-size: 20px;*/
+            width: 80%;
+            height: 100px;
+            margin-left: 50px;
+        }
+        .item_detail_topping_buttons{
+            display: flex;
+            flex-direction: row;
+            font-size: 20px;
+            width: 100%;
+            height: 30px;
+            margin: 10px;
+        }
+        .item_detail_topping_button {
+            height: 30px;
+            width:150px;
+            font-size: 20px;
+            margin: 5px;
+        }
+        .item_detail_topping_button_checked {
+            background-color: #007bff;
+            color: #fff;
+            height: 30px;
+            width:150px;
+            font-size: 20px;
+            margin: 5px;
+        }
+        .item_detail_topping_button:hover{
+            background-color: #007bff;
+            color: #fff;
+        }
+        .item_detail_addToCart{
+            position: relative;
+            font-size: 200px;
+            width: 200px;
+            height:80px;
+            margin: 10px;
+            top: -150px;
+            right: -300px;
+        }
 
 
 
 
 
-  </style>
+    </style>
 </head>
 <body>
 <div>
 
-  <div class="container">
-    <div class="left-panel">
-      <div class="sign_out">
-        <form th:action="@{/logout}" method="post">
-          <input class="button_for_sign_out" type="submit" value="Sign Out"/>
-        </form>
-      </div>
-      <div class="table-container_for_right">
-        <a href="#pizza_item"><button id="pizza" class="button_for_right">Pizza</button></a>
-        <br>    <!-- 这个就是换行增加一个固定的间距-->
-        <a href="#steak_item"><button id="steak" class="button_for_right">Steak</button></a>
-        <br>
-        <a href="#dessert_item"><button id="desserts" class="button_for_right">Dessert</button></a>
-        <br>
-        <a href="#drinks_item"><button id="drinks" class="button_for_right">Drinks</button></a>
-        <br>
-        <a href="#soups_item"><button id="soups" class="button_for_right">Soups</button></a>
-      </div>
+    <div class="container">
+        <div class="left-panel">
+            <div class="sign_out">
+                <form th:action="@{/logout}" method="post">
+                    <input class="button_for_sign_out" type="submit" value="Sign Out"/>
+                </form>
+            </div>
+            <div class="table_container_for_right">
+                <a href="#pizza_item"><button id="pizza" style="font-size: 25px"class="button_for_right">Pizza</button></a>
+                <br>    <!-- 这个就是换行增加一个固定的间距-->
+                <a href="#steak_item"><button id="steak" style="font-size: 25px" class="button_for_right">Steak</button></a>
+                <br>
+                <a href="#dessert_item"><button id="desserts" style="font-size: 25px"class="button_for_right">Dessert</button></a>
+                <br>
+                <a href="#drinks_item"><button id="drinks" style="font-size: 25px"class="button_for_right">Drinks</button></a>
+                <br>
+                <a href="#soups_item"><button id="soups" style="font-size: 25px"class="button_for_right">Soups</button></a>
+            </div>
+        </div>
+
+
+        <div class="right-panel">
+
+            <div class="button-container_for_top">
+                <button id="all-orders" class="button_for_top1" onclick="viewOrderHistory()">Order History</button>
+                <button id="undelivered-orders" class="button_for_top2" onclick="viewUserInformation()">User Information</button>
+            </div>
+
+            <div class="table-container">
+
+                <div class="item_container" id="pizza_item">
+<!--                pizza-->
+                    <div class="item">
+<!--                        一个pizza-->
+                        <div class="item_img">
+<!--                        图片    -->
+                            <img style="border-radius: 20px;height: 180px;width: 180px" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fsafe-img.xhscdn.com%2Fbw1%2F3da002c6-3c59-4c8f-9c66-247cbc2b1865%3FimageView2%2F2%2Fw%2F1080%2Fformat%2Fjpg&refer=http%3A%2F%2Fsafe-img.xhscdn.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1684918368&t=ca9a34aff3c5417e52cfde971dfc6a65" alt="pizza" width="200" height="200">
+                        </div>
+                        <div>
+<!--                        名字    -->
+                            <p class="item_name">Beef pizza</p>
+                        </div>
+                        <div>
+<!--                        价格    -->
+                            <p class="item_price">$20</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <!--                        一个pizza-->
+                        <div class="item_img">
+                            <!--                        图片    -->
+                            <img style="border-radius: 20px;height: 180px;width: 180px" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fsafe-img.xhscdn.com%2Fbw1%2F3da002c6-3c59-4c8f-9c66-247cbc2b1865%3FimageView2%2F2%2Fw%2F1080%2Fformat%2Fjpg&refer=http%3A%2F%2Fsafe-img.xhscdn.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1684918368&t=ca9a34aff3c5417e52cfde971dfc6a65" alt="pizza">
+                        </div>
+                        <div>
+                            <!--                        名字    -->
+                            <p class="item_name">Banana pizza</p>
+                        </div>
+                        <div>
+                            <!--                        价格    -->
+                            <p class="item_price">$20</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item_container" id="steak_item">
+<!--                steak-->
+                    <div class="item">
+                        <!--                        一个steak-->
+                        <div class="item_img">
+                            <!--                        图片    -->
+                            <img style="border-radius: 20px;height: 180px;width: 180px" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fsafe-img.xhscdn.com%2Fbw1%2F3da002c6-3c59-4c8f-9c66-247cbc2b1865%3FimageView2%2F2%2Fw%2F1080%2Fformat%2Fjpg&refer=http%3A%2F%2Fsafe-img.xhscdn.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1684918368&t=ca9a34aff3c5417e52cfde971dfc6a65" alt="pizza">
+                        </div>
+                        <div>
+                            <!--                        名字    -->
+                            <p class="item_name">Banana Steak</p>
+                        </div>
+                        <div>
+                            <!--                        价格    -->
+                            <p class="item_price">$20</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item_container" id="dessert_item">
+<!--                dessert-->
+
+                </div>
+
+                <div class="item_container" id="drinks_item">
+<!--                drinks-->
+                </div>
+
+                <div class="item_container" id="soups_item">
+<!--                soups-->
+                </div>
+
+                <div id="Cart">
+                    <!--    隐藏区域和菜单同层-->
+                    <h1>Shopping Cart</h1>
+                    <table  id="shopping_cart_table">
+                        <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>SIze</th>
+                            <th>Topping</th>
+                            <th>Amount</th>
+                            <th>Price</th>
+                            <th>Operation</th>
+                        </tr>
+                        </thead>
+                        <tbody id="shopping_cart_details">
+                        <td style="text-align:center;">${name}</td>
+                        <td style="text-align:center;">${size}</td>
+                        <td>${amount}</td>
+                        <td style="text-align:center">
+
+                            <input  type="text" value="1" size="1" />
+
+                        </td>
+                        <td>${price}</td>
+                        <td style="text-align:center;"><button onclick="del(this)">X</button></td>
+                        </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="3" align="rig  ht">Total Price</td>
+                                    <td id="total"></td>
+                                    <td><button onclick="checkOut()">Check</button></td>
+                                    <td><button onclick="emptyShoppingCart()">Empty Cart</button></td>
+                                </tr>
+                            </tfoot>
+
+                    </table>
+                </div>
+
+            </div>
+
+
+
+
+
+
+            <div class = "button-container_for_button">
+                <button id="shopping-cart" onclick="changeCart()" class="button_for_button">Shopping Cart</button>
+            </div>
+
+        </div>
+        <div>
+            <!--        弹窗-->
+            <div class="item_detail" id='item_detail'>
+                <div class="tan_kuang">
+                    <p style="font-size: 20px; margin-left: 10px; margin-top: 10px">Item Detail</p>
+                    <div id="header">
+                        <div id="header-right" onclick="hidder()">x</div>
+                    </div>
+                    <div class="item_detail_sbq">
+                        <div class="item_detail_img">
+                            <img id="item_detail_img" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fsafe-img.xhscdn.com%2Fbw1%2F3da002c6-3c59-4c8f-9c66-247cbc2b1865%3FimageView2%2F2%2Fw%2F1080%2Fformat%2Fjpg&refer=http%3A%2F%2Fsafe-img.xhscdn.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1684918368&t=ca9a34aff3c5417e52cfde971dfc6a65" alt="pizza" width="280" height="280">
+                        </div>
+                        <div>
+                            <div class="item_detail_name">
+                                <p id="item_detail_name">Beef pizza</p>
+                            </div>
+                            <div class="item_detail_description">
+                                <p id="item_detail_description">Beef pizza description</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item_detail_xbq">
+                        <div class="item_detail_amountheprice">
+                            <div class="item_detail_amount">
+                                <p style="margin-right: 50px">Amount</p>
+                                <input type="number" id="amount" name="amount" min="1" max="10" value="1">
+                            </div>
+                            <div class="item_detail_price">
+                                <p id="item_detail_price" style="margin: 0">$20</p>
+                            </div>
+                        </div>
+                        <div class="item_detail_size">
+                            <p style="font-size: 30px; margin: 10px">Size</p>
+                            <div class="item_detail_size_buttons">
+                                <button class="item_detail_size_button_checked" id="7_inch" value="7_inch" onclick="checkSize(7)">7 inch</button>
+                                <button class="item_detail_size_button" id="9_inch" value="9_inch" onclick="checkSize(9)">9 inch</button>
+                                <button class="item_detail_size_button" id="11_inch" value="11_inch" onclick="checkSize(11)">11 inch</button>
+                            </div>
+                        </div>
+                        <div class="item_detail_topping">
+                            <p style="font-size: 30px; margin: 10px">Topping</p>
+                            <div class="item_detail_topping_buttons">
+                                <button class="item_detail_topping_button_checked" id="beef" value="beef" onclick="checkTopping(1)">beef</button>
+                                <button class="item_detail_topping_button" id="cheese" onclick="checkTopping(2)" value="cheese">cheese</button>
+                                <button class="item_detail_topping_button" id="fruit" onclick="checkTopping(3)" value="fruit">fruit</button>
+                            </div>
+
+                        </div>
+                        <div class="item_detail_addToCart">
+                            <button style="height: 50px;width: 200px;font-size: 30px" onclick="addToCart()">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
-
-
-    <div class="right-panel">
-
-      <div class="button-container_for_top">
-        <button id="all-orders" class="button_for_top1" onclick="viewOrderHistory()">Order History</button>
-        <button id="undelivered-orders" class="button_for_top2" onclick="viewUserInformation()">User Information</button>
-      </div>
-
-      <div class="table-container">
-
-        <div class="item_container" id="pizza_item">
-          <!--                pizza-->
-          <div class="item">
-            <!--                        一个pizza-->
-            <div class="item_img">
-              <!--                        图片    -->
-              <img style="border-radius: 20px;height: 180px;width: 180px" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fsafe-img.xhscdn.com%2Fbw1%2F3da002c6-3c59-4c8f-9c66-247cbc2b1865%3FimageView2%2F2%2Fw%2F1080%2Fformat%2Fjpg&refer=http%3A%2F%2Fsafe-img.xhscdn.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1684918368&t=ca9a34aff3c5417e52cfde971dfc6a65" alt="pizza" width="200" height="200">
-            </div>
-            <div>
-              <!--                        名字    -->
-              <p class="item_name">Beef pizza</p>
-            </div>
-            <div>
-              <!--                        价格    -->
-              <p class="item_price">$20</p>
-            </div>
-          </div>
-          <div class="item">
-            <!--                        一个pizza-->
-            <div class="item_img">
-              <!--                        图片    -->
-              <img style="border-radius: 20px;height: 180px;width: 180px" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fsafe-img.xhscdn.com%2Fbw1%2F3da002c6-3c59-4c8f-9c66-247cbc2b1865%3FimageView2%2F2%2Fw%2F1080%2Fformat%2Fjpg&refer=http%3A%2F%2Fsafe-img.xhscdn.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1684918368&t=ca9a34aff3c5417e52cfde971dfc6a65" alt="pizza">
-            </div>
-            <div>
-              <!--                        名字    -->
-              <p class="item_name">Banana pizza</p>
-            </div>
-            <div>
-              <!--                        价格    -->
-              <p class="item_price">$20</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="item_container" id="steak_item">
-          <!--                steak-->
-          <div class="item">
-            <!--                        一个steak-->
-            <div class="item_img">
-              <!--                        图片    -->
-              <img style="border-radius: 20px;height: 180px;width: 180px" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fsafe-img.xhscdn.com%2Fbw1%2F3da002c6-3c59-4c8f-9c66-247cbc2b1865%3FimageView2%2F2%2Fw%2F1080%2Fformat%2Fjpg&refer=http%3A%2F%2Fsafe-img.xhscdn.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1684918368&t=ca9a34aff3c5417e52cfde971dfc6a65" alt="pizza">
-            </div>
-            <div>
-              <!--                        名字    -->
-              <p class="item_name">Banana Steak</p>
-            </div>
-            <div>
-              <!--                        价格    -->
-              <p class="item_price">$20</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="item_container" id="dessert_item">
-          <!--                dessert-->
-
-        </div>
-
-        <div class="item_container" id="drinks_item">
-          <!--                drinks-->
-        </div>
-
-        <div class="item_container" id="soups_item">
-          <!--                soups-->
-        </div>
-
-        <div id="Cart">
-          <!--    隐藏区域和菜单同层-->
-          <h1>Shopping Cart</h1>
-          <table  id="shopping_cart_table">
-            <thead>
-            <tr>
-              <th>Item</th>
-              <th>SIze</th>
-              <th>Topping</th>
-              <th>Amount</th>
-              <th>Price</th>
-              <th>Operation</th>
-            </tr>
-            </thead>
-            <tbody id="shopping_cart_details">
-            <td style="text-align:center;">${name}</td>
-            <td style="text-align:center;">${size}</td>
-            <td>${amount}</td>
-            <td style="text-align:center">
-
-              <input  type="text" value="1" size="1" />
-
-            </td>
-            <td>${price}</td>
-            <td style="text-align:center;"><button onclick="del(this)">X</button></td>
-            </tbody>
-            <tfoot>
-            <tr>
-              <td colspan="3" align="rig  ht">Total Price</td>
-              <td id="total"></td>
-              <td><button onclick="checkOut()">Check</button></td>
-              <td><button onclick="emptyShoppingCart()">Empty Cart</button></td>
-            </tr>
-            </tfoot>
-
-          </table>
-        </div>
-
-      </div>
-
-
-
-
-
-
-      <div class = "button-container_for_button">
-        <button id="shopping-cart" onclick="changeCart()" class="button_for_button">Shopping Cart</button>
-      </div>
-
-    </div>
-    <div>
-      <!--        弹窗-->
-      <div class="item_detail" id='item_detail'>
-        <div class="tan_kuang">
-          <p style="font-size: 20px; margin-left: 10px; margin-top: 10px">Item Detail</p>
-          <div id="header">
-            <div id="header-right" onclick="hidder()">x</div>
-          </div>
-          <div class="item_detail_sbq">
-            <div class="item_detail_img">
-              <img id="item_detail_img" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fsafe-img.xhscdn.com%2Fbw1%2F3da002c6-3c59-4c8f-9c66-247cbc2b1865%3FimageView2%2F2%2Fw%2F1080%2Fformat%2Fjpg&refer=http%3A%2F%2Fsafe-img.xhscdn.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1684918368&t=ca9a34aff3c5417e52cfde971dfc6a65" alt="pizza" width="280" height="280">
-            </div>
-            <div>
-              <div class="item_detail_name">
-                <p id="item_detail_name">Beef pizza</p>
-              </div>
-              <div class="item_detail_description">
-                <p id="item_detail_description">Beef pizza description</p>
-              </div>
-            </div>
-          </div>
-          <div class="item_detail_xbq">
-            <div class="item_detail_amountheprice">
-              <div class="item_detail_amount">
-                <p style="margin-right: 50px">Amount</p>
-                <input type="number" id="amount" name="amount" min="1" max="10" value="1">
-              </div>
-              <div class="item_detail_price">
-                <p id="item_detail_price" style="margin: 0">$20</p>
-              </div>
-            </div>
-            <div class="item_detail_size">
-              <p style="font-size: 30px; margin: 10px">Size</p>
-              <div class="item_detail_size_buttons">
-                <button class="item_detail_size_button_checked" id="7_inch" value="7_inch" onclick="checkSize(7)">7 inch</button>
-                <button class="item_detail_size_button" id="9_inch" value="9_inch" onclick="checkSize(9)">9 inch</button>
-                <button class="item_detail_size_button" id="11_inch" value="11_inch" onclick="checkSize(11)">11 inch</button>
-              </div>
-            </div>
-            <div class="item_detail_topping">
-              <p style="font-size: 30px; margin: 10px">Topping</p>
-              <div class="item_detail_topping_buttons">
-                <button class="item_detail_topping_button_checked" id="beef" value="beef" onclick="checkTopping(1)">beef</button>
-                <button class="item_detail_topping_button" id="cheese" onclick="checkTopping(2)" value="cheese">cheese</button>
-                <button class="item_detail_topping_button" id="fruit" onclick="checkTopping(3)" value="fruit">fruit</button>
-              </div>
-
-            </div>
-            <div class="item_detail_addToCart">
-              <button style="height: 50px;width: 200px;font-size: 30px" onclick="addToCart()">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
 
 </div>
 
@@ -652,667 +660,665 @@
 
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.1.min.js"></script>
 <script>
-  //默认的
-  var checkedSize = 7;
-  var checkedTopping = "beef";
-  var checkedItemId = 0;
-  var checkedCustomerId = "";
+    //默认的
+    var checkedSize = 7;
+    var checkedTopping = "beef";
+    var checkedItemId = 0;
+    var checkedCustomerId = "";
 
-  window.onload=function(){
-    var data = "aaa"
-    console.log("初始化");
-    getItemData("pizza","pizza_item");
-    getItemData("steak","steak_item");
-    getItemData("dessert","dessert_item");
-    getItemData("drinks","drinks_item");
-    getItemData("soups","soups_item");
-  }
-  function Item(item_id, item_name, item_price, item_description, item_img,state,label_id,discount) {
-    this.item_id = item_id;
-    this.item_name = item_name;
-    this.item_price = item_price;
-    this.item_description = item_description;
-    this.item_img = item_img;
-    this.state = state;
-    this.label_id = label_id;
-    this.discount = discount;
-    this.size = "7_inch";
-    this.topping = "beef";
-    this.amount = 0;
-  }
+    window.onload=function(){
+        var data = "aaa"
+        console.log("初始化");
+        getItemData("pizza","pizza_item");
+        getItemData("steak","steak_item");
+        getItemData("dessert","dessert_item");
+        getItemData("drinks","drinks_item");
+        getItemData("soups","soups_item");
+    }
+    function Item(item_id, item_name, item_price, item_description, item_img,state,label_id,discount) {
+        this.item_id = item_id;
+        this.item_name = item_name;
+        this.item_price = item_price;
+        this.item_description = item_description;
+        this.item_img = item_img;
+        this.state = state;
+        this.label_id = label_id;
+        this.discount = discount;
+        this.size = "7_inch";
+        this.topping = "beef";
+        this.amount = 0;
+    }
 
-  function CartDetail(id,count,pizzaName,price,size,taste) {
-    this.id = id;
-    this.count = count;
-    this.pizzaName = pizzaName;
-    this.price = price;
-    this.size = size;
-    this.taste = taste;
-  }
+    function CartDetail(id,count,pizzaName,price,size,taste) {
+        this.id = id;
+        this.count = count;
+        this.pizzaName = pizzaName;
+        this.price = price;
+        this.size = size;
+        this.taste = taste;
+    }
 
-  function getItemData(label,label_id) {
-    //访问数据库
-    var itemArray = new Array();
-    var data = {
-      "label": label
+    function getItemData(label,label_id) {
+        //访问数据库
+        var itemArray = new Array();
+        var data = {
+            "label": label
 
-    };
-    console.log(data)
-
-    $.ajax({
-
-      url: "/pizzaOrderingSys/customer/viewByLabel",
-      type: "post",
-      data: JSON.stringify(data),
-      contentType: 'application/json',
-      dataType: "json",// 设置你收到服务器数据的格式，根据服务器返回类型填：json、text
-      //contentType : 'application/json;charset=utf-8',//设置你发送给服务器的格式: application/json;charset=utf-8
-      success: function(data){
+        };
         console.log(data)
-        for(var i=0;i<data.length;i++){
-          var item = new Item(data[i].id, data[i].name, data[i].price,data[i].description,data[i].image,data[i].state,data[i].category ,data[i].discount);
-          itemArray.push(item);
+
+        $.ajax({
+
+            url: "/pizzaOrderingSys/customer/viewByLabel",
+            type: "post",
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            dataType: "json",// 设置你收到服务器数据的格式，根据服务器返回类型填：json、text
+            //contentType : 'application/json;charset=utf-8',//设置你发送给服务器的格式: application/json;charset=utf-8
+            success: function(data){
+                console.log(data)
+                for(var i=0;i<data.length;i++){
+                    var item = new Item(data[i].id, data[i].name, data[i].price,data[i].description,data[i].image,data[i].state,data[i].category ,data[i].discount);
+                    itemArray.push(item);
+                }
+
+                showMenu(label_id,itemArray)
+                // $("#getIntMsg").html(data)
+            },
+            error:function(XMLHttpRequest, textStatus, error){
+                // 状态码
+                console.log(XMLHttpRequest.status);
+                // 状态
+                console.log(XMLHttpRequest.readyState);
+                // 错误信息
+                console.log(textStatus);
+                console.log(error);
+
+            }
+        });
+
+        //访问完存本地（存网页上）
+
+    }
+
+
+    //(图片+名字+价格)本地数据用html展示
+    function showMenu(label,itemArray) {
+        var str="";
+        for(var i=0;i<itemArray.length;i++){
+            if(itemArray[i].state === 0){
+                console.log(itemArray[i].item_name+"已下架")
+                continue;
+            }
+            console.log(itemArray[i].item_img)
+            str= str+"<div class='item' id= '"+itemArray[i].item_id+"' onclick='showItemDetails(" + itemArray[i].item_id+")'>"
+
+                        +"<div class='item_img'>"
+                            +"<img style='border-radius: 20px;height: 180px;width: 180px' src="+itemArray[i].item_img+" alt='pizza'>"
+                        +"</div>"
+                        +"<div>"
+                            +"<p class='item_name'>" +itemArray[i].item_name+ "</p>"
+                        +"</div>"
+                        +"<div>"
+                            +"<p class='item_price'>$"+itemArray[i].item_price+"</p>"
+                        +"</div>"
+                        +"</div>"
+                    +"</div>";
+        }
+        document.getElementById(label).innerHTML= str;
+    }
+    //点击item显示详情
+    function showItemDetails(item_id) {
+        //初始化
+        checkedSize = 7;
+        checkedTopping = "beef";
+        checkedItemId = item_id;
+        checkSize(7);
+        checkTopping(1);
+        //先取商品id
+        var data = item_id;
+
+        console.log(data)
+
+        $.ajax({
+
+            url: "/pizzaOrderingSys/customer/viewById",
+            type: "post",
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            dataType: "json",// 设置你收到服务器数据的格式，根据服务器返回类型填：json、text
+            //contentType : 'application/json;charset=utf-8',//设置你发送给服务器的格式: application/json;charset=utf-8
+            success: function(data){
+                console.log(data)
+                var tempItem = new Item(data.id, data.name, data.price, data.description, data.image,data.state,data.category,data.discount);
+                //取成数据后调框显示
+                itemDetail(tempItem)
+                // $("#getIntMsg").html(data)
+            },
+            error:function(XMLHttpRequest, textStatus, error){
+                // 状态码
+                console.log(XMLHttpRequest.status);
+                // 状态
+                console.log(XMLHttpRequest.readyState);
+                // 错误信息
+                console.log(textStatus);
+                console.log(error);
+
+            }
+        });
+
+        //再从本地数据中取出对应的商品信息(图片+名字+价格+描述)
+
+    }
+
+    //选大小
+    function checkSize(size) {
+        switch (size) {
+            case 7:
+                checkedSize = 7;
+                document.getElementById("7_inch").className = "item_detail_size_button_checked"
+                document.getElementById("9_inch").className = "item_detail_size_button"
+                document.getElementById("11_inch").className = "item_detail_size_button"
+                break;
+            case 9:
+                checkedSize = 9;
+                document.getElementById("9_inch").className = "item_detail_size_button_checked"
+                document.getElementById("7_inch").className = "item_detail_size_button"
+                document.getElementById("11_inch").className = "item_detail_size_button"
+                break;
+            case 11:
+                checkedSize = 11;
+                document.getElementById("11_inch").className = "item_detail_size_button_checked"
+                document.getElementById("7_inch").className = "item_detail_size_button"
+                document.getElementById("9_inch").className = "item_detail_size_button"
+                break;
+        }
+    }
+
+    function checkTopping(topping) {
+        switch (topping) {
+            case 1:
+                checkedTopping = "beef";
+                document.getElementById("beef").className = "item_detail_topping_button_checked"
+                document.getElementById("cheese").className = "item_detail_topping_button"
+                document.getElementById("fruit").className = "item_detail_topping_button"
+                break;
+            case 2:
+                checkedTopping = "cheese";
+                document.getElementById("cheese").className = "item_detail_topping_button_checked"
+                document.getElementById("beef").className = "item_detail_topping_button"
+                document.getElementById("fruit").className = "item_detail_topping_button"
+                break;
+            case 3:
+                checkedTopping = "fruit";
+                document.getElementById("fruit").className = "item_detail_topping_button_checked"
+                document.getElementById("beef").className = "item_detail_topping_button"
+                document.getElementById("cheese").className = "item_detail_topping_button"
+                break;
+        }
+    }
+
+    function addToCart() {
+        //item_id
+        // getAmount();
+        // getSize();
+        // getTopping();
+        console.log("当前选中大小为"+checkedSize)
+        console.log("当前选中topping为"+checkedTopping)
+        var amount = document.getElementById('amount').value;
+        console.log("当前选中数量为"+amount)
+        console.log("当前选中商品id为"+checkedItemId)
+        //把数据回传数据库
+        var data = {
+            item_id: checkedItemId,
+            item_size: checkedSize,
+            item_topping: checkedTopping,
+            item_amount: amount
+        };
+        console.log(data);
+        $.ajax({
+
+            url: "/pizzaOrderingSys/customer/ShoppingCart/addDetail",
+            type: "post",
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            dataType: "json",// 设置你收到服务器数据的格式，根据服务器返回类型填：json、text
+            //contentType : 'application/json;charset=utf-8',//设置你发送给服务器的格式: application/json;charset=utf-8
+            success: function(data){
+                console.log(data)
+                //传回数据库后显示在购物车
+                //取成数据后调框显示
+
+            },
+            error:function(XMLHttpRequest, textStatus, error){
+                // 状态码
+                console.log(XMLHttpRequest.status);
+                // 状态
+                console.log(XMLHttpRequest.readyState);
+                // 错误信息
+                console.log(textStatus);
+                console.log(error);
+
+            }
+        })
+        hidder();
+    }
+
+    //从数据库获取购物车信息
+    function updateCart(){
+        var data = {};
+        console.log(data);
+        $.ajax({
+
+            url: "/pizzaOrderingSys/customer/ShoppingCart/viewCart",
+            type: "post",
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            dataType: "json",// 设置你收到服务器数据的格式，根据服务器返回类型填：json、text
+            //contentType : 'application/json;charset=utf-8',//设置你发送给服务器的格式: application/json;charset=utf-8
+            success: function(data){
+                console.log(data)
+                var itemDetailArray = new Array();
+                for(var i=0;i<data.length;i++){
+                    var cartDetail = new CartDetail(data[i].id,data[i].count,data[i].pizzaName,data[i].price,data[i].size.inch ,data[i].taste.name);
+                    itemDetailArray.push(cartDetail);
+                }
+
+                showShoppingCart(itemDetailArray);
+                //传回数据库后显示在购物车
+                //取成数据后调框显示
+
+            },
+            error:function(XMLHttpRequest, textStatus, error){
+                // 状态码
+                console.log(XMLHttpRequest.status);
+                // 状态
+                console.log(XMLHttpRequest.readyState);
+                // 错误信息
+                console.log(textStatus);
+                console.log(error);
+
+            }
+        })
+    }
+
+
+    function showShoppingCart(itemDetailArray) {
+
+        var tbody = document.getElementById("shopping_cart_details");
+        tbody.innerHTML = "";
+        var totalPrice= 0;
+        for(var i=0;i<itemDetailArray.length;i++){
+            var ntr = document.createElement("tr");
+            ntr.innerHTML=
+                "<td style ='text-align:center;' >"+ itemDetailArray[i].pizzaName + "</td>"
+                +"<td style='text-align:center;'>"+ itemDetailArray[i].size + "</td>"
+                +"<td style='text-align:center;'>"+ itemDetailArray[i].taste + "</td>"
+
+                +"<td style='text-align:center;'>"+itemDetailArray[i].count+"</td>"
+                +"<td style='text-align:center;'>"+ itemDetailArray[i].price+"</td>"
+                +"<td style='text-align:center;'>"
+                +"<button onclick='removeFromCart("+itemDetailArray[i].id+")'>"+"X"+"</button>"
+                +"</td>"
+
+
+            //把上面创建好的一行五列加入到tbody中
+            tbody.appendChild(ntr);
+            totalPrice += itemDetailArray[i].price;
+
+        }
+        document.getElementById("total").innerHTML = totalPrice.toFixed(2);
+
+    }
+
+    function removeFromCart(cartDetailId){
+        //点X就删除该行itemDetail
+        //回传数据库
+        var data = {
+            cartDetailId: cartDetailId
+        };
+        console.log(data);
+        $.ajax({
+
+            url: "/pizzaOrderingSys/customer/ShoppingCart/deleteItem",
+            type: "post",
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            dataType: "json",// 设置你收到服务器数据的格式，根据服务器返回类型填：json、text
+            //contentType : 'application/json;charset=utf-8',//设置你发送给服务器的格式: application/json;charset=utf-8
+            success: function(data){
+                console.log(data)
+
+            },
+            error:function(XMLHttpRequest, textStatus, error){
+                // 状态码
+                console.log(XMLHttpRequest.status);
+                // 状态
+                console.log(XMLHttpRequest.readyState);
+                // 错误信息
+                console.log(textStatus);
+                console.log(error);
+
+            }
+        })
+        updateCart();
+    }
+
+    function emptyShoppingCart(){
+        // 清空购物车
+        // 回传数据库
+        var data = {};
+        $.ajax({
+
+            url: "/pizzaOrderingSys/customer/ShoppingCart/emptyCart",
+            type: "post",
+            dataType: "json",// 设置你收到服务器数据的格式，根据服务器返回类型填：json、text
+            //contentType : 'application/json;charset=utf-8',//设置你发送给服务器的格式: application/json;charset=utf-8
+            success: function(result){
+                if(result.success) {
+                    alert("successfully clean the shopping cart");
+                }else{
+                    alert("fail to clean the shopping cart");
+                }
+            },
+            error:function(XMLHttpRequest, textStatus, error){
+                // 状态码
+                console.log(XMLHttpRequest.status);
+                // 状态
+                console.log(XMLHttpRequest.readyState);
+                // 错误信息
+                console.log(textStatus);
+                console.log(error);
+
+            }
+        })
+        updateCart();
+    }
+
+    function checkOut(){
+        //传购物车id回去，然后跳转到结账页面
+        // var data = {
+        //    cartId: cartId};
+        // $.ajax({
+        //
+        //     url: "/pizzaOrderingSys/customer/ShoppingCart/confirmCart",
+        //     type: "post",
+        //     data: JSON.stringify(data),
+        //     contentType: 'application/json',
+        //     dataType: "json",// 设置你收到服务器数据的格式，根据服务器返回类型填：json、text
+        //     //contentType : 'application/json;charset=utf-8',//设置你发送给服务器的格式: application/json;charset=utf-8
+        //     success: function(data){
+        //         console.log(data)
+        //         //传回数据库后显示在购物车
+        //         //取成数据后调框显示
+        //
+        //     },
+        //     error:function(XMLHttpRequest, textStatus, error){
+        //         // 状态码
+        //         console.log(XMLHttpRequest.status);
+        //         // 状态
+        //         console.log(XMLHttpRequest.readyState);
+        //         // 错误信息
+        //         console.log(textStatus);
+        //         console.log(error);
+        //
+        //     }
+        // })
+        window.location.href= "/pizzaOrderingSys/customer/confirmationPage"
+    }
+
+    function changeCart() {
+
+        if(document.getElementById('Cart').style.display == 'block') {
+            document.getElementById('Cart').style.display = 'none';
+        } else {
+            updateCart();
+            document.getElementById('Cart').style.display = 'block';
         }
 
-        showMenu(label_id,itemArray)
-        // $("#getIntMsg").html(data)
-      },
-      error:function(XMLHttpRequest, textStatus, error){
-        // 状态码
-        console.log(XMLHttpRequest.status);
-        // 状态
-        console.log(XMLHttpRequest.readyState);
-        // 错误信息
-        console.log(textStatus);
-        console.log(error);
 
-      }
-    });
+    }
+    function hidder(){
+        document.getElementById('item_detail').style.display="none";
+    }
+    function itemDetail(item) {
+        if(document.getElementById('Cart').style.display == 'block') {
+            document.getElementById('Cart').style.display = 'none';
+        }
+        document.getElementById('item_detail').style.display="block";
+
+        var img = document.getElementById('item_detail_img');
+        img.src = item.item_img;
+        var name = document.getElementById('item_detail_name');
+        name.innerHTML = item.item_name;
+        var description = document.getElementById('item_detail_description');
+        description.innerHTML = item.item_description;
+        var price = document.getElementById('item_detail_price');
+        price.innerHTML = '$'+item.item_price;
+
+    }
+
+    function viewOrderHistory(){
+        window.location.href="/pizzaOrderingSys/customer/orderhistory"
+    }
+
+    function viewUserInformation(){
+        window.location.href="/pizzaOrderingSys/customer/addressBook/customerInfo"
+    }
+
+
+    // Use JavaScript to add functionality to the buttons and populate the table with order data
+    // window.onload=function requestData() {
+    //     $.ajax({
+    //         url: "/pizzaOrderingSys/customer/Menu",
+    //         type: "post",
+    //         dataType: "json",
+    //         success: function (data) {
+    //             /*这个方法里是ajax发送请求成功之后执行的代码*/
+    //             showData(data);//我们仅做数据展示
+    //         },
+    //         error: function (msg) {
+    //             alert("ajax连接异常：" + msg);
+    //         }
+    //     });
+    // };
+
+//     function insertPizzaIntoMenu() {
+//         for(){
+//
+//
+//     document.getElementById('id').innerHTML=
+//         "<div class=/"item_container" id=/"pizza_item">"
+//         <!--                pizza-->
+//         +"<div class=/"item" onclick=/"item_Detail()">"
+//             <!--                        一个pizza-->
+//             +"<div class=/"item_img">"
+//                 <!--                        图片    -->
+//                 +"<img style=/"border-radius: 20px;height: 180px;width: 180px src="+"<"要传的URL+"alt=/"pizza" width=/"200" height=/"200">"
+//             +"</div>"
+//            +"<div>"
+//                 <!--                        名字    -->
+//                +"<p class=/"item_name">" + 要传的name + "</p>"
+//             +"</div>"
+//             +"<div>"
+//                 <!--                        价格    -->
+//                 +"<p class=/"item_price">"+要传的price+"</p>"
+//                +"</div>"
+//         +"</div>"
+//     +"</div>"
+
+//     +"<div class=/"item_container" id=/"steak_item">"
+    //         <!--                pizza-->
+    //      +"<div class=/"item" onclick=/"item_Detail()">"
+    //             <!--                        一个steak-->
+    //             +"<div class=/"item_img">"
+    //                 <!--                        图片    -->
+    //                 +"<img style=/"border-radius: 20px;height: 180px;width: 180px src="+"<"要传的URL+"alt=/"steak" width=/"200" height=/"200">"
+    //             +"</div>"
+    //             +"<div>"
+    //                 <!--                        名字    -->
+    //                +"<p class=/"item_name">" + 要传的name + "</p>"
+    //             +"</div>"
+    //             +"<div>"
+    //                 <!--                        价格    -->
+    //                 +"<p class=/"item_price">"+要传的price+"</p>"
+    //             +"</div>"
+    //      +"</div>"
+    //  +"</div>"
+
+    //+"<div class=/"item_container" id=/"dessert_item">"
+    //         <!--                pizza-->
+    //      +"<div class=/"item" onclick=/"item_Detail()">"
+    //             <!--                        一个dessert-->
+    //             +"<div class=/"item_img">"
+    //                 <!--                        图片    -->
+    //                 +"<img style=/"border-radius: 20px;height: 180px;width: 180px src="+"<"要传的URL+"alt=/"dessert" width=/"200" height=/"200">"
+    //             +"</div>"
+    //             +"<div>"
+    //                 <!--                        名字    -->
+    //                +"<p class=/"item_name">" + 要传的name + "</p>"
+    //             +"</div>"
+    //             +"<div>"
+    //                 <!--                        价格    -->
+    //                 +"<p class=/"item_price">"+要传的price+"</p>"
+    //             +"</div>"
+    //      +"</div>"
+    //  +"</div>"
+
+    //+"<div class=/"item_container" id=/"drinks_item">"
+    //         <!--                pizza-->
+    //      +"<div class=/"item" onclick=/"item_Detail()">"
+    //             <!--                        一个drinks-->
+    //             +"<div class=/"item_img">"
+    //                 <!--                        图片    -->
+    //                 +"<img style=/"border-radius: 20px;height: 180px;width: 180px src="+"<"要传的URL+"alt=/"drinks" width=/"200" height=/"200">"
+    //             +"</div>"
+    //             +"<div>"
+    //                 <!--                        名字    -->
+    //                +"<p class=/"item_name">" + 要传的name + "</p>"
+    //             +"</div>"
+    //             +"<div>"
+    //                 <!--                        价格    -->
+    //                 +"<p class=/"item_price">"+要传的price+"</p>"
+    //             +"</div>"
+    //      +"</div>"
+    //  +"</div>"
+
+    //+"<div class=/"item_container" id=/"soups_item">"
+    //         <!--                pizza-->
+    //      +"<div class=/"item" onclick=/"item_Detail()">"
+    //             <!--                        一个soups-->
+    //             +"<div class=/"item_img">"
+    //                 <!--                        图片    -->
+    //                 +"<img style=/"border-radius: 20px;height: 180px;width: 180px src="+"<"要传的URL+"alt=/"soups" width=/"200" height=/"200">"
+    //             +"</div>"
+    //             +"<div>"
+    //                 <!--                        名字    -->
+    //                +"<p class=/"item_name">" + 要传的name + "</p>"
+    //             +"</div>"
+    //             +"<div>"
+    //                 <!--                        价格    -->
+    //                 +"<p class=/"item_price">"+要传的price+"</p>"
+    //             +"</div>"
+    //      +"</div>"
+    //  +"</div>"
+//         }
+// }
+//     function getPizzaData() {
+    //     //访问数据库
+    //     var pizzaArray = new Array();
+    //     var data = {
+    //         "label": "pizza"
+    //     };
+    //     console.log(data)
+    //
+    //     $.ajax({
+    //
+    //         url: "/pizzaOrderingSys/customer/viewByLabel",
+    //         type: "post",
+    //         data: JSON.stringify(data),
+    //         contentType: 'application/json',
+    //         dataType: "json",// 设置你收到服务器数据的格式，根据服务器返回类型填：json、text
+    //         //contentType : 'application/json;charset=utf-8',//设置你发送给服务器的格式: application/json;charset=utf-8
+    //         success: function(data){
+    //             console.log(data)
+    //             for(var i=0;i<data.length;i++){
+    //                 var pizza_id = data[i].id;
+    //                 var pizza_name = data[i].name;
+    //                 var pizza_price = data[i].price;
+    //                 var pizza_description = data[i].description;
+    //                 var pizza_img = data[i].image;
+    //                 var state = data[i].state;
+    //                 var label_id = data[i].category;
+    //                 var discount = data[i].discount;
+    //                 var pizza = new Item(pizza_id, pizza_name, pizza_price, pizza_description, pizza_img,state,label_id,discount);
+    //                 pizzaArray.push(pizza);
+    //             }
+    //
+    //             showMenu("pizza_item",pizzaArray)
+    //             // $("#getIntMsg").html(data)
+    //         },
+    //         error:function(XMLHttpRequest, textStatus, error){
+    //             // 状态码
+    //             console.log(XMLHttpRequest.status);
+    //             // 状态
+    //             console.log(XMLHttpRequest.readyState);
+    //             // 错误信息
+    //             console.log(textStatus);
+    //             console.log(error);
+    //
+    //         }
+    //     });
+    //
+    //     //访问完存本地（存网页上）
+    //
+    // }
+
+//     }
+    // function getSteakData() {
+    //     //访问数据库
+    //     var steakArray = new Array();
+    //     var data = {
+    //         "label": "steak"
+    //     };
+    //     console.log(data)
+    //
+    //     $.ajax({
+    //
+    //         url: "/pizzaOrderingSys/customer/viewByLabel",
+    //         type: "post",
+    //         data: JSON.stringify(data),
+    //         contentType: 'application/json',
+    //         dataType: "json",// 设置你收到服务器数据的格式，根据服务器返回类型填：json、text
+    //         //contentType : 'application/json;charset=utf-8',//设置你发送给服务器的格式: application/json;charset=utf-8
+    //         success: function(data){
+    //             console.log(data)
+    //             for(var i=0;i<data.length;i++){
+    //                 var steak = new Item(data[i].id, data[i].name, data[i].price,data[i].description,data[i].image,data[i].state,data[i].category ,data[i].discount);
+    //                 steakArray.push(steak);
+    //             }
+    //
+    //             showMenu("steak_item",steakArray)
+    //             // $("#getIntMsg").html(data)
+    //         },
+    //         error:function(XMLHttpRequest, textStatus, error){
+    //             // 状态码
+    //             console.log(XMLHttpRequest.status);
+    //             // 状态
+    //             console.log(XMLHttpRequest.readyState);
+    //             // 错误信息
+    //             console.log(textStatus);
+    //             console.log(error);
+    //
+    //         }
+    //     });
 
     //访问完存本地（存网页上）
 
-  }
+    // }
 
 
-  //(图片+名字+价格)本地数据用html展示
-  function showMenu(label,itemArray) {
-    var str="";
-    for(var i=0;i<itemArray.length;i++){
-      if(itemArray[i].state === 0){
-        console.log(itemArray[i].item_name+"已下架")
-        continue;
-      }
-      console.log(itemArray[i].item_img)
-      str= str+"<div class='item' id= '"+itemArray[i].item_id+"' onclick='showItemDetails(" + itemArray[i].item_id+")'>"
-
-              +"<div class='item_img'>"
-              +"<img style='border-radius: 20px;height: 180px;width: 180px' src="+itemArray[i].item_img+" alt='pizza'>"
-              +"</div>"
-              +"<div>"
-              +"<p class='item_name'>" +itemArray[i].item_name+ "</p>"
-              +"</div>"
-              +"<div>"
-              +"<p class='item_price'>$"+itemArray[i].item_price+"</p>"
-              +"</div>"
-              +"</div>"
-              +"</div>";
-
-
-    }
-    document.getElementById(label).innerHTML= str;
-
-
-  }
-  //点击item显示详情
-  function showItemDetails(item_id) {
-    //初始化
-    checkedSize = 7;
-    checkedTopping = "beef";
-    checkedItemId = item_id;
-    checkSize(7);
-    checkTopping(1);
-    //先取商品id
-    var data = item_id;
-
-    console.log(data)
-
-    $.ajax({
-
-      url: "/pizzaOrderingSys/customer/viewById",
-      type: "post",
-      data: JSON.stringify(data),
-      contentType: 'application/json',
-      dataType: "json",// 设置你收到服务器数据的格式，根据服务器返回类型填：json、text
-      //contentType : 'application/json;charset=utf-8',//设置你发送给服务器的格式: application/json;charset=utf-8
-      success: function(data){
-        console.log(data)
-        var tempItem = new Item(data.id, data.name, data.price, data.description, data.image,data.state,data.category,data.discount);
-        //取成数据后调框显示
-        itemDetail(tempItem)
-        // $("#getIntMsg").html(data)
-      },
-      error:function(XMLHttpRequest, textStatus, error){
-        // 状态码
-        console.log(XMLHttpRequest.status);
-        // 状态
-        console.log(XMLHttpRequest.readyState);
-        // 错误信息
-        console.log(textStatus);
-        console.log(error);
-
-      }
-    });
-
-    //再从本地数据中取出对应的商品信息(图片+名字+价格+描述)
-
-  }
-
-  //选大小
-  function checkSize(size) {
-    switch (size) {
-      case 7:
-        checkedSize = 7;
-        document.getElementById("7_inch").className = "item_detail_size_button_checked"
-        document.getElementById("9_inch").className = "item_detail_size_button"
-        document.getElementById("11_inch").className = "item_detail_size_button"
-        break;
-      case 9:
-        checkedSize = 9;
-        document.getElementById("9_inch").className = "item_detail_size_button_checked"
-        document.getElementById("7_inch").className = "item_detail_size_button"
-        document.getElementById("11_inch").className = "item_detail_size_button"
-        break;
-      case 11:
-        checkedSize = 11;
-        document.getElementById("11_inch").className = "item_detail_size_button_checked"
-        document.getElementById("7_inch").className = "item_detail_size_button"
-        document.getElementById("9_inch").className = "item_detail_size_button"
-        break;
-    }
-  }
-
-  function checkTopping(topping) {
-    switch (topping) {
-      case 1:
-        checkedTopping = "beef";
-        document.getElementById("beef").className = "item_detail_topping_button_checked"
-        document.getElementById("cheese").className = "item_detail_topping_button"
-        document.getElementById("fruit").className = "item_detail_topping_button"
-        break;
-      case 2:
-        checkedTopping = "cheese";
-        document.getElementById("cheese").className = "item_detail_topping_button_checked"
-        document.getElementById("beef").className = "item_detail_topping_button"
-        document.getElementById("fruit").className = "item_detail_topping_button"
-        break;
-      case 3:
-        checkedTopping = "fruit";
-        document.getElementById("fruit").className = "item_detail_topping_button_checked"
-        document.getElementById("beef").className = "item_detail_topping_button"
-        document.getElementById("cheese").className = "item_detail_topping_button"
-        break;
-    }
-  }
-
-  function addToCart() {
-    //item_id
-    // getAmount();
-    // getSize();
-    // getTopping();
-    console.log("当前选中大小为"+checkedSize)
-    console.log("当前选中topping为"+checkedTopping)
-    var amount = document.getElementById('amount').value;
-    console.log("当前选中数量为"+amount)
-    console.log("当前选中商品id为"+checkedItemId)
-    //把数据回传数据库
-    var data = {
-      item_id: checkedItemId,
-      item_size: checkedSize,
-      item_topping: checkedTopping,
-      item_amount: amount
-    };
-    console.log(data);
-    $.ajax({
-
-      url: "/pizzaOrderingSys/customer/ShoppingCart/addDetail",
-      type: "post",
-      data: JSON.stringify(data),
-      contentType: 'application/json',
-      dataType: "json",// 设置你收到服务器数据的格式，根据服务器返回类型填：json、text
-      //contentType : 'application/json;charset=utf-8',//设置你发送给服务器的格式: application/json;charset=utf-8
-      success: function(data){
-        console.log(data)
-        //传回数据库后显示在购物车
-        //取成数据后调框显示
-
-      },
-      error:function(XMLHttpRequest, textStatus, error){
-        // 状态码
-        console.log(XMLHttpRequest.status);
-        // 状态
-        console.log(XMLHttpRequest.readyState);
-        // 错误信息
-        console.log(textStatus);
-        console.log(error);
-
-      }
-    })
-    hidder();
-  }
-
-  //从数据库获取购物车信息
-  function updateCart(){
-    var data = {};
-    console.log(data);
-    $.ajax({
-
-      url: "/pizzaOrderingSys/customer/ShoppingCart/viewCart",
-      type: "post",
-      data: JSON.stringify(data),
-      contentType: 'application/json',
-      dataType: "json",// 设置你收到服务器数据的格式，根据服务器返回类型填：json、text
-      //contentType : 'application/json;charset=utf-8',//设置你发送给服务器的格式: application/json;charset=utf-8
-      success: function(data){
-        console.log(data)
-        var itemDetailArray = new Array();
-        for(var i=0;i<data.length;i++){
-          var cartDetail = new CartDetail(data[i].id,data[i].count,data[i].pizzaName,data[i].price,data[i].size.inch ,data[i].taste.name);
-          itemDetailArray.push(cartDetail);
-        }
-
-        showShoppingCart(itemDetailArray);
-        //传回数据库后显示在购物车
-        //取成数据后调框显示
-
-      },
-      error:function(XMLHttpRequest, textStatus, error){
-        // 状态码
-        console.log(XMLHttpRequest.status);
-        // 状态
-        console.log(XMLHttpRequest.readyState);
-        // 错误信息
-        console.log(textStatus);
-        console.log(error);
-
-      }
-    })
-  }
-
-
-  function showShoppingCart(itemDetailArray) {
-
-    var tbody = document.getElementById("shopping_cart_details");
-    tbody.innerHTML = "";
-    var totalPrice= 0;
-    for(var i=0;i<itemDetailArray.length;i++){
-      var ntr = document.createElement("tr");
-      ntr.innerHTML=
-              "<td style ='text-align:center;' >"+ itemDetailArray[i].pizzaName + "</td>"
-              +"<td style='text-align:center;'>"+ itemDetailArray[i].size + "</td>"
-              +"<td style='text-align:center;'>"+ itemDetailArray[i].taste + "</td>"
-
-              +"<td style='text-align:center;'>"+itemDetailArray[i].count+"</td>"
-              +"<td style='text-align:center;'>"+ itemDetailArray[i].price+"</td>"
-              +"<td style='text-align:center;'>"
-              +"<button onclick='removeFromCart("+itemDetailArray[i].id+")'>"+"X"+"</button>"
-              +"</td>"
-
-
-      //把上面创建好的一行五列加入到tbody中
-      tbody.appendChild(ntr);
-      totalPrice += itemDetailArray[i].price;
-
-    }
-    document.getElementById("total").innerHTML = totalPrice.toFixed(2);
-
-  }
-
-  function removeFromCart(cartDetailId){
-    //点X就删除该行itemDetail
-    //回传数据库
-    var data = {
-      cartDetailId: cartDetailId
-    };
-    console.log(data);
-    $.ajax({
-
-      url: "/pizzaOrderingSys/customer/ShoppingCart/deleteItem",
-      type: "post",
-      data: JSON.stringify(data),
-      contentType: 'application/json',
-      dataType: "json",// 设置你收到服务器数据的格式，根据服务器返回类型填：json、text
-      //contentType : 'application/json;charset=utf-8',//设置你发送给服务器的格式: application/json;charset=utf-8
-      success: function(data){
-        console.log(data)
-
-      },
-      error:function(XMLHttpRequest, textStatus, error){
-        // 状态码
-        console.log(XMLHttpRequest.status);
-        // 状态
-        console.log(XMLHttpRequest.readyState);
-        // 错误信息
-        console.log(textStatus);
-        console.log(error);
-
-      }
-    })
-    updateCart();
-  }
-
-  function emptyShoppingCart(){
-    // 清空购物车
-    // 回传数据库
-    var data = {};
-    $.ajax({
-
-      url: "/pizzaOrderingSys/customer/ShoppingCart/emptyCart",
-      type: "post",
-      dataType: "json",// 设置你收到服务器数据的格式，根据服务器返回类型填：json、text
-      //contentType : 'application/json;charset=utf-8',//设置你发送给服务器的格式: application/json;charset=utf-8
-      success: function(result){
-        if(result.success) {
-          alert("successfully clean the shopping cart");
-        }else{
-          alert("fail to clean the shopping cart");
-        }
-      },
-      error:function(XMLHttpRequest, textStatus, error){
-        // 状态码
-        console.log(XMLHttpRequest.status);
-        // 状态
-        console.log(XMLHttpRequest.readyState);
-        // 错误信息
-        console.log(textStatus);
-        console.log(error);
-
-      }
-    })
-    updateCart();
-  }
-
-  function checkOut(){
-    //传购物车id回去，然后跳转到结账页面
-    var data = {
-      cartId: cartId};
-    $.ajax({
-
-      url: "/pizzaOrderingSys/customer/ShoppingCart/confirmCart",
-      type: "post",
-      data: JSON.stringify(data),
-      contentType: 'application/json',
-      dataType: "json",// 设置你收到服务器数据的格式，根据服务器返回类型填：json、text
-      //contentType : 'application/json;charset=utf-8',//设置你发送给服务器的格式: application/json;charset=utf-8
-      success: function(data){
-        console.log(data)
-        //传回数据库后显示在购物车
-        //取成数据后调框显示
-
-      },
-      error:function(XMLHttpRequest, textStatus, error){
-        // 状态码
-        console.log(XMLHttpRequest.status);
-        // 状态
-        console.log(XMLHttpRequest.readyState);
-        // 错误信息
-        console.log(textStatus);
-        console.log(error);
-
-      }
-    })
-    window.location.replace('http://www.baidu.com')
-  }
-
-  function changeCart() {
-
-    if(document.getElementById('Cart').style.display == 'block') {
-      document.getElementById('Cart').style.display = 'none';
-    } else {
-      updateCart();
-      document.getElementById('Cart').style.display = 'block';
-    }
-
-
-  }
-  function hidder(){
-    document.getElementById('item_detail').style.display="none";
-  }
-  function itemDetail(item) {
-    if(document.getElementById('Cart').style.display == 'block') {
-      document.getElementById('Cart').style.display = 'none';
-    }
-    document.getElementById('item_detail').style.display="block";
-
-    var img = document.getElementById('item_detail_img');
-    img.src = item.item_img;
-    var name = document.getElementById('item_detail_name');
-    name.innerHTML = item.item_name;
-    var description = document.getElementById('item_detail_description');
-    description.innerHTML = item.item_description;
-    var price = document.getElementById('item_detail_price');
-    price.innerHTML = '$'+item.item_price;
-
-  }
-
-  function viewOrderHistory(){
-    window.location.replace('http://www.baidu.com')
-  }
-
-  function viewUserInformation(){
-    window.location.replace('http://www.baidu.com')
-  }
-
-
-  // Use JavaScript to add functionality to the buttons and populate the table with order data
-  // window.onload=function requestData() {
-  //     $.ajax({
-  //         url: "/pizzaOrderingSys/customer/Menu",
-  //         type: "post",
-  //         dataType: "json",
-  //         success: function (data) {
-  //             /*这个方法里是ajax发送请求成功之后执行的代码*/
-  //             showData(data);//我们仅做数据展示
-  //         },
-  //         error: function (msg) {
-  //             alert("ajax连接异常：" + msg);
-  //         }
-  //     });
-  // };
-  //
-  //     function insertPizzaIntoMenu() {
-  //         for(){
-  //
-  //
-  //     document.getElementById('id').innerHTML=
-  //         "<div class=/"item_container" id=/"pizza_item">"
-  //         <!--                pizza-->
-  //         +"<div class=/"item" onclick=/"item_Detail()">"
-  //             <!--                        一个pizza-->
-  //             +"<div class=/"item_img">"
-  //                 <!--                        图片    -->
-  //                 +"<img style=/"border-radius: 20px;height: 180px;width: 180px src="+"<"要传的URL+"alt=/"pizza" width=/"200" height=/"200">"
-  //             +"</div>"
-  //            +"<div>"
-  //                 <!--                        名字    -->
-  //                +"<p class=/"item_name">" + 要传的name + "</p>"
-  //             +"</div>"
-  //             +"<div>"
-  //                 <!--                        价格    -->
-  //                 +"<p class=/"item_price">"+要传的price+"</p>"
-  //                +"</div>"
-  //         +"</div>"
-  //     +"</div>"
-  //
-  //     +"<div class=/"item_container" id=/"steak_item">"
-  //         <!--                pizza-->
-  //      +"<div class=/"item" onclick=/"item_Detail()">"
-  //             <!--                        一个steak-->
-  //             +"<div class=/"item_img">"
-  //                 <!--                        图片    -->
-  //                 +"<img style=/"border-radius: 20px;height: 180px;width: 180px src="+"<"要传的URL+"alt=/"steak" width=/"200" height=/"200">"
-  //             +"</div>"
-  //             +"<div>"
-  //                 <!--                        名字    -->
-  //                +"<p class=/"item_name">" + 要传的name + "</p>"
-  //             +"</div>"
-  //             +"<div>"
-  //                 <!--                        价格    -->
-  //                 +"<p class=/"item_price">"+要传的price+"</p>"
-  //             +"</div>"
-  //      +"</div>"
-  //  +"</div>"
-  //
-  // +"<div class=/"item_container" id=/"dessert_item">"
-  //         <!--                pizza-->
-  //      +"<div class=/"item" onclick=/"item_Detail()">"
-  //             <!--                        一个dessert-->
-  //             +"<div class=/"item_img">"
-  //                 <!--                        图片    -->
-  //                 +"<img style=/"border-radius: 20px;height: 180px;width: 180px src="+"<"要传的URL+"alt=/"dessert" width=/"200" height=/"200">"
-  //             +"</div>"
-  //             +"<div>"
-  //                 <!--                        名字    -->
-  //                +"<p class=/"item_name">" + 要传的name + "</p>"
-  //             +"</div>"
-  //             +"<div>"
-  //                 <!--                        价格    -->
-  //                 +"<p class=/"item_price">"+要传的price+"</p>"
-  //             +"</div>"
-  //      +"</div>"
-  //  +"</div>"
-  //
-  // +"<div class=/"item_container" id=/"drinks_item">"
-  //         <!--                pizza-->
-  //      +"<div class=/"item" onclick=/"item_Detail()">"
-  //             <!--                        一个drinks-->
-  //             +"<div class=/"item_img">"
-  //                 <!--                        图片    -->
-  //                 +"<img style=/"border-radius: 20px;height: 180px;width: 180px src="+"<"要传的URL+"alt=/"drinks" width=/"200" height=/"200">"
-  //             +"</div>"
-  //             +"<div>"
-  //                 <!--                        名字    -->
-  //                +"<p class=/"item_name">" + 要传的name + "</p>"
-  //             +"</div>"
-  //             +"<div>"
-  //                 <!--                        价格    -->
-  //                 +"<p class=/"item_price">"+要传的price+"</p>"
-  //             +"</div>"
-  //      +"</div>"
-  //  +"</div>"
-  //
-  // +"<div class=/"item_container" id=/"soups_item">"
-  //         <!--                pizza-->
-  //      +"<div class=/"item" onclick=/"item_Detail()">"
-  //             <!--                        一个soups-->
-  //             +"<div class=/"item_img">"
-  //                 <!--                        图片    -->
-  //                 +"<img style=/"border-radius: 20px;height: 180px;width: 180px src="+"<"要传的URL+"alt=/"soups" width=/"200" height=/"200">"
-  //             +"</div>"
-  //             +"<div>"
-  //                 <!--                        名字    -->
-  //                +"<p class=/"item_name">" + 要传的name + "</p>"
-  //             +"</div>"
-  //             +"<div>"
-  //                 <!--                        价格    -->
-  //                 +"<p class=/"item_price">"+要传的price+"</p>"
-  //             +"</div>"
-  //      +"</div>"
-  //  +"</div>"
-  //         }
-  // }
-  //     function getPizzaData() {
-  //     //访问数据库
-  //     var pizzaArray = new Array();
-  //     var data = {
-  //         "label": "pizza"
-  //     };
-  //     console.log(data)
-  //
-  //     $.ajax({
-  //
-  //         url: "/pizzaOrderingSys/customer/viewByLabel",
-  //         type: "post",
-  //         data: JSON.stringify(data),
-  //         contentType: 'application/json',
-  //         dataType: "json",// 设置你收到服务器数据的格式，根据服务器返回类型填：json、text
-  //         //contentType : 'application/json;charset=utf-8',//设置你发送给服务器的格式: application/json;charset=utf-8
-  //         success: function(data){
-  //             console.log(data)
-  //             for(var i=0;i<data.length;i++){
-  //                 var pizza_id = data[i].id;
-  //                 var pizza_name = data[i].name;
-  //                 var pizza_price = data[i].price;
-  //                 var pizza_description = data[i].description;
-  //                 var pizza_img = data[i].image;
-  //                 var state = data[i].state;
-  //                 var label_id = data[i].category;
-  //                 var discount = data[i].discount;
-  //                 var pizza = new Item(pizza_id, pizza_name, pizza_price, pizza_description, pizza_img,state,label_id,discount);
-  //                 pizzaArray.push(pizza);
-  //             }
-  //
-  //             showMenu("pizza_item",pizzaArray)
-  //             // $("#getIntMsg").html(data)
-  //         },
-  //         error:function(XMLHttpRequest, textStatus, error){
-  //             // 状态码
-  //             console.log(XMLHttpRequest.status);
-  //             // 状态
-  //             console.log(XMLHttpRequest.readyState);
-  //             // 错误信息
-  //             console.log(textStatus);
-  //             console.log(error);
-  //
-  //         }
-  //     });
-  //
-  //     //访问完存本地（存网页上）
-  //
-  // }
-  //
-  //     }
-  // function getSteakData() {
-  //     //访问数据库
-  //     var steakArray = new Array();
-  //     var data = {
-  //         "label": "steak"
-  //     };
-  //     console.log(data)
-  //
-  //     $.ajax({
-  //
-  //         url: "/pizzaOrderingSys/customer/viewByLabel",
-  //         type: "post",
-  //         data: JSON.stringify(data),
-  //         contentType: 'application/json',
-  //         dataType: "json",// 设置你收到服务器数据的格式，根据服务器返回类型填：json、text
-  //         //contentType : 'application/json;charset=utf-8',//设置你发送给服务器的格式: application/json;charset=utf-8
-  //         success: function(data){
-  //             console.log(data)
-  //             for(var i=0;i<data.length;i++){
-  //                 var steak = new Item(data[i].id, data[i].name, data[i].price,data[i].description,data[i].image,data[i].state,data[i].category ,data[i].discount);
-  //                 steakArray.push(steak);
-  //             }
-  //
-  //             showMenu("steak_item",steakArray)
-  //             // $("#getIntMsg").html(data)
-  //         },
-  //         error:function(XMLHttpRequest, textStatus, error){
-  //             // 状态码
-  //             console.log(XMLHttpRequest.status);
-  //             // 状态
-  //             console.log(XMLHttpRequest.readyState);
-  //             // 错误信息
-  //             console.log(textStatus);
-  //             console.log(error);
-  //
-  //         }
-  //     });
-  //
-  // 访问完存本地（存网页上）
-  //
-  // }
-  // Use JavaScript to add functionality to the buttons and populate the table with order data
+    // Use JavaScript to add functionality to the buttons and populate the table with order data
 </script>
 </body>
 </html>

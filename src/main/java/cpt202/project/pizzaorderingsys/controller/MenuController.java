@@ -1,7 +1,6 @@
 package cpt202.project.pizzaorderingsys.controller;
 
 import com.alibaba.fastjson2.JSON;
-import com.google.gson.Gson;
 import cpt202.project.pizzaorderingsys.models.Pizza;
 import cpt202.project.pizzaorderingsys.services.CategoryService;
 import cpt202.project.pizzaorderingsys.services.OrderDetailService;
@@ -19,7 +18,6 @@ import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
 
-import cpt202.project.pizzaorderingsys.PizzaOrderingSysApplication;
 import cpt202.project.pizzaorderingsys.services.ShopCartService;
 
 @Controller

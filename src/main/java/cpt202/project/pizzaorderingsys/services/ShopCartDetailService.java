@@ -24,12 +24,6 @@ public class ShopCartDetailService {
         return shopCartDetailsRepo.save(shopCartDetail);
     }
 
-    public ShoppingCartDetails loadShopCartDetailById(Long id) {
-        if (!shopCartDetailsRepo.findById(id).isPresent()) {
-            throw new NullPointerException("There is no existing shop cart detail");
-        }
-        return shopCartDetailsRepo.findById(id).get();
-    }
 
     public List<ShoppingCartDetails> loadShopCartDetailsByShopCartId(Long id) {
         if (!shopCartDetailsRepo.findShoppingCartDetailsAllByShoppingCartId(id).isPresent()) {
@@ -96,5 +90,13 @@ public class ShopCartDetailService {
         shopCartService.setTotalPriceZero(shoppingCart);
 
     }
+
+    public ShoppingCartDetails loadShopCartDetailById(Long id) {
+        if (!shopCartDetailsRepo.findById(id).isPresent()) {
+            throw new NullPointerException("There is no existing shop cart detail");
+        }
+        return shopCartDetailsRepo.findById(id).get();
+    }
+
 
 }

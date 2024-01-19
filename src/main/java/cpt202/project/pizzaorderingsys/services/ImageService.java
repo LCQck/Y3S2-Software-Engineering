@@ -1,7 +1,7 @@
 package cpt202.project.pizzaorderingsys.services;
 
 import com.google.gson.Gson;
-import com.sun.deploy.net.URLEncoder;
+import java.net.URLEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 

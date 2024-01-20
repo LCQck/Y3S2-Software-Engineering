@@ -1,0 +1,242 @@
+[33mcommit baba072cbe2814d37920f078944ce967313fc3c4[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: LCQck <sserd930@163.com>
+Date:   Sun Jan 21 04:18:19 2024 +0800
+
+    X Commit
+
+[33mcommit e56581a93c861f4b76ceb2a588272b4bb0dd4198[m
+Author: LCQck <sserd930@163.com>
+Date:   Sun Jan 21 03:56:25 2024 +0800
+
+    YOUR_COMMIT_MESSAGE
+
+[33mcommit 8d947130f771355d1f96a2e17441f68ae85a6b67[m
+Author: LCQck <sserd930@163.com>
+Date:   Sat Jan 20 23:19:25 2024 +0800
+
+    first commit
+
+[33mcommit 06f14b693a888eb80e738f86479efcc419b6adc2[m
+Author: LCQck <sserd930@163.com>
+Date:   Sat Jan 20 03:49:35 2024 +0800
+
+    first commit
+
+[33mcommit 4413fb475a62e2a7423620b5c5e9df7a8ef143cd[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Mr.kient <mr.kient020808@gmail.com>
+Date:   Mon May 1 17:15:33 2023 +0800
+
+    2023/5/1 V1.0.2 completed place order function
+
+[33mcommit 8506a00253323519d69ad1c93649f6a6cdc25376[m
+Author: Mr.kient <mr.kient020808@gmail.com>
+Date:   Mon May 1 15:58:16 2023 +0800
+
+    2023/5/1 completed place order function
+
+[33mcommit df8baac6b16bd6813d5f5bcafc3959bedb2aadb5[m
+Author: Mr.kient <mr.kient020808@gmail.com>
+Date:   Sat Apr 29 17:55:26 2023 +0800
+
+    2023/4/30 fix register, forgetPassword functions
+
+[33mcommit 34a9f237105b4df4e52a54bd6fb8f6ac788854a7[m
+Author: Mr.kient <mr.kient020808@gmail.com>
+Date:   Sat Apr 29 17:41:20 2023 +0800
+
+    2023/4/30 fix register, forgetPassword functions
+
+[33mcommit ec13654ce1a7b547195732cac8b149b9ed6faca5[m
+Merge: c5c72ad eb7836e
+Author: Mr.kient <mr.kient020808@gmail.com>
+Date:   Sat Apr 29 17:38:38 2023 +0800
+
+    Merge remote-tracking branch 'origin/main'
+
+[33mcommit c5c72adf111438fbd213943247c18e6c0c6984a3[m
+Author: Mr.kient <mr.kient020808@gmail.com>
+Date:   Sat Apr 29 17:33:39 2023 +0800
+
+    2023/4/30 fix register, forgetPassword functions
+
+[33mcommit eb7836e79205f438666d41e7d87a39160ead989e[m
+Author: LeonardCong <1161096423@qq.com>
+Date:   Sat Apr 29 17:16:13 2023 +0800
+
+    Forget Password and Register Account HTML Pages
+
+[33mcommit 75903bc6870e54f357eda4cd8700a8214265d1cd[m
+Author: Mr.kient <mr.kient020808@gmail.com>
+Date:   Sat Apr 29 02:39:35 2023 +0800
+
+    2023/4/29 Integrating with ShopManagerMainPage, Pizza Manage
+
+[33mcommit cfa6b0930203068124d0159fc624cd4d47fcd471[m
+Author: Wenbo Wang <126461571+Mr-Kient@users.noreply.github.com>
+Date:   Sat Apr 29 02:38:04 2023 +0800
+
+    Delete RegisterAccount.html
+
+[33mcommit ec12fa7c46698081719f21c260153c5478339cd4[m
+Author: Wenbo Wang <126461571+Mr-Kient@users.noreply.github.com>
+Date:   Sat Apr 29 02:37:37 2023 +0800
+
+    Delete ForgetPassword.html
+
+[33mcommit 83117bcd3eeb7f3860219e11f658d2d763607472[m
+Author: Mr.kient <mr.kient020808@gmail.com>
+Date:   Sat Apr 29 02:08:40 2023 +0800
+
+    2023/4/29 Integrating with ShopManagerMainPage, Pizza Manage
+
+[33mcommit cf7febd7c11482487f70e2543281904a48ca2e42[m
+Author: LeonardCong <1161096423@qq.com>
+Date:   Wed Apr 19 20:06:33 2023 +0800
+
+    Add Order and OrderDetail Entity, Repo and Service. And Rename pom.xml with artifactId!
+
+[33mcommit 2ab1d1a1eb6f50eee729f2c7f8d5f054ffd1d2f9[m
+Merge: 3ee54f7 455dd65
+Author: LeonardCong <1161096423@qq.com>
+Date:   Wed Apr 19 20:01:57 2023 +0800
+
+    Merge remote-tracking branch 'origin/main'
+    
+    # Conflicts:
+    #       src/main/resources/application.properties
+
+[33mcommit 3ee54f7f86dc0f2c3bcb02d8fd6fb4f9d223431c[m
+Author: LeonardCong <1161096423@qq.com>
+Date:   Wed Apr 19 19:46:36 2023 +0800
+
+    Add Order and OrderDetail Entity, Repo and Service.
+
+[33mcommit 455dd65fc7b9d5dde580cad6e563c1288a498fbf[m
+Author: Xerxes162010 <Xerxes162010@outlook.com>
+Date:   Tue Apr 18 22:17:33 2023 +0800
+
+    update SignName and TemplateCode of the SendSms service
+
+[33mcommit 12794994125a2c6c3b8ee2e74effb6245194513a[m
+Author: Xerxes162010 <Xerxes162010@outlook.com>
+Date:   Tue Apr 18 22:12:29 2023 +0800
+
+    update SignName and TemplateCode of the SendSms service
+
+[33mcommit 23eb4e34822c63e05c5f89fa45d16cd535bd89fe[m
+Author: Xerxes162010 <Xerxes162010@outlook.com>
+Date:   Tue Apr 18 21:45:10 2023 +0800
+
+    update some pain-killing tips
+
+[33mcommit 6c885a5476d5681a8d4d249ebe221cb275200f29[m
+Author: Xerxes162010 <Xerxes162010@outlook.com>
+Date:   Tue Apr 18 21:21:55 2023 +0800
+
+    update some careless code
+
+[33mcommit d7d5ff84e79ba1c5bab605e2bc27dc55a86058eb[m
+Author: Xerxes162010 <Xerxes162010@outlook.com>
+Date:   Tue Apr 18 21:08:09 2023 +0800
+
+    update local html problem
+
+[33mcommit 00ed6380f14bf59b36da387fadd38413ff2b40ed[m
+Merge: 6f3ec6e fb813dc
+Author: Xerxes162010 <Xerxes162010@outlook.com>
+Date:   Tue Apr 18 21:06:42 2023 +0800
+
+    Merge branch 'main' of https://github.com/LeonardCong/Pizza-Ordering-System
+    
+    # Conflicts:
+    #       pom.xml
+    #       src/main/java/cpt202/project/pizzaorderingsys/config/AuthProvider.java
+    #       src/main/java/cpt202/project/pizzaorderingsys/controller/MainController.java
+    #       src/main/java/cpt202/project/pizzaorderingsys/models/Customer.java
+    #       src/main/java/cpt202/project/pizzaorderingsys/repositories/UserRepo.java
+    #       src/main/java/cpt202/project/pizzaorderingsys/security/SecurityUserDetailsService.java
+    #       src/main/java/cpt202/project/pizzaorderingsys/services/PizzaService.java
+    #       src/main/java/cpt202/project/pizzaorderingsys/services/SendSms.java
+    #       src/main/java/cpt202/project/pizzaorderingsys/services/UserService.java
+    #       src/main/resources/application.properties
+    #       src/main/resources/templates/loginPrototype.html
+
+[33mcommit c1deeab44e4ea8884efb90a1616c10f39305a9e7[m
+Merge: 8a985c8 fb813dc
+Author: Tachibana Taki <1161096423@qq.com>
+Date:   Tue Apr 18 17:56:35 2023 +0800
+
+    Merge remote-tracking branch 'origin/main'
+
+[33mcommit fb813dcd811412faff331b0d287cac2ecb0dad1b[m
+Author: Mr.kient <mr.kient020808@gmail.com>
+Date:   Tue Apr 18 17:44:11 2023 +0800
+
+    2023/4/18 All features about register and login completed (Excluded SMS Sending)
+
+[33mcommit 6f3ec6ef03a6a5d2d739f2dc798900dc359f29ed[m
+Author: Xerxes162010 <Xerxes162010@outlook.com>
+Date:   Mon Apr 17 22:00:24 2023 +0800
+
+    I had to copy all the code again
+
+[33mcommit c49f92a615deca152d5fae87bcfdf2b744d26e5c[m
+Author: Mr.kient <mr.kient020808@gmail.com>
+Date:   Mon Apr 17 19:45:03 2023 +0800
+
+    2023/4/17 All features about register and login completed
+
+[33mcommit 1ec975d2be3f357d4ae59b1b32d63f359b7cac27[m
+Author: Mr.kient <mr.kient020808@gmail.com>
+Date:   Mon Apr 17 19:38:05 2023 +0800
+
+    2023/4/17 All features about register and login completed
+
+[33mcommit b142efa827692974aa12f35aced829a4c044b859[m
+Author: Mr.kient <mr.kient020808@gmail.com>
+Date:   Mon Apr 17 17:13:05 2023 +0800
+
+    2023/4/17 login feature completed update
+
+[33mcommit 32d8494cb17f9c42aeae6549aa922a4427ae2d36[m
+Author: Mr.kient <mr.kient020808@gmail.com>
+Date:   Sun Apr 16 20:50:34 2023 +0800
+
+    2023/4/16 update
+
+[33mcommit 8a985c8dbc7addc1e2fe7016891b997c288448b6[m
+Merge: 093f298 449d1be
+Author: Tachibana Taki <1161096423@qq.com>
+Date:   Sat Apr 15 16:56:12 2023 +0800
+
+    Merge remote-tracking branch 'origin/main'
+
+[33mcommit 449d1be6c55cbc404e5059faa557a5f0f7ce1de9[m
+Author: Mr.kient <mr.kient020808@gmail.com>
+Date:   Sat Apr 15 13:23:57 2023 +0800
+
+    2023/4/15 update complete authorization login/register functions
+
+[33mcommit 093f298f62c4427a226b753239034251e25793a3[m
+Merge: 6f1b616 cd55e8d
+Author: Tachibana Taki <1161096423@qq.com>
+Date:   Sat Apr 15 13:18:53 2023 +0800
+
+    Merge remote-tracking branch 'origin/main'
+    
+    # Conflicts:
+    #       src/test/java/cpt202/project/pizzaorederingsys/PizzaOrederingSysApplicationTests.java
+
+[33mcommit cd55e8ddb7ed8777135bcecc129a3a399b5e0483[m
+Author: Mr.kient <mr.kient020808@gmail.com>
+Date:   Sat Apr 15 13:09:22 2023 +0800
+
+    2023/4/15 update complete authorization login/register functions
+
+[33mcommit ce29afbf51559c6b330a72b9d264492f3774acf1[m
+Author: Mr.kient <mr.kient020808@gmail.com>
+Date:   Sat Apr 15 12:56:47 2023 +0800
+
+    2023/4/15 update complete authorization login/register functions
+
+[33mcommit c97e6e71d576d83e8c52d05c713765f06f95

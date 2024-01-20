@@ -21,11 +21,11 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubDefaultAccount">
     <option name="defaultAccountId" value="41143051-354f-416c-8ddf-f048e5f43005" />
   </component>
@@ -138,7 +138,8 @@
       <workItem from="1700629171337" duration="3850000" />
       <workItem from="1705692060625" duration="2849000" />
       <workItem from="1705764222653" duration="660000" />
-      <workItem from="1705778721467" duration="2813000" />
+      <workItem from="1705778721467" duration="3332000" />
+      <workItem from="1705782069502" duration="369000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />

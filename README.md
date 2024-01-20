@@ -53,43 +53,43 @@ The scope of the project includes the integration of third-party payment methods
 
 ### User Characteristics
 
-The primary users are online pizza orderers, typically aged between 15 to 35 years, and are mostly from first and second-tier cities. The system is user-friendly, catering to a wide range of users including those unfamiliar with complex web navigation&#8203;``【oaicite:9】``&#8203;.
+The primary users are online pizza orderers, typically aged between 15 to 35 years, and are mostly from first and second-tier cities. The system is user-friendly, catering to a wide range of users including those unfamiliar with complex web navigation.
 
 ### Assumptions and Dependencies
 
-The project assumes that all team members possess the necessary skills and experience for web development. It depends on several external factors like development speed, software libraries, and the availability of external resources&#8203;``【oaicite:8】``&#8203;.
+The project assumes that all team members possess the necessary skills and experience for web development. It depends on several external factors like development speed, software libraries, and the availability of external resources.
 
 ### Project Risks
 
-The project faces risks in coding, collaboration, and legal, social, ethical, and professional domains. These include software tool compatibility, team coordination, data privacy, and security concerns&#8203;``【oaicite:7】``&#8203;.
+The project faces risks in coding, collaboration, and legal, social, ethical, and professional domains. These include software tool compatibility, team coordination, data privacy, and security concerns.
 
 ### Architectural Design
 
-Key features like pizza customization, order management, user authentication, and statistical reporting are implemented using technologies like MySQL, Java Persistence API (JPA), Java Database Connectivity (JDBC), Spring Boot, Spring MVC, and Thymeleaf&#8203;``【oaicite:6】``&#8203;.
+Key features like pizza customization, order management, user authentication, and statistical reporting are implemented using technologies like MySQL, Java Persistence API (JPA), Java Database Connectivity (JDBC), Spring Boot, Spring MVC, and Thymeleaf.
 
 ### System Architecture
 
-The system utilizes JPA for object-relational mapping, Spring Boot with Spring MVC for web services, and Thymeleaf for frontend templating, offering a robust and scalable solution&#8203;``【oaicite:5】``&#8203;.
+The system utilizes JPA for object-relational mapping, Spring Boot with Spring MVC for web services, and Thymeleaf for frontend templating, offering a robust and scalable solution.
 
 ### Software Modules
 
-The system comprises modules for user management, pizza management, menu, shopping cart, order management, and statistical reporting, each with specific input, output, functions, and dependencies&#8203;``【oaicite:4】``&#8203;.
+The system comprises modules for user management, pizza management, menu, shopping cart, order management, and statistical reporting, each with specific input, output, functions, and dependencies.
 
 ### High-Level Database Design
 
-The database design includes entities like User, Customer, ShopManager, Pizza, ShoppingCart, and Order, structured to efficiently store and manage necessary data&#8203;``【oaicite:3】``&#8203;.
+The database design includes entities like User, Customer, ShopManager, Pizza, ShoppingCart, and Order, structured to efficiently store and manage necessary data.
 
 ### Software Design
 
-The design ensures user-friendly navigation through registration, login, menu selection, shopping cart management, and order processing&#8203;``【oaicite:2】``&#8203;.
+The design ensures user-friendly navigation through registration, login, menu selection, shopping cart management, and order processing.
 
 ### Software Support Services
 
-The system includes database management, security features like verification codes and firewalls, and enhanced webpage navigation for an improved user experience&#8203;``【oaicite:1】``&#8203;.
+The system includes database management, security features like verification codes and firewalls, and enhanced webpage navigation for an improved user experience.
 
 ### Coding Structure and Convention
 
-The project adheres to standards in file naming, organization, Java source files, indentation, comments, declarations, statements, white space, and programming practices&#8203;``【oaicite:0】``&#8203;.
+The project adheres to standards in file naming, organization, Java source files, indentation, comments, declarations, statements, white space, and programming practices.
 
 ### Software Configuration and Production Environment
 The development environment includes Spring Security, HTML, Java, CSS, IntelliJ IDEA, Visual Studio Code, and an Ali ECS Ubuntu server with MySQL database​​.

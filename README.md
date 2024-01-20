@@ -7,7 +7,8 @@
 **Semester:** 2022/2023 Semester 2  
 **Course:** CPT202 Assignment 1  
 **Group:** 24  
-**Project Website:** [Pizza Ordering System](http://121.199.161.166:8080/pizzaOrderingSys/login)  
+**Project Website:** [Pizza Ordering System](http://121.199.161.166:8080/pizzaOrderingSys/login)
+**Project Report:** [Project Report](https://github.com/LCQck/Y3S2-Software-Engineering/blob/f6ca63b132bddc38618488f28dc40458fbdcd290/Project%20Report.pdf)
 **Date:** 2023.5.5  
 
 ### Team Members

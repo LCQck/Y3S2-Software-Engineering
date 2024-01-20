@@ -41,15 +41,15 @@
 
 ### Introduction
 
-The "Pizza Ordering System" is designed for a pizza shop to provide online ordering services. This system allows both customers and managers to interact with the shop's operations effectively. Customers can place orders online, view order history and current order status, while managers can manage product listings, view orders, and access business-related reports. The goal is to streamline the ordering process and improve overall user experience&#8203;``【oaicite:12】``&#8203;.
+The "Pizza Ordering System" is designed for a pizza shop to provide online ordering services. This system allows both customers and managers to interact with the shop's operations effectively. Customers can place orders online, view order history and current order status, while managers can manage product listings, view orders, and access business-related reports. The goal is to streamline the ordering process and improve overall user experience.
 
 ### Aims of the Project
 
-The project aims to facilitate different roles for customers and store managers through the web application. Customers can register, order pizzas, and track their orders, whereas managers have access to order details, pizza management, and business analytics&#8203;``【oaicite:11】``&#8203;.
+The project aims to facilitate different roles for customers and store managers through the web application. Customers can register, order pizzas, and track their orders, whereas managers have access to order details, pizza management, and business analytics.
 
 ### Project Scope
 
-The scope of the project includes the integration of third-party payment methods and delivery services, which are not controlled by the system but are essential for the ordering process&#8203;``【oaicite:10】``&#8203;.
+The scope of the project includes the integration of third-party payment methods and delivery services, which are not controlled by the system but are essential for the ordering process.
 
 ### User Characteristics
 

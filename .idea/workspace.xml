@@ -5,83 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c4b26e15-adf3-47e8-ae7b-af5d089c332b" name="变更" comment="first commit">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/PizzaOrderingSys-0.0.1-SNAPSHOT.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/PizzaOrderingSys-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/controller/AddressController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/controller/CategoryController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/controller/ConfirmPageController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/controller/CustomerEvaluationController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/controller/CustomerOrderController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/controller/MasterFileController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/controller/MenuController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/controller/OrderController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/controller/PizzaController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/controller/ShopMainController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/controller/ShopManagerEvaluationController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/controller/ShoppingCartController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/controller/SizeController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/controller/TasteController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/controller/TurnoverController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/models/OrderDetail.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/models/OrderStatus.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/models/PayMethod.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/models/ShoppingCart.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/models/ShoppingCartDetails.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/models/Size.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/models/Taste.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/repositories/AddressRepo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/repositories/OrderDetailRepo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/repositories/OrderRepo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/repositories/ShopCartDetailsRepo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/repositories/ShopCartRepo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/repositories/SizeRepo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/repositories/TasteRepo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/services/AddressService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/services/CustomerService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/services/EvaluationService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/services/ImageService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/services/OrderDetailService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/services/OrderService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/services/ShopCartDetailService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/services/ShopCartService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/services/SizeService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/services/TasteService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/services/TurnoverService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/CustomerEvaluations.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/CustomerInfo.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/MenuPage.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/OrderHistoryPage.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/ShopManagerMainPage.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/UndeliveredOrderPage.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/addAddress.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/addCategory.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/addCustomerComment.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/addPizza.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/addReply.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/addSize.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/addTaste.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/allAddress.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/allCategory.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/allEvaluations.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/allPizza.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/allSize.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/allTaste.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/allTurnover.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/allUser.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/confirmationPage.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/deleteAddress.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/detailPage.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/evaluationHome.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/forgetPassword.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/home.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/orderFinished.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/phoneverification.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/pizzaHome.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/registerAccount.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/replyFeedback.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/templates/searchResult.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +33,7 @@
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
         <option name="accountId" value="41143051-354f-416c-8ddf-f048e5f43005" />
-        <option name="url" value="https://github.com/LeonardCong/Pizza-Ordering-System.git" />
+        <option name="url" value="https://github.com/LCQck/Y3S2-Software-Engineering.git" />
       </UrlAndAccount>
     </option>
   </component>
@@ -214,7 +138,7 @@
       <workItem from="1700629171337" duration="3850000" />
       <workItem from="1705692060625" duration="2849000" />
       <workItem from="1705764222653" duration="660000" />
-      <workItem from="1705778721467" duration="1422000" />
+      <workItem from="1705778721467" duration="2813000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />

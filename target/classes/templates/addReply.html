@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Reply Feedback</title>
+    <style>
+        body{
+            height: 680px;
+            border: solid Bisque;
+            margin: 0 auto;
+            background-color: #FFEFDB;
+            background-repeat:no-repeat;
+            background-size: cover;
+        }
+        .replyFeedbackPage {
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            color: #FC5628;
+        }
+        .evaluationLabel {
+            display: inline;
+            text-align: start;
+            margin-left: 384px;
+            font-size: 30px;
+            font-weight: bold;
+            color: #FC5628;
+        }
+        .commentText {
+            display:block;
+            width:50%;
+            margin-left: 25%;
+            margin-top: 1%;
+            height:250px;
+            font-size:15pt;
+            font-family:"Californian FB";
+            background-color: #F5DEB3;
+            color:#8B4500;
+            border-radius:10px;/*设置圆角样式*/
+            border:0;
+        }
+        .commentText::placeholder{
+            color: #FFA500;
+            text-align: center;
+
+        }
+        #confirm{
+            display: inline;
+        }
+        #confirm .confirmBtn{
+            width: 7%;
+            height:25px;
+            margin-left: 25%;
+            border:0;
+            font-size:16pt;
+            font-family:"Times New Roman";
+            background-color:#FFA500;
+            color:#8B4500;
+            cursor:pointer;/*设置指针鼠标的样式*/
+            border-radius:10px;/*设置圆角样式*/
+            border:0;
+        }
+        #cancel{
+            display: inline;
+        }
+        #cancel .cancelBtn{
+            display: inline;
+            text-align: start;
+            margin-left: 36%;
+            font-size: 20px;
+            font-weight: bold;
+            color: #FFA500;
+            cursor:pointer;/*设置指针鼠标的样式*/
+
+            /*width: 7%;*/
+            /*height:25px;*/
+            /*margin-left: 2%;*/
+            /*border:0;*/
+            /*font-size:16pt;*/
+            /*font-family:"Times New Roman";*/
+            /*background-color:#FFA500;*/
+            /*color:#8B4500;*/
+            /*cursor:pointer;!*设置指针鼠标的样式*!*/
+            /*border-radius:10px;!*设置圆角样式*!*/
+            /*border:0;*/
+
+        }
+    </style>
+</head>
+<body>
+<div class="replyFeedbackPage">
+    Reply Feedback Page
+</div>
+<br>
+<form th:action ="@{/pizzaOrderingSys/shopmanager/evaluation/add}" method="POST" th:object ="${Evaluation}">
+    <div>
+
+        <input type="hidden" name="id" th:value="${id}">
+        <div id = "cancel"><a th:href="@{/pizzaOrderingSys/shopmanager/evaluation/list}" class = "cancelBtn">Cancel</a></div>
+
+        <textarea th:field="*{comment}" id="comment" name="comment" class="commentText" placeholder="Please leave your comment"></textarea>
+
+    </div>
+
+    <br>
+    <div id = "confirm">
+        <button type="submit" class = "confirmBtn">Confirm</button>
+    </div>
+
+</form>
+
+</body>
+</html>

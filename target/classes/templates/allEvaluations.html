@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Evaluation List</title>
+    <style>
+        body{
+            height: 680px;
+            /*border: solid antiquewhite;*/
+            margin: 0 auto;
+            background-color: #FFEFDB;
+            background-repeat:no-repeat;
+            background-size: cover;
+        }
+        .customerFeedbackPage{
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            color: #FC5628;
+        }
+        /*#topRow{*/
+        /*    display: flex;*/
+        /*    justify-content: space-between;*/
+        /*}*/
+        /*#topRow .startDate{*/
+        /*    display: inline;*/
+        /*    text-align: start;*/
+        /*    margin-left: 40px;*/
+        /*    font-size: 20px;*/
+        /*    font-weight: bold;*/
+        /*    color: #FC5628;*/
+        /*}*/
+        /*#topRow .endDate{*/
+        /*    display: inline;*/
+        /*    text-align: start;*/
+        /*    margin-left: 40px;*/
+        /*    font-size: 20px;*/
+        /*    font-weight: bold;*/
+        /*    color: #FC5628;*/
+        /*}*/
+
+        /*#topRow #confirm .confirmBtn{*/
+        /*    display: inline;*/
+        /*    text-align: end;*/
+        /*    margin-right: 40px;*/
+        /*    font-size: 20px;*/
+        /*    font-weight: bold;*/
+        /*    color: #FC5628;*/
+        /*    background-color:#FFA500;*/
+        /*    border:0;*/
+        /*    cursor:pointer;!*设置指针鼠标的样式*!*/
+        /*    border-radius:10px;!*设置圆角样式*!*/
+        /*}*/
+
+        /*#topRow .exitButton {*/
+        /*    display: inline;*/
+        /*    text-align: end;*/
+        /*    margin-right: 40px;*/
+        /*    font-size: 20px;*/
+        /*    font-weight: bold;*/
+        /*    color: #FC5628;*/
+        /*}*/
+        .exitButton {
+            display: inline;
+            text-align: end;
+            margin-left: 92%;
+            font-size: 20px;
+            font-weight: bold;
+            color: #FC5628;
+            cursor:pointer;/*设置指针鼠标的样式*/
+        }
+        .feedbackTable-container{
+            height: 100%;
+            overflow-y: scroll;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 5px;
+            text-align: center;
+            font-family:"Californian FB";
+            font-size: 20px;
+            font-weight: bold;
+            color:#8B7355;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+
+            background-color: #F5DEB3;
+            font-weight: normal;
+        }
+        tbody tr:hover {
+            background-color: #FFA500;
+        }
+    </style>
+</head>
+<body>
+<div class="customerFeedbackPage">
+    Customer Feedback Page
+</div>
+<br>
+<!--<div id="topRow">-->
+<!--    <div class="startDate">-->
+<!--        <span class ="startText">Choose Start Date</span>-->
+<!--        <input type="date" class="StartDate" placeholder="Please choose date">-->
+<!--    </div>-->
+<!--    <div class="endDate">-->
+<!--        <span class ="endText">Choose End Date</span>-->
+<!--        <input type="date" class="EndDate" placeholder="Please choose date">-->
+<!--    </div>-->
+<!--    <div id = "confirm">-->
+<!--        <button type="submit" class = "confirmBtn">Confirm</button>-->
+<!--    </div>-->
+<!--<div class = exitButton><a th:href="@{/}">Exit</a></div>-->
+<!--</div>-->
+<div class = exitButton><a th:href="@{/pizzaOrderingSys/shopmanager/mainpage}">Exit</a></div>
+<br>
+<div class="feedbackTable-container">
+    <table>
+        <thead>
+        <tr>
+            <th>orderTime</th><th>OrderId</th>  <th>Customer Comment</th>  <th>Comment</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each = "order : ${evaluationList}" >
+            <td th:text = "${order.orderTime}"> </td> <td th:text = "${order.Id}"> </td><td th:text = "${order.customerComment}"> </td><td th:text= "${order.comment}"> </td>
+            <td><a th:href="@{/pizzaOrderingSys/shopmanager/evaluation/add(id=${order.id})}">Reply</a></td>
+            <td><a th:href="'javascript:deleteEvaluation('+${order.id}+')'" >Delete</a></td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript">
+  function deleteEvaluation(obj){
+      if(window.confirm("Are you sure to delete？")){
+        window.location.href = baseUrl() + "/delete?id=" +  obj;
+      }
+  }
+  function baseUrl() {
+      var pathName = window.document.location.pathname;
+      var projectName = pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
+      return projectName;
+  }
+</script>
+</body>
+</html>

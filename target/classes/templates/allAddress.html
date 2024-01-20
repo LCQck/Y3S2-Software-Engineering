@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <link href="#" th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.css}" rel="stylesheet">
+        <title>Address Book</title>
+        <style>
+            body{
+                height: 680px;
+                /*border: solid antiquewhite;*/
+                margin: 0 auto;
+                background-color: #FFEFDB;
+                background-repeat:no-repeat;
+                background-size: cover;
+            }
+            .addressBookPage{
+                text-align: center;
+                font-size: 30px;
+                font-weight: bold;
+                color: #FC5628;
+            }
+            #addressTopRow .add_page_btn{
+                display: inline;
+                margin-left: 2%;
+                font-size: 20px;
+                font-weight: bold;
+                color: #FC5628;
+                cursor:pointer;/*设置指针鼠标的样式*/
+            }
+            #addressTopRow .back_to_customer_page {
+                display: inline;
+                margin-left: 68%;
+                font-size: 20px;
+                font-weight: bold;
+                color: #FC5628;
+                cursor:pointer;/*设置指针鼠标的样式*/
+            }
+            .addressTable-container{
+                height: 90%;
+                overflow-y: scroll;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+            th, td {
+                padding: 5px;
+                text-align: center;
+                font-family:"Californian FB";
+                font-size: 20px;
+                font-weight: bold;
+                color:#8B7355;
+                border-bottom: 1px solid #ddd;
+            }
+            th {
+
+                background-color: #F5DEB3;
+                font-weight: normal;
+            }
+            tbody tr:hover {
+                background-color: #FFA500;
+            }
+        </style>
+    </head>
+
+    <body>
+    <div class="addressBookPage">
+        Address Book
+    </div>
+        <div id="addressTopRow">
+            <a class="add_page_btn" href="#" th:href="@{/pizzaOrderingSys/customer/addressBook/add}">Add a new address</a>
+            <a role="button" class="back_to_customer_page" th:href="@{/pizzaOrderingSys/customer/addressBook/customerInfo}">Customer Info Page</a>
+        </div>
+    <br>
+    <div class="addressTable-container">
+        <table>
+            <thread>
+                <tr>
+                    <th>Address ID</th> <th>Detail Address</th> <th>Contact Name</th> <th>Contact Phone</th>
+                </tr>
+            </thread>
+            <tbody>
+
+                <tr th:each="address : ${addressList}">
+                    <td th:text="${address.address_id}"></td>
+<!--                    <td th:text="${address.customer}"></td>-->
+                    <td th:text="${address.detailAddress}"></td>
+                    <td th:text="${address.contactName}"></td>
+                    <td th:text="${address.contactPhone}"></td>
+                    <td>
+<!--                        <a class="btn btn-sm btn-primary" href="#" th:href="@{/pizzaOrderingSys/customer/address/edit/} + ${address.address_id}">Edit</a>-->
+                        <a class="btn btn-sm btn-primary" href="#" th:href="@{/pizzaOrderingSys/customer/addressBook/delete/} + ${address.address_id}">Delete</a>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    </body>
+</html>

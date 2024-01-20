@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link href="#" th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.css}" rel="stylesheet">
+    <title>Pizza</title>
+</head>
+
+<body>
+<h1>Pizza Home Page</h1>
+<h2>Welcome!<span th:text="${username}"></span></h2>
+
+<div><a th:href="@{/pizzaOrderingSys/shopmanager/pizza/list}">Pizza List</a></div>
+<div><a th:href="@{/pizzaOrderingSys/shopmanager/pizza/add}">Add Pizza</a></div>
+<div><a th:href="@{/pizzaOrderingSys/shopmanager/size/list}">Edit Size</a></div>
+<div><a th:href="@{/pizzaOrderingSys/shopmanager/taste/list}">Edit Taste</a></div>
+<div><a th:href="@{/pizzaOrderingSys/shopmanager/category/list}">Edit Category</a></div>
+</body>
+</html>

@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c4b26e15-adf3-47e8-ae7b-af5d089c332b" name="变更" comment="first commit">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/PizzaOrderingSys-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/PizzaOrderingSys-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/controller/AddressController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/controller/CategoryController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/controller/ConfirmPageController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/controller/CustomerEvaluationController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/controller/CustomerOrderController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/controller/MasterFileController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/controller/MenuController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/controller/OrderController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/controller/PizzaController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/controller/ShopMainController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/controller/ShopManagerEvaluationController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/controller/ShoppingCartController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/controller/SizeController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/controller/TasteController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/controller/TurnoverController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/models/OrderDetail.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/models/OrderStatus.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/models/PayMethod.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/models/ShoppingCart.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/models/ShoppingCartDetails.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/models/Size.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/models/Taste.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/repositories/AddressRepo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/repositories/OrderDetailRepo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/repositories/OrderRepo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/repositories/ShopCartDetailsRepo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/repositories/ShopCartRepo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/repositories/SizeRepo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/repositories/TasteRepo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/services/AddressService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/services/CustomerService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/services/EvaluationService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/services/ImageService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/services/OrderDetailService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/services/OrderService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/services/ShopCartDetailService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/services/ShopCartService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/services/SizeService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/services/TasteService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cpt202/project/pizzaorderingsys/services/TurnoverService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/CustomerEvaluations.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/CustomerInfo.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/MenuPage.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/OrderHistoryPage.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/ShopManagerMainPage.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/UndeliveredOrderPage.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/addAddress.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/addCategory.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/addCustomerComment.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/addPizza.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/addReply.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/addSize.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/addTaste.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/allAddress.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/allCategory.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/allEvaluations.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/allPizza.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/allSize.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/allTaste.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/allTurnover.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/allUser.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/confirmationPage.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/deleteAddress.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/detailPage.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/evaluationHome.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/forgetPassword.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/home.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/orderFinished.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/phoneverification.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/pizzaHome.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/registerAccount.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/replyFeedback.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/templates/searchResult.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" show_ignored="true">
+    <option name="groupingKeys">
+      <option value="directory" />
+      <option value="module" />
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN"
+  }
+}]]></component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="41143051-354f-416c-8ddf-f048e5f43005" />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="41143051-354f-416c-8ddf-f048e5f43005" />
+        <option name="url" value="https://github.com/LeonardCong/Pizza-Ordering-System.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2PBjBMAuFBE8l0g3DMDWp2ukrSe" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;F:/Pizza-Ordering-System&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;61153d2f5dfdf66bab8a16b3215c3257&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\PizzaSystem\src\main\resources\templates" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.PizzaOrderingSysApplication">
+    <configuration name="PizzaOrderingSysApplication" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cpt202.project.pizzaorderingsys.PizzaOrderingSysApplication" />
+      <module name="PizzaOrderingSys" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cpt202.project.pizzaorderingsys.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="未命名" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="PizzaSystem" />
+      <option name="SPRING_BOOT_MAIN_CLASS" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PizzaOrderingSysApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="PizzaOrderingSys" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="cpt202.project.pizzaorderingsys.PizzaOrderingSysApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="c4b26e15-adf3-47e8-ae7b-af5d089c332b" name="变更" comment="" />
+      <created>1682937232631</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1682937232631</updated>
+      <workItem from="1682937233743" duration="442000" />
+      <workItem from="1682938110787" duration="106000" />
+      <workItem from="1682938218205" duration="1549000" />
+      <workItem from="1682946797478" duration="3027000" />
+      <workItem from="1682951733896" duration="3670000" />
+      <workItem from="1683006772764" duration="6085000" />
+      <workItem from="1683119520351" duration="1813000" />
+      <workItem from="1683198814118" duration="2912000" />
+      <workItem from="1684347834779" duration="1275000" />
+      <workItem from="1684418698557" duration="6582000" />
+      <workItem from="1684466624941" duration="7744000" />
+      <workItem from="1685930621237" duration="1271000" />
+      <workItem from="1688819042396" duration="1088000" />
+      <workItem from="1695211914584" duration="247000" />
+      <workItem from="1695212176882" duration="2178000" />
+      <workItem from="1695797762565" duration="1927000" />
+      <workItem from="1700629171337" duration="3850000" />
+      <workItem from="1705692060625" duration="2849000" />
+      <workItem from="1705764222653" duration="660000" />
+      <workItem from="1705778721467" duration="1422000" />
+    </task>
+    <task id="LOCAL-00001" summary="first commit">
+      <option name="closed" value="true" />
+      <created>1705779301398</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1705779301398</updated>
+    </task>
+    <task id="LOCAL-00002" summary="first commit">
+      <option name="closed" value="true" />
+      <created>1705779395925</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1705779395925</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="变更" />
+    <MESSAGE value="first commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/target/classes/templates/MenuPage.html</url>
+          <line>651</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

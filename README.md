@@ -9,6 +9,7 @@
 **Group:** 24  
 **Project Website:** [Pizza Ordering System](http://121.199.161.166:8080/pizzaOrderingSys/login)  
 **Project Report:** [Project Report](https://github.com/LCQck/Y3S2-Software-Engineering/blob/f6ca63b132bddc38618488f28dc40458fbdcd290/Project%20Report.pdf)  
+**Peresonal Report:** [CPT202-A3-2039153 -Personal Report](https://github.com/LCQck/Y3S2-Software-Engineering/blob/5df9ae9095edd08453246a7c169fdbf3abd4f995/CPT202-A3-2039153%20-Personal%20Report.pdf)  
 **Date:** 2023.5.5  
 
 ### Team Members

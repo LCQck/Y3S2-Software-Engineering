@@ -92,4 +92,7 @@ The system includes database management, security features like verification cod
 The project adheres to standards in file naming, organization, Java source files, indentation, comments, declarations, statements, white space, and programming practices&#8203;``【oaicite:0】``&#8203;.
 
 ### Software Configuration and Production Environment
+The development environment includes Spring Security, HTML, Java, CSS, IntelliJ IDEA, Visual Studio Code, and an Ali ECS Ubuntu server with MySQL database​​.
 
+### Software Testing
+Unit and integration testing methodologies are employed to ensure the reliability and correctness of individual components and their integration within the system​​.

@@ -12,11 +12,6 @@
 **Peresonal Report:** [CPT202-A3-2039153 -Personal Report](https://github.com/LCQck/Y3S2-Software-Engineering/blob/5df9ae9095edd08453246a7c169fdbf3abd4f995/CPT202-A3-2039153%20-Personal%20Report.pdf)  
 **Date:** 2023.5.5  
 
-### Project Demo Video  
-
-For a comprehensive demonstration of the project's design architecture, technical details, and a walkthrough of all functionalities, please watch our demo video on YouTube: [Pizza Ordering System Demo](https://www.youtube.com/watch?v=4T7PLrUN4U8)  
-
-
 ### Team Members
 
 - Zichao Cong (2035606)
@@ -27,6 +22,10 @@ For a comprehensive demonstration of the project's design architecture, technica
 - Enhua Kang (2033981)
 - Ke Bai (2035843)
 - Siyi Pan (2033961)
+
+### Project Demo Video  
+
+For a comprehensive demonstration of the project's design architecture, technical details, and a walkthrough of all functionalities, please watch our demo video on YouTube: [Pizza Ordering System Demo](https://www.youtube.com/watch?v=4T7PLrUN4U8)  
 
 ## Table of Contents
 

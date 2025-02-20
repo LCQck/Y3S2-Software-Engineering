@@ -1,5 +1,5 @@
 # Y3S2-Software-Engineering
-
+来借鉴的同学给个⭐再走哈
 # Pizza Ordering System
 
 ## Project Overview
@@ -14,14 +14,14 @@
 
 ### Team Members
 
-- Zichao Cong (2035606)
-- Wenbo Wang (2036580)
-- Zihao Li (2037161)
-- Changqing Lin (2039153)
-- Xinyi Xu (2034100)
-- Enhua Kang (2033981)
-- Ke Bai (2035843)
-- Siyi Pan (2033961)
+- Zichao Cong 
+- Wenbo Wang 
+- Zihao Li 
+- Changqing Lin 
+- Xinyi Xu 
+- Enhua Kang 
+- Ke Bai 
+- Siyi Pan 
 
 ### Project Demo Video  
 
